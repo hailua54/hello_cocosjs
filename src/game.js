@@ -1,54 +1,5 @@
 var __extends = function () { };
 var res = eval("res");
-var core;
-(function (core) {
-    var VUtils = (function () {
-        function VUtils() {
-        }
-        VUtils.isNull = function (object) {
-            return (object === null || object === undefined);
-        };
-        VUtils.removeElementFromArray = function (arr, e) {
-            for (var i = 0; i < arr.length; i++) {
-                if (arr[i] === e) {
-                    arr.splice(i, 1);
-                    return;
-                }
-            }
-        };
-        VUtils.getObjKey = function (obj) {
-            if (obj["__vSysObjKey__"])
-                return obj["__vSysObjKey__"];
-            else {
-                return obj["__vSysObjKey__"] = "vSysObjKey_" + Math.random() * 2147483647 + "_" + new Date().getTime();
-            }
-        };
-        VUtils.getObjKeyName = function () {
-            return "__vSysObjKey__";
-        };
-        VUtils.copy = function (source, des) {
-            if (!des) {
-                var i = 1;
-            }
-            for (var attr in source) {
-                if (source.hasOwnProperty(attr))
-                    des[attr] = source[attr];
-            }
-        };
-        VUtils.copyClass = function (source, des) {
-            for (var attr in source) {
-                if (source.hasOwnProperty(attr))
-                    des[attr] = source[attr];
-            }
-        };
-        VUtils.cleanObj = function (obj) {
-            for (var i in obj)
-                delete obj[i];
-        };
-        return VUtils;
-    })();
-    core.VUtils = VUtils;
-})(core || (core = {}));
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }

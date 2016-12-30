@@ -2,7 +2,6 @@
     "filesGlob": [
         "tsd/cocos2d-typescript-definitions/cocos2d/**/*.d.ts",
         "src/sysinit.ts",
-        "common/core/VUtils.ts",
         "common/game/**/*.ts",
         "src/*.ts",
         "src/*.tsx",
@@ -39,7 +38,6 @@
         "tsd/cocos2d-typescript-definitions/cocos2d/tilemap/tiled-map.d.ts",
         "tsd/cocos2d-typescript-definitions/cocos2d/tilemap/xml-parser.d.ts",
         "src/sysinit.ts",
-        "common/core/VUtils.ts",
         "common/game/BaseGame.ts",
         "src/Main.ts"
     ],
