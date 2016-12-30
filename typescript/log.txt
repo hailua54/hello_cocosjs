@@ -1,0 +1,69 @@
+../tsd/cocos2d-typescript-definitions/cocos2d/core/actions.d.ts(134,9): error TS7010: 'release', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/boot.d.ts(72,21): error TS7010: 'newElement', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/boot.d.ts(72,32): error TS7006: Parameter 'x' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/boot.d.ts(1076,30): error TS2304: Cannot find name 'PlistParser'.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/boot.d.ts(1114,25): error TS7010: 'onStart', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/boot.d.ts(1120,25): error TS7010: 'onStop', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/cocoa.d.ts(17,43): error TS7006: Parameter 'lhs' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/cocoa.d.ts(17,48): error TS7006: Parameter 'rhs' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/cocoa.d.ts(28,45): error TS7006: Parameter 'lhs' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/cocoa.d.ts(28,50): error TS7006: Parameter 'rhs' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/cocoa.d.ts(217,26): error TS7006: Parameter 'number' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/core.d.ts(108,9): error TS7010: 'removeActionByTag', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/core.d.ts(333,24): error TS2304: Cannot find name 'DirectorDelegate'.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/core.d.ts(544,31): error TS2304: Cannot find name 'DirectorDelegate'.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/core.d.ts(779,40): error TS7006: Parameter 'minPriority' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/event-manager.d.ts(69,9): error TS7010: 'stopPropagation', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/event-manager.d.ts(646,9): error TS7010: 'addCustomListener', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/event-manager.d.ts(659,9): error TS7010: 'removeListeners', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/layers.d.ts(72,9): error TS7010: 'ctor', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/layers.d.ts(146,9): error TS7010: 'ctor', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(20,40): error TS7006: Parameter 'proto' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(20,47): error TS7006: Parameter 'prop' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(20,53): error TS7006: Parameter 'getter' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(20,61): error TS7006: Parameter 'setter' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(20,69): error TS7006: Parameter 'getterName' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(20,81): error TS7006: Parameter 'setterName' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(197,21): error TS7010: 'disableDefaultGLStates', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(399,21): error TS7010: 'checkGLErrorDebug', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(744,16): error TS7005: Variable 'TEXT_ALIGNMENT_LEFT' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(751,16): error TS7005: Variable 'TEXT_ALIGNMENT_CENTER' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(758,16): error TS7005: Variable 'TEXT_ALIGNMENT_RIGHT' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(765,16): error TS7005: Variable 'VERTICAL_TEXT_ALIGNMENT_TOP' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(772,16): error TS7005: Variable 'VERTICAL_TEXT_ALIGNMENT_CENTER' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(779,16): error TS7005: Variable 'VERTICAL_TEXT_ALIGNMENT_BOTTOM' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(838,21): error TS7010: 'colorEqual', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(961,9): error TS7008: Member 'fontName' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(962,9): error TS7008: Member 'fontSize' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(963,9): error TS7008: Member 'textAlign' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(964,9): error TS7008: Member 'verticalAlign' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(965,9): error TS7008: Member 'fillStyle' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(966,9): error TS7008: Member 'boundingWidth' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(967,9): error TS7008: Member 'boundingHeight' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(969,9): error TS7008: Member 'strokeEnabled' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(970,9): error TS7008: Member 'strokeStyle' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(971,9): error TS7008: Member 'lineWidth' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(972,9): error TS7008: Member 'lineHeight' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(973,9): error TS7008: Member 'fontStyle' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(974,9): error TS7008: Member 'fontWeight' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(976,9): error TS7008: Member 'shadowEnabled' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(977,9): error TS7008: Member 'shadowOffsetX' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(978,9): error TS7008: Member 'shadowOffsetY' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(979,9): error TS7008: Member 'shadowBlur' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(980,9): error TS7008: Member 'shadowOpacity' implicitly has an 'any' type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(1407,9): error TS7010: 'end', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(1474,9): error TS7010: 'centerWindow', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(1604,9): error TS7010: 'getViewPortRect', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(1675,9): error TS7010: 'preApply', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(1717,9): error TS7010: 'preApply', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(1726,9): error TS7010: 'preApply', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts(1878,9): error TS7010: 'preApply', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/sprites.d.ts(788,9): error TS7010: 'ctor', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/core/sprites.d.ts(800,9): error TS7010: 'addSpriteWithoutQuad', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/extensions/gui/scrollview.d.ts(64,9): error TS7010: 'ctor', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/extensions/gui/scrollview.d.ts(220,9): error TS7010: 'ctor', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/extensions/gui/scrollview.d.ts(231,9): error TS7010: 'ctor', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/menus.d.ts(144,9): error TS7010: 'ctor', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/menus.d.ts(586,9): error TS7010: 'ctor', which lacks return-type annotation, implicitly has an 'any' return type.
+../tsd/cocos2d-typescript-definitions/cocos2d/menus.d.ts(587,9): error TS7010: 'ctor', which lacks return-type annotation, implicitly has an 'any' return type.
+common/game/HelloWorldLayer.ts(33,4): error TS7017: Index signature of object type implicitly has an 'any' type.

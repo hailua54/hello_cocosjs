@@ -1,0 +1,57 @@
+{
+    "filesGlob": [
+        "tsd/cocos2d-typescript-definitions/cocos2d/**/*.d.ts",
+        "src/sysinit.ts",
+        "common/core/VUtils.ts",
+        "common/game/**/*.ts",
+        "src/*.ts",
+        "src/*.tsx",
+        "!node_modules/**"
+    ],
+    "files": [
+        "tsd/cocos2d-typescript-definitions/cocos2d/clipping-nodes.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/cocos2d-lib.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/actions.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/audio.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/base-nodes.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/boot.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/cocoa.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/core.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/event-manager.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/labelttf.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/layers.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/platform.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/scenes.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/sprites.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/support.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/core/textures.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/extensions/ccpool/pool.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/extensions/cocosstudio/load.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/extensions/gui/scrollview.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/jsb.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/kazmath.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/labels.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/menus.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/render-texture.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/shape-nodes.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/tilemap/layer.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/tilemap/object-group.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/tilemap/tiled-map.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/tilemap/xml-parser.d.ts",
+        "src/sysinit.ts",
+        "common/core/VUtils.ts",
+        "common/game/BaseGame.ts",
+        "src/Main.ts"
+    ],
+    "compileOnSave": true,
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outFile": "../src/game.js",
+        "sourceMap": true
+    },
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}
