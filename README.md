@@ -3,9 +3,7 @@
 ## Setup
 
 TypeScript IDE Atom 
-
 Nodejs and typescript compile module
-
 Cososjs typescript definition (https://github.com/jamma/cocos2d-typescript-definitions.git)
 
 Cocos2d-x 3.1.1
