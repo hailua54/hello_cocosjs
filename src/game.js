@@ -314,14 +314,11 @@ var Game = (function (_super) {
         this.init();
     }
     Game.prototype.destructor = function () {
-        if (this.gameModel.startScene)
-            this.gameModel.startScene.release();
         _super.prototype.destructor.call(this);
     };
     Game.prototype.init = function () {
         this.gameModel = new GameModel();
         this.gameModel.startScene = new StartScene();
-        this.gameModel.startScene.retain();
         cc.director.runScene(this.gameModel.startScene);
     };
     return Game;
@@ -366,12 +363,11 @@ var StartScene = (function (_super) {
         var winsize = director.getWinSize();
         var tf = cc.LabelTTF['create']("Play", "Helvetica", 30);
         var playBtn = cc.Sprite['create']();
-        playBtn.setAnchorPoint(new cc.Point(0.5, 0));
         playBtn.addChild(tf);
         var menu = cc.Sprite['create']();
         this.addChild(menu);
         menu.x = winsize.width * 0.5;
-        menu.y = winsize.height - 100;
+        menu.y = winsize.height * 0.9;
         menu.addChild(playBtn);
     };
     return StartScene;

@@ -30,7 +30,7 @@ var HelloWorldLayer = cc.Layer.extend({
             y: size.height / 2
         });
         this.addChild(this.sprite, 0);
-
+        
         return true;
     }
 });
@@ -42,4 +42,3 @@ var HelloWorldScene = cc.Scene.extend({
         this.addChild(layer);
     }
 });
-

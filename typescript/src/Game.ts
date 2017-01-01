@@ -9,7 +9,6 @@ class Game extends game.BaseGame
 
   public destructor()
   {
-    if (this.gameModel.startScene) this.gameModel.startScene.release();
     super.destructor();
   }
 
@@ -17,7 +16,10 @@ class Game extends game.BaseGame
   {
     this.gameModel = new GameModel();
     this.gameModel.startScene = new StartScene();
-    this.gameModel.startScene.retain();
+    //NOTE:
+    // No need to use this.gameModel.startScene.retain()
+    // startScene is already retain/release by 'Marking-Sweeping phases' of GC (check reachable from root)
+    // -----------------
     cc.director.runScene(this.gameModel.startScene);
   }
 }

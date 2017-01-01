@@ -24,16 +24,14 @@ class StartScene extends cc.Scene
 
 		var tf:cc.LabelTTF = cc.LabelTTF['create']("Play", "Helvetica", 30);
 		var playBtn:cc.Sprite = cc.Sprite['create']();
-		playBtn.setAnchorPoint(new cc.Point(0.5, 0));
 		playBtn.addChild(tf);
 
 		var menu:cc.Sprite = cc.Sprite['create']();
     this.addChild(menu);
 		menu.x = winsize.width*0.5;
-		menu.y = winsize.height - 100;
+		menu.y = winsize.height*0.9;
 		menu.addChild(playBtn);
 	}
 }
-
 
 this['StartScene'] = cc.Scene['extend'](new StartScene());
