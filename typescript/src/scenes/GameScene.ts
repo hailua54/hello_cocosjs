@@ -1,4 +1,4 @@
-class Main extends cc.Scene
+class GameScene extends cc.Scene
 {
 	public ctor()
 	{
@@ -12,9 +12,7 @@ class Main extends cc.Scene
 	public onEnter():void
 	{
 		this._super();
-		var layer:game.BaseGame = new game.BaseGame();
-		this.addChild(layer);
 	}
 }
 
-this['Main'] = cc.Scene['extend'](new Main());
+this['GameScene'] = cc.Scene['extend'](new GameScene());

@@ -2,9 +2,12 @@
     "filesGlob": [
         "tsd/cocos2d-typescript-definitions/cocos2d/**/*.d.ts",
         "src/sysinit.ts",
+        "common/core/**/*.ts",
         "common/game/**/*.ts",
-        "src/*.ts",
-        "src/*.tsx",
+        "src/**/*.ts",
+        "!src/main.ts",
+        "src/**/*.tsx",
+        "src/main.ts",
         "!node_modules/**"
     ],
     "files": [
@@ -38,8 +41,17 @@
         "tsd/cocos2d-typescript-definitions/cocos2d/tilemap/tiled-map.d.ts",
         "tsd/cocos2d-typescript-definitions/cocos2d/tilemap/xml-parser.d.ts",
         "src/sysinit.ts",
+        "common/core/VBaseEvent.ts",
+        "common/core/VEventDispatcher.ts",
+        "common/core/VListenerBinding.ts",
+        "common/core/VObjectPool.ts",
+        "common/core/VUtils.ts",
         "common/game/BaseGame.ts",
-        "src/Main.ts"
+        "common/game/GameObject.ts",
+        "src/Game.ts",
+        "src/GameModel.ts",
+        "src/scenes/GameScene.ts",
+        "src/scenes/StartScene.ts"
     ],
     "compileOnSave": true,
     "compilerOptions": {
