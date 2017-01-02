@@ -11,13 +11,15 @@ class GameScene extends cc.Scene
 		this._super();
 	}
 
-  // destructor
+	public destroy()
+	{
+		cc.eventManager.removeListener(this.menuListener);
+	}
+
   public onExit(): void
   {
 		cc.log("GameScene::onExit ----------------------- ");
     super.onExit();
-		cc.eventManager.removeListener(this.menuListener);
-    core.VUtils.cleanObj(this);
   }
 
 	// override here

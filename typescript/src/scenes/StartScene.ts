@@ -11,13 +11,16 @@ class StartScene extends cc.Scene
 		this._super();
 	}
 
+	public destroy()
+	{
+		cc.eventManager.removeListener(this.menuListener);
+	}
+
   // destructor
   public onExit(): void
   {
 		cc.log("StartScene::onExit ----------------------- ");
     super.onExit();
-		cc.eventManager.removeListener(this.menuListener);
-    core.VUtils.cleanObj(this);
   }
 
 	// override here

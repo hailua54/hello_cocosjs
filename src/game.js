@@ -382,11 +382,12 @@ var GameScene = (function (_super) {
             return;
         this._super();
     };
+    GameScene.prototype.destroy = function () {
+        cc.eventManager.removeListener(this.menuListener);
+    };
     GameScene.prototype.onExit = function () {
         cc.log("GameScene::onExit ----------------------- ");
         _super.prototype.onExit.call(this);
-        cc.eventManager.removeListener(this.menuListener);
-        core.VUtils.cleanObj(this);
     };
     GameScene.prototype.onEnter = function () {
         cc.log("GameScene::onEnter ----------------------- ");
@@ -470,11 +471,12 @@ var StartScene = (function (_super) {
             return;
         this._super();
     };
+    StartScene.prototype.destroy = function () {
+        cc.eventManager.removeListener(this.menuListener);
+    };
     StartScene.prototype.onExit = function () {
         cc.log("StartScene::onExit ----------------------- ");
         _super.prototype.onExit.call(this);
-        cc.eventManager.removeListener(this.menuListener);
-        core.VUtils.cleanObj(this);
     };
     StartScene.prototype.onEnter = function () {
         cc.log("StartScene::onEnter ----------------------- ");
