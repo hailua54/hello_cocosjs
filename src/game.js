@@ -273,7 +273,7 @@ var game;
     var BaseGame = (function () {
         function BaseGame() {
         }
-        BaseGame.prototype.destructor = function () {
+        BaseGame.prototype.destroy = function () {
         };
         return BaseGame;
     })();
@@ -284,6 +284,29 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var game;
+(function (game) {
+    var BaseScene = (function (_super) {
+        __extends(BaseScene, _super);
+        function BaseScene() {
+            _super.apply(this, arguments);
+        }
+        BaseScene.prototype.ctor = function () {
+            if (!this._super)
+                return;
+            this._super();
+        };
+        BaseScene.prototype.onExit = function () {
+            _super.prototype.onExit.call(this);
+        };
+        BaseScene.prototype.initModel = function (gameModel) {
+            this.gameModel = gameModel;
+        };
+        return BaseScene;
+    })(cc.Scene);
+    game.BaseScene = BaseScene;
+})(game || (game = {}));
+game.BaseScene = cc.Scene['extend'](new game.BaseScene());
 var game;
 (function (game) {
     var GameObject = (function (_super) {
@@ -313,12 +336,17 @@ var Game = (function (_super) {
         _super.call(this);
         this.init();
     }
-    Game.prototype.destructor = function () {
-        _super.prototype.destructor.call(this);
+    Game.prototype.destroy = function () {
+        _super.prototype.destroy.call(this);
+        cc.director.end();
     };
     Game.prototype.init = function () {
         this.gameModel = new GameModel();
+        this.gameModel.game = this;
         this.gameModel.startScene = new StartScene();
+        this.gameModel.startScene.initModel(this.gameModel);
+        this.gameModel.gameScene = new GameScene();
+        this.gameModel.gameScene.initModel(this.gameModel);
         cc.director.runScene(this.gameModel.startScene);
     };
     return Game;
@@ -327,6 +355,22 @@ var GameModel = (function () {
     function GameModel() {
     }
     return GameModel;
+})();
+var GameUtils = (function () {
+    function GameUtils() {
+    }
+    GameUtils.getItemHit = function (items, touchPos) {
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var mp = item.convertToNodeSpace(touchPos);
+            var r = item.localBound;
+            var rect = cc.rect(r.x, r.y, r.width, r.height);
+            if (cc.rectContainsPoint(rect, mp))
+                return item;
+        }
+        return null;
+    };
+    return GameUtils;
 })();
 var GameScene = (function (_super) {
     __extends(GameScene, _super);
@@ -338,8 +382,80 @@ var GameScene = (function (_super) {
             return;
         this._super();
     };
+    GameScene.prototype.onExit = function () {
+        cc.log("GameScene::onExit ----------------------- ");
+        _super.prototype.onExit.call(this);
+        cc.eventManager.removeListener(this.menuListener);
+        core.VUtils.cleanObj(this);
+    };
     GameScene.prototype.onEnter = function () {
+        cc.log("GameScene::onEnter ----------------------- ");
         this._super();
+    };
+    GameScene.prototype.initModel = function (model) {
+        this.gameModel = model;
+        var director = cc.director;
+        var winSize = director.getWinSize();
+        var bg = new cc.DrawNode();
+        this.addChild(bg);
+        bg.drawPoly([cc.p(0, 0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0, winSize.height)], new cc.Color(0x22, 0x22, 0x22, 255), 1, new cc.Color(0, 0, 0, 0));
+        this.menuItems = [];
+        var menu = cc.Sprite['create']();
+        this.addChild(menu);
+        var itemNames = ["Back", "Exit"];
+        itemNames = itemNames.reverse();
+        var menuH = 0;
+        for (var i = 0; i < itemNames.length; i++) {
+            var tf = cc.LabelTTF['create'](itemNames[i], "Helvetica", 30);
+            var item = cc.Sprite['create']();
+            item['name'] = itemNames[i];
+            item['tf'] = tf;
+            var s = tf.getContentSize();
+            item['localBound'] = cc.rect(-s.width * 0.5, -s.height * 0.5, s.width, s.height);
+            item.addChild(tf);
+            item.x = 0;
+            item.y = 50 * i;
+            menu.addChild(item);
+            this.menuItems.push(item);
+            menuH = item.y + tf.getContentSize().height;
+        }
+        menu.setContentSize(0, menuH);
+        menu.x = winSize.width * 0.5;
+        menu.y = winSize.height * 0.9 - menu.getContentSize().height;
+        var listener = {
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: this.onMenuTouchBegan.bind(this),
+            onTouchEnded: this.onMenuTouchEnded.bind(this)
+        };
+        this.menuListener = listener;
+        cc.eventManager.addListener(listener, menu);
+    };
+    GameScene.prototype.onMenuTouchEnded = function (touch, e) {
+        for (var i = 0; i < this.menuItems.length; i++)
+            this.menuItems[i].tf.setColor(new cc.Color(0xff, 0xff, 0xff, 255));
+        var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
+        if (!item)
+            return false;
+        var tf = item.tf;
+        switch (item.name) {
+            case "Back":
+                cc.director.runScene(this.gameModel.startScene);
+                break;
+            case "Exit":
+                cc.log("Exit");
+                this.gameModel.game.destroy();
+                break;
+        }
+        return true;
+    };
+    GameScene.prototype.onMenuTouchBegan = function (touch, e) {
+        var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
+        if (!item)
+            return false;
+        var tf = item.tf;
+        tf.setColor(new cc.Color(0x88, 0x88, 0x88, 255));
+        return true;
     };
     return GameScene;
 })(cc.Scene);
@@ -354,21 +470,81 @@ var StartScene = (function (_super) {
             return;
         this._super();
     };
-    StartScene.prototype.onEnter = function () {
-        this._super();
-        this.initView();
+    StartScene.prototype.onExit = function () {
+        cc.log("StartScene::onExit ----------------------- ");
+        _super.prototype.onExit.call(this);
+        cc.eventManager.removeListener(this.menuListener);
+        core.VUtils.cleanObj(this);
     };
-    StartScene.prototype.initView = function () {
+    StartScene.prototype.onEnter = function () {
+        cc.log("StartScene::onEnter ----------------------- ");
+        this._super();
+    };
+    StartScene.prototype.initModel = function (model) {
+        this.gameModel = model;
         var director = cc.director;
-        var winsize = director.getWinSize();
-        var tf = cc.LabelTTF['create']("Play", "Helvetica", 30);
-        var playBtn = cc.Sprite['create']();
-        playBtn.addChild(tf);
+        var winSize = director.getWinSize();
+        var bg = new cc.DrawNode();
+        this.addChild(bg);
+        bg.drawPoly([cc.p(0, 0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0, winSize.height)], new cc.Color(0x22, 0x22, 0x22, 255), 1, new cc.Color(0, 0, 0, 0));
+        this.menuItems = [];
         var menu = cc.Sprite['create']();
         this.addChild(menu);
-        menu.x = winsize.width * 0.5;
-        menu.y = winsize.height * 0.9;
-        menu.addChild(playBtn);
+        var itemNames = ["Play", "Exit"];
+        itemNames = itemNames.reverse();
+        var menuH = 0;
+        for (var i = 0; i < itemNames.length; i++) {
+            var tf = cc.LabelTTF['create'](itemNames[i], "Helvetica", 30);
+            var item = cc.Sprite['create']();
+            item['name'] = itemNames[i];
+            item['tf'] = tf;
+            var s = tf.getContentSize();
+            item['localBound'] = cc.rect(-s.width * 0.5, -s.height * 0.5, s.width, s.height);
+            item.addChild(tf);
+            item.x = 0;
+            item.y = 50 * i;
+            menu.addChild(item);
+            this.menuItems.push(item);
+            menuH = item.y + tf.getContentSize().height;
+        }
+        menu.setContentSize(0, menuH);
+        menu.x = winSize.width * 0.5;
+        menu.y = winSize.height * 0.9 - menu.getContentSize().height;
+        var listener = {
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: this.onMenuTouchBegan.bind(this),
+            onTouchEnded: this.onMenuTouchEnded.bind(this)
+        };
+        this.menuListener = listener;
+        cc.eventManager.addListener(listener, menu);
+    };
+    StartScene.prototype.onMenuTouchEnded = function (touch, e) {
+        for (var i = 0; i < this.menuItems.length; i++)
+            this.menuItems[i].tf.setColor(new cc.Color(0xff, 0xff, 0xff, 255));
+        var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
+        if (!item)
+            return false;
+        var tf = item.tf;
+        switch (item.name) {
+            case "Play":
+                cc.log("Play");
+                cc.director.runScene(this.gameModel.gameScene);
+                break;
+            case "Exit":
+                cc.log("Exit");
+                this.gameModel.game.destroy();
+                break;
+        }
+        return true;
+    };
+    StartScene.prototype.onMenuTouchBegan = function (touch, e) {
+        var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
+        if (!item)
+            return false;
+        var tf = item.tf;
+        tf.setColor(new cc.Color(0x88, 0x88, 0x88, 255));
+        return true;
     };
     return StartScene;
 })(cc.Scene);

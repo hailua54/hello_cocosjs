@@ -47,9 +47,11 @@
         "common/core/VObjectPool.ts",
         "common/core/VUtils.ts",
         "common/game/BaseGame.ts",
+        "common/game/BaseScene.ts",
         "common/game/GameObject.ts",
         "src/Game.ts",
         "src/GameModel.ts",
+        "src/GameUtils.ts",
         "src/scenes/GameScene.ts",
         "src/scenes/StartScene.ts"
     ],

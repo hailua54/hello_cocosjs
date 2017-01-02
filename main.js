@@ -69,12 +69,12 @@ cc.game.onStart = function(){
     cc.view.adjustViewPort(true);
 
     var winSize = cc.view.getFrameSize();
-    var size = new cc.Size();
+    var size = cc.size();
 
     if (!isMobile()) // desktop: use fix screen
     {
-      size.width = 1920;
-      size.height = 768;
+      size.width = 400;
+      size.height = 600;
     }
     else { // mobile: get fullScreen
       if (winSize.width > winSize.height) // landscape

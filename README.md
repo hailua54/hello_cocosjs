@@ -43,4 +43,17 @@
 
 - The code using tab size = 2. To view the draw code with github, put a tab size on the url ?ts=2
 Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/StartScene.ts?ts=2
+
+## References
+
+- GC
+
+http://wiki.luajit.org/New-Garbage-Collector#gc-algorithms_two-color-mark-sweep
+
+Ruby 2.2 GC
+
+https://engineering.heroku.com/blogs/2015-02-04-incremental-gc/
+
+- Touch event
+http://www.cocos2d-x.org/wiki/EventDispatcher_Mechanism
 		

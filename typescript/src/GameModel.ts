@@ -1,9 +1,9 @@
 class GameModel
 {
+	public game:Game;
 	public startScene:StartScene;
-	public GameScene:GameScene;
+	public gameScene:GameScene;
 	constructor()
 	{
-
 	}
 } // class

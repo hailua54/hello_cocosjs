@@ -6,8 +6,8 @@ namespace game
 		{
 		}
 
-		// should be exlicit call to release all scenes it have
-		public destructor()
+		// should be exlicit call to release all resource/references it have
+		public destroy()
 		{
 
 		}
