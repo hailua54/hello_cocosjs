@@ -1,8 +1,3 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var __extends = function () { };
 var res = eval("res");
 var g_resources = eval("g_resources");
@@ -31,7 +26,7 @@ var core;
             this.stopsImmediatePropagation = false;
         };
         return VBaseEvent;
-    }());
+    })();
     core.VBaseEvent = VBaseEvent;
 })(core || (core = {}));
 var core;
@@ -144,7 +139,7 @@ var core;
         };
         ;
         return VEventDispatcher;
-    }());
+    })();
     core.VEventDispatcher = VEventDispatcher;
 })(core || (core = {}));
 var core;
@@ -165,7 +160,7 @@ var core;
             this.context = null;
         };
         return VListenerBinding;
-    }());
+    })();
     core.VListenerBinding = VListenerBinding;
 })(core || (core = {}));
 var core;
@@ -221,7 +216,7 @@ var core;
         };
         VObjectPool.instance = new VObjectPool();
         return VObjectPool;
-    }());
+    })();
     core.VObjectPool = VObjectPool;
 })(core || (core = {}));
 var core;
@@ -270,7 +265,7 @@ var core;
                 delete obj[i];
         };
         return VUtils;
-    }());
+    })();
     core.VUtils = VUtils;
 })(core || (core = {}));
 var game;
@@ -281,9 +276,14 @@ var game;
         BaseGame.prototype.destructor = function () {
         };
         return BaseGame;
-    }());
+    })();
     game.BaseGame = BaseGame;
 })(game || (game = {}));
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var game;
 (function (game) {
     var GameObject = (function (_super) {
@@ -304,7 +304,7 @@ var game;
             this.gameModel = gameModel;
         };
         return GameObject;
-    }(cc.Sprite));
+    })(cc.Sprite);
     game.GameObject = GameObject;
 })(game || (game = {}));
 var Game = (function (_super) {
@@ -322,12 +322,12 @@ var Game = (function (_super) {
         cc.director.runScene(this.gameModel.startScene);
     };
     return Game;
-}(game.BaseGame));
+})(game.BaseGame);
 var GameModel = (function () {
     function GameModel() {
     }
     return GameModel;
-}());
+})();
 var GameScene = (function (_super) {
     __extends(GameScene, _super);
     function GameScene() {
@@ -342,7 +342,7 @@ var GameScene = (function (_super) {
         this._super();
     };
     return GameScene;
-}(cc.Scene));
+})(cc.Scene);
 this['GameScene'] = cc.Scene['extend'](new GameScene());
 var StartScene = (function (_super) {
     __extends(StartScene, _super);
@@ -371,6 +371,6 @@ var StartScene = (function (_super) {
         menu.addChild(playBtn);
     };
     return StartScene;
-}(cc.Scene));
+})(cc.Scene);
 this['StartScene'] = cc.Scene['extend'](new StartScene());
 //# sourceMappingURL=game.js.map

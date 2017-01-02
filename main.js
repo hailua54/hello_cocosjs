@@ -51,6 +51,13 @@
  }
  *
  */
+var LD_DESIGN_SIZE = 960;
+var HD_DESIGN_SIZE = 1920;
+
+var isMobile = function()
+{
+  return cc.sys.os === cc.sys.OS_IOS || cc.sys.os === cc.sys.OS_ANDROID || cc.sys.os === cc.sys.OS_BLACKBERRY;
+}
 
 cc.game.onStart = function(){
     if(!cc.sys.isNative && document.getElementById("cocosLoading")) //If referenced loading.js, please remove it
@@ -60,8 +67,32 @@ cc.game.onStart = function(){
     cc.view.enableRetina(cc.sys.os === cc.sys.OS_IOS ? true : false);
     // Adjust viewport meta
     cc.view.adjustViewPort(true);
+
+    var winSize = cc.view.getFrameSize();
+    var size = new cc.Size();
+
+    if (!isMobile()) // desktop: use fix screen
+    {
+      size.width = 1920;
+      size.height = 768;
+    }
+    else { // mobile: get fullScreen
+      if (winSize.width > winSize.height) // landscape
+      {
+        size.width = winSize.width;
+        if (size.width > HD_DESIGN_SIZE) size.width = HD_DESIGN_SIZE;
+        size.height = size.width*(winSize.height/winSize.width);
+      }
+      else { // portrait
+        size.height = winSize.height;
+        if (size.height > HD_DESIGN_SIZE) size.height = HD_DESIGN_SIZE;
+        size.width = size.height*(winSize.width/winSize.height);
+      }
+    }
+
     // Setup the resolution policy and design resolution size
-    cc.view.setDesignResolutionSize(960, 640, cc.ResolutionPolicy.SHOW_ALL);
+    cc.view.setDesignResolutionSize(size.width, size.height, cc.ResolutionPolicy.SHOW_ALL);
+
     // Instead of set design resolution, you can also set the real pixel resolution size
     // Uncomment the following line and delete the previous line.
     // cc.view.setRealPixelResolution(960, 640, cc.ResolutionPolicy.SHOW_ALL);

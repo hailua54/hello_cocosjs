@@ -17,17 +17,17 @@ class StartScene extends cc.Scene
 
 	public initView()
 	{
-    //2. get the singleton director
-    var director:cc.Director = cc.director;
-    //get the screen size of your game canvas
-    var winsize:cc.Size = director.getWinSize();
+		//2. get the singleton director
+		var director:cc.Director = cc.director;
+		//get the screen size of your game canvas
+		var winsize:cc.Size = director.getWinSize();
 
 		var tf:cc.LabelTTF = cc.LabelTTF['create']("Play", "Helvetica", 30);
 		var playBtn:cc.Sprite = cc.Sprite['create']();
 		playBtn.addChild(tf);
 
 		var menu:cc.Sprite = cc.Sprite['create']();
-    this.addChild(menu);
+		this.addChild(menu);
 		menu.x = winsize.width*0.5;
 		menu.y = winsize.height*0.9;
 		menu.addChild(playBtn);
