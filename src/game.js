@@ -301,13 +301,6 @@ var game;
         BaseScene.prototype.initModel = function (gameModel) {
             this.gameModel = gameModel;
         };
-        BaseScene.prototype.onExit = function () {
-            cc.log("hasNextScene " + cc.director['hasNextScene']());
-            if (!cc.director['hasNextScene']()) {
-                this.gameModel.game.destroy();
-            }
-            this._super();
-        };
         return BaseScene;
     })(cc.Scene);
     game.BaseScene = BaseScene;
@@ -360,11 +353,7 @@ var Game = (function (_super) {
         this.gameModel.gameScene.initModel(this.gameModel);
         this.gameModel.gameScene.retain();
         cc.director.runScene(this.gameModel.startScene);
-    };
-    Game.prototype.runScene = function (scene) {
-        scene.release();
-        if (this.activeScene)
-            this.activeScene;
+        cc.eventManager.addCustomListener("game_on_exit", this.destroy.bind(this));
     };
     return Game;
 })(game.BaseGame);
@@ -388,11 +377,6 @@ var GameUtils = (function () {
         return null;
     };
     return GameUtils;
-})();
-var GlobalVals = (function () {
-    function GlobalVals() {
-    }
-    return GlobalVals;
 })();
 var GameScene = (function (_super) {
     __extends(GameScene, _super);
@@ -564,7 +548,6 @@ var StartScene = (function (_super) {
         var tf = item.tf;
         switch (item.name) {
             case "Play":
-                cc.log("Play");
                 cc.director.runScene(this.gameModel.gameScene);
                 break;
             case "Exit":

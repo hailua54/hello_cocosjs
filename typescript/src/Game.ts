@@ -35,6 +35,8 @@ class Game extends game.BaseGame
 		this.gameModel.gameScene.retain();
 
     cc.director.runScene(this.gameModel.startScene);
+
+		cc.eventManager.addCustomListener("game_on_exit", this.destroy.bind(this));
   }
 
 }

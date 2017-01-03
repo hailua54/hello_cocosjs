@@ -19,17 +19,6 @@ namespace game
 		{
       this.gameModel = gameModel;
 		}
-
-		public onExit(): void
-	  {
-			cc.log("hasNextScene " + cc.director['hasNextScene']());
-			if (!cc.director['hasNextScene']())
-			{
-				this.gameModel.game.destroy();
-			}
-
-			this._super();
-	  }
 	}
 }
 

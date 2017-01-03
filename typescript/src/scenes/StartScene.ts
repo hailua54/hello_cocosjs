@@ -104,7 +104,6 @@ class StartScene extends game.BaseScene
 		switch(item.name)
 		{
 			case "Play":
-				cc.log("Play");
 		    cc.director.runScene(this.gameModel.gameScene);
 				break;
 			case "Exit":
