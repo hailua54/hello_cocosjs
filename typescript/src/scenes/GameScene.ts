@@ -1,6 +1,5 @@
 class GameScene extends game.BaseScene
 {
-	gameModel:GameModel;
 	menuListener:cc.EventListener;
 	menuItems:Array<any>;
 	menu:any;
