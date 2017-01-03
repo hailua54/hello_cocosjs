@@ -2,7 +2,7 @@ namespace game
 {
   export class GameObject extends cc.Sprite
   {
-		public gameModel:any;
+		public gameModel:GameModel;
 
     // constructor
     public ctor()

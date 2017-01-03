@@ -52,6 +52,7 @@
         "src/Game.ts",
         "src/GameModel.ts",
         "src/GameUtils.ts",
+        "src/GlobalVals.ts",
         "src/scenes/GameScene.ts",
         "src/scenes/StartScene.ts"
     ],

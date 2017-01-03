@@ -2,7 +2,7 @@ namespace game
 {
   export class BaseScene extends cc.Scene
   {
-		public gameModel:any;
+		public gameModel:GameModel;
 
     // constructor
     public ctor()
@@ -11,17 +11,25 @@ namespace game
 			this._super();
 		}
 
-    // destructor
-    public onExit(): void
-    {
-      super.onExit();
-    }
+		public destroy()
+		{
+		}
 
 		public initModel(gameModel:any)
 		{
       this.gameModel = gameModel;
 		}
 
+		public onExit(): void
+	  {
+			cc.log("hasNextScene " + cc.director['hasNextScene']());
+			if (!cc.director['hasNextScene']())
+			{
+				this.gameModel.game.destroy();
+			}
+
+			this._super();
+	  }
 	}
 }
 

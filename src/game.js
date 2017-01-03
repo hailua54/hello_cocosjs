@@ -296,11 +296,17 @@ var game;
                 return;
             this._super();
         };
-        BaseScene.prototype.onExit = function () {
-            _super.prototype.onExit.call(this);
+        BaseScene.prototype.destroy = function () {
         };
         BaseScene.prototype.initModel = function (gameModel) {
             this.gameModel = gameModel;
+        };
+        BaseScene.prototype.onExit = function () {
+            cc.log("hasNextScene " + cc.director['hasNextScene']());
+            if (!cc.director['hasNextScene']()) {
+                this.gameModel.game.destroy();
+            }
+            this._super();
         };
         return BaseScene;
     })(cc.Scene);
@@ -338,16 +344,27 @@ var Game = (function (_super) {
     }
     Game.prototype.destroy = function () {
         _super.prototype.destroy.call(this);
-        cc.director.end();
+        cc.log("====== APP DESTRUCTOR CALLED! ======");
+        this.gameModel.startScene.destroy();
+        this.gameModel.gameScene.destroy();
+        this.gameModel.startScene.release();
+        this.gameModel.gameScene.release();
     };
     Game.prototype.init = function () {
         this.gameModel = new GameModel();
         this.gameModel.game = this;
         this.gameModel.startScene = new StartScene();
         this.gameModel.startScene.initModel(this.gameModel);
+        this.gameModel.startScene.retain();
         this.gameModel.gameScene = new GameScene();
         this.gameModel.gameScene.initModel(this.gameModel);
+        this.gameModel.gameScene.retain();
         cc.director.runScene(this.gameModel.startScene);
+    };
+    Game.prototype.runScene = function (scene) {
+        scene.release();
+        if (this.activeScene)
+            this.activeScene;
     };
     return Game;
 })(game.BaseGame);
@@ -372,6 +389,11 @@ var GameUtils = (function () {
     };
     return GameUtils;
 })();
+var GlobalVals = (function () {
+    function GlobalVals() {
+    }
+    return GlobalVals;
+})();
 var GameScene = (function (_super) {
     __extends(GameScene, _super);
     function GameScene() {
@@ -383,18 +405,21 @@ var GameScene = (function (_super) {
         this._super();
     };
     GameScene.prototype.destroy = function () {
-        cc.eventManager.removeListener(this.menuListener);
+        this._super();
+        this.menuListener.release();
     };
     GameScene.prototype.onExit = function () {
         cc.log("GameScene::onExit ----------------------- ");
-        _super.prototype.onExit.call(this);
+        cc.eventManager.removeListener(this.menuListener);
+        this._super();
     };
     GameScene.prototype.onEnter = function () {
         cc.log("GameScene::onEnter ----------------------- ");
         this._super();
+        cc.eventManager.addListener(this.menuListener, this.menu);
     };
     GameScene.prototype.initModel = function (model) {
-        this.gameModel = model;
+        _super.prototype.initModel.call(this, model);
         var director = cc.director;
         var winSize = director.getWinSize();
         var bg = new cc.DrawNode();
@@ -403,6 +428,7 @@ var GameScene = (function (_super) {
         this.menuItems = [];
         var menu = cc.Sprite['create']();
         this.addChild(menu);
+        this.menu = menu;
         var itemNames = ["Back", "Exit"];
         itemNames = itemNames.reverse();
         var menuH = 0;
@@ -429,8 +455,12 @@ var GameScene = (function (_super) {
             onTouchBegan: this.onMenuTouchBegan.bind(this),
             onTouchEnded: this.onMenuTouchEnded.bind(this)
         };
-        this.menuListener = listener;
-        cc.eventManager.addListener(listener, menu);
+        this.menuListener = cc.EventListener.create(listener);
+        this.menuListener.retain();
+        var sprite = new cc.Sprite(res.HelloWorld_png);
+        sprite.x = winSize.width * 0.5;
+        sprite.y = winSize.height * 0.5 - 50;
+        this.addChild(sprite);
     };
     GameScene.prototype.onMenuTouchEnded = function (touch, e) {
         for (var i = 0; i < this.menuItems.length; i++)
@@ -445,7 +475,7 @@ var GameScene = (function (_super) {
                 break;
             case "Exit":
                 cc.log("Exit");
-                this.gameModel.game.destroy();
+                cc.director.end();
                 break;
         }
         return true;
@@ -459,8 +489,8 @@ var GameScene = (function (_super) {
         return true;
     };
     return GameScene;
-})(cc.Scene);
-this['GameScene'] = cc.Scene['extend'](new GameScene());
+})(game.BaseScene);
+this['GameScene'] = game.BaseScene['extend'](new GameScene());
 var StartScene = (function (_super) {
     __extends(StartScene, _super);
     function StartScene() {
@@ -472,18 +502,21 @@ var StartScene = (function (_super) {
         this._super();
     };
     StartScene.prototype.destroy = function () {
-        cc.eventManager.removeListener(this.menuListener);
+        this._super();
+        this.menuListener.release();
     };
     StartScene.prototype.onExit = function () {
         cc.log("StartScene::onExit ----------------------- ");
-        _super.prototype.onExit.call(this);
+        cc.eventManager.removeListener(this.menuListener);
+        this._super();
     };
     StartScene.prototype.onEnter = function () {
         cc.log("StartScene::onEnter ----------------------- ");
         this._super();
+        cc.eventManager.addListener(this.menuListener, this.menu);
     };
     StartScene.prototype.initModel = function (model) {
-        this.gameModel = model;
+        _super.prototype.initModel.call(this, model);
         var director = cc.director;
         var winSize = director.getWinSize();
         var bg = new cc.DrawNode();
@@ -492,6 +525,7 @@ var StartScene = (function (_super) {
         this.menuItems = [];
         var menu = cc.Sprite['create']();
         this.addChild(menu);
+        this.menu = menu;
         var itemNames = ["Play", "Exit"];
         itemNames = itemNames.reverse();
         var menuH = 0;
@@ -518,8 +552,8 @@ var StartScene = (function (_super) {
             onTouchBegan: this.onMenuTouchBegan.bind(this),
             onTouchEnded: this.onMenuTouchEnded.bind(this)
         };
-        this.menuListener = listener;
-        cc.eventManager.addListener(listener, menu);
+        this.menuListener = cc.EventListener.create(listener);
+        this.menuListener.retain();
     };
     StartScene.prototype.onMenuTouchEnded = function (touch, e) {
         for (var i = 0; i < this.menuItems.length; i++)
@@ -535,7 +569,7 @@ var StartScene = (function (_super) {
                 break;
             case "Exit":
                 cc.log("Exit");
-                this.gameModel.game.destroy();
+                cc.director.end();
                 break;
         }
         return true;
@@ -549,6 +583,6 @@ var StartScene = (function (_super) {
         return true;
     };
     return StartScene;
-})(cc.Scene);
-this['StartScene'] = cc.Scene['extend'](new StartScene());
+})(game.BaseScene);
+this['StartScene'] = game.BaseScene['extend'](new StartScene());
 //# sourceMappingURL=game.js.map

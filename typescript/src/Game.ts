@@ -1,6 +1,8 @@
 class Game extends game.BaseGame
 {
   public gameModel:GameModel;
+	public activeScene:cc.Scene;
+
   constructor()
   {
     super();
@@ -10,10 +12,13 @@ class Game extends game.BaseGame
   public destroy()
 	{
 		super.destroy();
+		cc.log("====== APP DESTRUCTOR CALLED! ======");
 		// release all referenced/listener to root ---
-		//...
+		this.gameModel.startScene.destroy();
+		this.gameModel.gameScene.destroy();
+		this.gameModel.startScene.release();
+		this.gameModel.gameScene.release();
 		// -------------------------------------------
-		cc.director.end();
 	}
 
   public init()
@@ -23,13 +28,13 @@ class Game extends game.BaseGame
 
     this.gameModel.startScene = new StartScene();
 		this.gameModel.startScene.initModel(this.gameModel);
+		this.gameModel.startScene.retain();
 
 		this.gameModel.gameScene = new GameScene();
 		this.gameModel.gameScene.initModel(this.gameModel);
-    //NOTE:
-    // No need to use this.gameModel.startScene.retain()
-    // startScene is already retain/release by 'Marking-Sweeping phases' of GC (check reachable from root)
-    // -----------------
+		this.gameModel.gameScene.retain();
+
     cc.director.runScene(this.gameModel.startScene);
   }
+
 }

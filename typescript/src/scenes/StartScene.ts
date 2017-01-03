@@ -1,8 +1,9 @@
-class StartScene extends cc.Scene
+class StartScene extends game.BaseScene
 {
-	gameModel:GameModel;
-	menuListener:any;
+	menuListener:cc.EventListener;
+	menu:any;
 	menuItems:Array<any>;
+
 	public ctor()
 	{
 		// add this code to deal with the draw Object created to pass to Class::extend function
@@ -13,14 +14,18 @@ class StartScene extends cc.Scene
 
 	public destroy()
 	{
-		cc.eventManager.removeListener(this.menuListener);
+		this._super();
+		this.menuListener.release();
 	}
 
   // destructor
   public onExit(): void
   {
 		cc.log("StartScene::onExit ----------------------- ");
-    super.onExit();
+		cc.eventManager.removeListener(this.menuListener);
+
+		// should call as the last code line to destroy app
+		this._super();
   }
 
 	// override here
@@ -28,11 +33,12 @@ class StartScene extends cc.Scene
 	{
 		cc.log("StartScene::onEnter ----------------------- ");
 		this._super();
+		cc.eventManager.addListener(this.menuListener, this.menu);
 	}
 
 	public initModel(model:GameModel)
 	{
-		this.gameModel = model;
+		super.initModel(model);
 		//2. get the singleton director
 		var director:cc.Director = cc.director;
 		//get the screen size of your game canvas
@@ -48,6 +54,7 @@ class StartScene extends cc.Scene
 
 		var menu:cc.Sprite = cc.Sprite['create']();
 		this.addChild(menu);
+		this.menu = menu;
 
 		var itemNames = ["Play", "Exit"];
 		itemNames = itemNames.reverse();
@@ -82,9 +89,8 @@ class StartScene extends cc.Scene
 			onTouchEnded : this.onMenuTouchEnded.bind(this)
 		};
 
-		this.menuListener = listener;
-		cc.eventManager.addListener(listener, menu);
-
+		this.menuListener = cc.EventListener.create(listener);
+		this.menuListener.retain();
 	}
 
 	protected onMenuTouchEnded(touch:cc.Touch, e:cc.Event)
@@ -99,11 +105,11 @@ class StartScene extends cc.Scene
 		{
 			case "Play":
 				cc.log("Play");
-				cc.director.runScene(this.gameModel.gameScene);
+		    cc.director.runScene(this.gameModel.gameScene);
 				break;
 			case "Exit":
 				cc.log("Exit");
-				this.gameModel.game.destroy();
+				cc.director.end();
 				break;
 		}
 		return true;
@@ -121,4 +127,4 @@ class StartScene extends cc.Scene
   }
 }
 
-this['StartScene'] = cc.Scene['extend'](new StartScene());
+this['StartScene'] = game.BaseScene['extend'](new StartScene());

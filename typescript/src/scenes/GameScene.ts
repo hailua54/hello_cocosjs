@@ -1,8 +1,9 @@
-class GameScene extends cc.Scene
+class GameScene extends game.BaseScene
 {
 	gameModel:GameModel;
-	menuListener:any;
+	menuListener:cc.EventListener;
 	menuItems:Array<any>;
+	menu:any;
 	public ctor()
 	{
 		// add this code to deal with the draw Object created to pass to Class::extend function
@@ -13,13 +14,17 @@ class GameScene extends cc.Scene
 
 	public destroy()
 	{
-		cc.eventManager.removeListener(this.menuListener);
+		this._super();
+		this.menuListener.release();
 	}
 
   public onExit(): void
   {
 		cc.log("GameScene::onExit ----------------------- ");
-    super.onExit();
+		cc.eventManager.removeListener(this.menuListener);
+
+		// should call as the last code line to destroy app
+		this._super();
   }
 
 	// override here
@@ -27,11 +32,12 @@ class GameScene extends cc.Scene
 	{
 		cc.log("GameScene::onEnter ----------------------- ");
 		this._super();
+		cc.eventManager.addListener(this.menuListener, this.menu);
 	}
 
 	public initModel(model:GameModel)
 	{
-		this.gameModel = model;
+		super.initModel(model);
 		//2. get the singleton director
 		var director:cc.Director = cc.director;
 		//get the screen size of your game canvas
@@ -47,6 +53,7 @@ class GameScene extends cc.Scene
 
 		var menu:cc.Sprite = cc.Sprite['create']();
 		this.addChild(menu);
+		this.menu = menu;
 
 		var itemNames = ["Back", "Exit"];
 		itemNames = itemNames.reverse();
@@ -81,8 +88,14 @@ class GameScene extends cc.Scene
 			onTouchEnded : this.onMenuTouchEnded.bind(this)
 		};
 
-		this.menuListener = listener;
-		cc.eventManager.addListener(listener, menu);
+		this.menuListener = cc.EventListener.create(listener);
+		this.menuListener.retain();
+
+		// add "HelloWorld" splash screen"
+		var sprite = new cc.Sprite(res.HelloWorld_png);
+		sprite.x = winSize.width*0.5;
+		sprite.y = winSize.height*0.5 - 50;
+		this.addChild(sprite);
 
 	}
 
@@ -97,11 +110,11 @@ class GameScene extends cc.Scene
 		switch(item.name)
 		{
 			case "Back":
-				cc.director.runScene(this.gameModel.startScene);
+		    cc.director.runScene(this.gameModel.startScene);
 				break;
 			case "Exit":
 				cc.log("Exit");
-				this.gameModel.game.destroy();
+				cc.director.end();
 				break;
 		}
 		return true;
@@ -119,4 +132,4 @@ class GameScene extends cc.Scene
   }
 }
 
-this['GameScene'] = cc.Scene['extend'](new GameScene());
+this['GameScene'] = game.BaseScene['extend'](new GameScene());
