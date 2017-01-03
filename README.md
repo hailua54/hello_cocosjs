@@ -11,15 +11,13 @@
 
 - Modify cocos2d/core/platform.d.ts
 
-	add the one more method Class
-	
+	```js
+	//add the one more method Class
 	export class Class {
-	
 		public _super():void;
-		
 		...
-		
 	}
+	```
 	
 - Modify project.json (no more load app.js)
 
