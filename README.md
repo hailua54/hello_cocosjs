@@ -75,7 +75,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 
 	http://www.cocos2d-x.org/wiki/EventDispatcher_Mechanism
 
-- Js call c++ sample:
+- JS call C++ sample:
 
 	AppDelegate.cpp:
 	
