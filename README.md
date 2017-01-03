@@ -65,14 +65,14 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 
 - GC
 
-http://wiki.luajit.org/New-Garbage-Collector#gc-algorithms_two-color-mark-sweep
+	http://wiki.luajit.org/New-Garbage-Collector#gc-algorithms_two-color-mark-sweep
 
-Ruby 2.2 GC
+	Ruby 2.2 GC
 
-https://engineering.heroku.com/blogs/2015-02-04-incremental-gc/
+	https://engineering.heroku.com/blogs/2015-02-04-incremental-gc/
 
-- Touch event
-http://www.cocos2d-x.org/wiki/EventDispatcher_Mechanism
+	- Touch event
+	http://www.cocos2d-x.org/wiki/EventDispatcher_Mechanism
 
 - Js call c++ sample:
 
