@@ -40,6 +40,7 @@
 	}, this);
 	
 - Modify frameworks/cocos2d-html5/cocos2d/core/CCDirector.js:
+
 	...
 	
     hasNextScene: function () {
@@ -83,6 +84,7 @@
 	bool js_cocos2dx_Director_hasNextScene(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	{
+	
 		JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
 		
 		JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
