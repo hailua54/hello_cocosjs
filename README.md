@@ -11,7 +11,7 @@
 
 - Modify cocos2d/core/platform.d.ts
 
-	```js
+	```ts
 	//add the one more method Class
 	export class Class {
 		public _super():void;
