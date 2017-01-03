@@ -15,70 +15,66 @@
 	//add the one more method Class
 	export class Class {
 		public _super():void;
-		...
+		//...
 	}
 	```
 	
 - Modify project.json (no more load app.js)
-
+	
+	```json
 	"jsList" : [
-	
 	"src/resource.js",
-	
 	"src/game.js"
+	```
 	
 - Modify main.js to create Game object
 
+	```js
 	cc.LoaderScene.preload(g_resources, function () {
-	
 		//cc.director.runScene(new HelloWorldScene()); 
-		
 		var game = new Game();
-		
 	}, this);
+	```
 	
 - Modify frameworks/cocos2d-html5/cocos2d/core/CCDirector.js:
 
-	...
-	
+	```js
+	//...
     hasNextScene: function () {
-	
         return this._nextScene != null;
-		
     },
-	
-	...
+	//...
+	```
 	
 - Modify frameworks/cocos2d-x/cocos/base/CCDirector.h
-
+	
+	```c
 	// custom methods ----
-	
 	inline bool hasNextScene() { return _nextScene != NULL; }
-	
 	// ------------------
+	```
 	
 - Modify frameworks/cocos2d-x/cocos/scripting/js-bindings/auto/jsb_cocos2dx_auto.hpp:
-
+	
+	```c
 	// custome methods ----------
-
 	bool js_cocos2dx_Director_hasNextScene(JSContext *cx, uint32_t argc, jsval *vp);
-
 	// --------------------------
+	```
 
 - Modify frameworks/cocos2d-x/cocos/scripting/js-bindings/auto/jsb_cocos2dx_auto.cpp:
 
+	```c
     static JSFunctionSpec funcs[] = {
-	
 		// custom ------
-		
 		JS_FN("hasNextScene", js_cocos2dx_Director_hasNextScene, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		
 		// -------------
-		
-		...
+		//...
 		
 		};
-		
+	
+	// ...
+	
 	bool js_cocos2dx_Director_hasNextScene(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	{
@@ -112,6 +108,7 @@
 		return false;
 		
 	}
+	```
 
 ## Tip
 
