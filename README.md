@@ -71,7 +71,8 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 
 	https://engineering.heroku.com/blogs/2015-02-04-incremental-gc/
 
-	- Touch event
+- Touch events
+
 	http://www.cocos2d-x.org/wiki/EventDispatcher_Mechanism
 
 - Js call c++ sample:
