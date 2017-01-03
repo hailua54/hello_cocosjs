@@ -80,7 +80,7 @@ http://www.cocos2d-x.org/wiki/EventDispatcher_Mechanism
 	
 	```c
 	ScriptingCore* sc = ScriptingCore::getInstance();
-    sc->addRegisterCallback(register_all_cocos2dx);
+    sc->addRegisterCallback(js_register_cocos2dx_Director);
 	
 	sc->start();
     sc->runScript("script/jsb_boot.js");
