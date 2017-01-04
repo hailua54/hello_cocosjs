@@ -12,13 +12,13 @@ class StartScene extends game.BaseScene
 		this._super();
 	}
 
-	public destroy()
+	// destructor
+	public destructor()
 	{
 		this._super();
 		this.menuListener.release();
 	}
 
-  // destructor
   public onExit(): void
   {
 		cc.log("StartScene::onExit ----------------------- ");

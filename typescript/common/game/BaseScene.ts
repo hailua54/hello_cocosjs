@@ -11,7 +11,7 @@ namespace game
 			this._super();
 		}
 
-		public destroy()
+		public destructor()
 		{
 		}
 

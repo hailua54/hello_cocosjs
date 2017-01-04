@@ -11,7 +11,7 @@ class GameScene extends game.BaseScene
 		this._super();
 	}
 
-	public destroy()
+	public destructor()
 	{
 		this._super();
 		this.menuListener.release();

@@ -9,13 +9,13 @@ class Game extends game.BaseGame
     this.init();
   }
 
-  public destroy()
+  public destructor()
 	{
 		super.destroy();
 		cc.log("====== APP DESTRUCTOR CALLED! ======");
 		// release all referenced/listener to root ---
-		this.gameModel.startScene.destroy();
-		this.gameModel.gameScene.destroy();
+		this.gameModel.startScene.destructor();
+		this.gameModel.gameScene.destructor();
 		this.gameModel.startScene.release();
 		this.gameModel.gameScene.release();
 		// -------------------------------------------
@@ -36,7 +36,7 @@ class Game extends game.BaseGame
 
     cc.director.runScene(this.gameModel.startScene);
 
-		cc.eventManager.addCustomListener("game_on_exit", this.destroy.bind(this));
+		cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
   }
 
 }

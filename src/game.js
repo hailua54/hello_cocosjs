@@ -296,7 +296,7 @@ var game;
                 return;
             this._super();
         };
-        BaseScene.prototype.destroy = function () {
+        BaseScene.prototype.destructor = function () {
         };
         BaseScene.prototype.initModel = function (gameModel) {
             this.gameModel = gameModel;
@@ -335,11 +335,11 @@ var Game = (function (_super) {
         _super.call(this);
         this.init();
     }
-    Game.prototype.destroy = function () {
+    Game.prototype.destructor = function () {
         _super.prototype.destroy.call(this);
         cc.log("====== APP DESTRUCTOR CALLED! ======");
-        this.gameModel.startScene.destroy();
-        this.gameModel.gameScene.destroy();
+        this.gameModel.startScene.destructor();
+        this.gameModel.gameScene.destructor();
         this.gameModel.startScene.release();
         this.gameModel.gameScene.release();
     };
@@ -353,7 +353,7 @@ var Game = (function (_super) {
         this.gameModel.gameScene.initModel(this.gameModel);
         this.gameModel.gameScene.retain();
         cc.director.runScene(this.gameModel.startScene);
-        cc.eventManager.addCustomListener("game_on_exit", this.destroy.bind(this));
+        cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
     };
     return Game;
 })(game.BaseGame);
@@ -388,7 +388,7 @@ var GameScene = (function (_super) {
             return;
         this._super();
     };
-    GameScene.prototype.destroy = function () {
+    GameScene.prototype.destructor = function () {
         this._super();
         this.menuListener.release();
     };
@@ -485,7 +485,7 @@ var StartScene = (function (_super) {
             return;
         this._super();
     };
-    StartScene.prototype.destroy = function () {
+    StartScene.prototype.destructor = function () {
         this._super();
         this.menuListener.release();
     };
