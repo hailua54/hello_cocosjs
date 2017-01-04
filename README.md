@@ -55,6 +55,9 @@
 		// ...
 	}
 	```
+## Compile
+
+- web: cocos compile -p web -m release --advanced
 
 ## Tip
 
