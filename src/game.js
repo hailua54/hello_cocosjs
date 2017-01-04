@@ -1,1 +1,571 @@
-var _0x9b87=["\x72\x65\x73","\x67\x5F\x72\x65\x73\x6F\x75\x72\x63\x65\x73","\x64\x61\x74\x61","\x74\x79\x70\x65","","\x74\x61\x72\x67\x65\x74","\x63\x75\x72\x72\x65\x6E\x74\x54\x61\x72\x67\x65\x74","\x73\x74\x6F\x70\x73\x50\x72\x6F\x70\x61\x67\x61\x74\x69\x6F\x6E","\x73\x74\x6F\x70\x73\x49\x6D\x6D\x65\x64\x69\x61\x74\x65\x50\x72\x6F\x70\x61\x67\x61\x74\x69\x6F\x6E","\x69\x6E\x69\x74","\x70\x72\x6F\x74\x6F\x74\x79\x70\x65","\x63\x6C\x65\x61\x6E","\x56\x42\x61\x73\x65\x45\x76\x65\x6E\x74","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x6D\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72\x73","\x68\x61\x73\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74","\x56\x4F\x62\x6A\x65\x63\x74\x50\x6F\x6F\x6C","\x72\x65\x6D\x6F\x76\x65\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x68\x61\x73","\x72\x65\x6C\x65\x61\x73\x65","\x72\x65\x6D\x6F\x76\x65\x41\x6C\x6C\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72\x73","\x64\x69\x73\x70\x61\x74\x63\x68\x45\x76\x65\x6E\x74","\x69\x6E\x76\x6F\x6B\x65\x45\x76\x65\x6E\x74","\x6C\x69\x73\x74\x65\x6E\x65\x72","\x63\x6F\x6E\x74\x65\x78\x74","\x63\x61\x6C\x6C","\x64\x69\x73\x70\x61\x74\x63\x68\x45\x76\x65\x6E\x74\x57\x69\x74\x68","\x56\x45\x76\x65\x6E\x74\x44\x69\x73\x70\x61\x74\x63\x68\x65\x72","\x56\x4C\x69\x73\x74\x65\x6E\x65\x72\x42\x69\x6E\x64\x69\x6E\x67","\x4D\x41\x58\x5F\x4F\x42\x4A\x45\x43\x54","\x70\x6F\x6F\x6C","\x69\x6E\x73\x74\x61\x6E\x63\x65","\x67\x65\x74\x4F\x62\x6A\x4B\x65\x79","\x56\x55\x74\x69\x6C\x73","\x70\x6F\x70","\x67\x65\x74\x4F\x62\x6A\x4B\x65\x79\x4E\x61\x6D\x65","\x69\x73\x4E\x75\x6C\x6C","\x64\x65\x73\x74\x72\x6F\x79","\x70\x75\x73\x68","\x63\x6C\x65\x61\x72\x41\x6C\x6C","\x72\x65\x6D\x6F\x76\x65\x45\x6C\x65\x6D\x65\x6E\x74\x46\x72\x6F\x6D\x41\x72\x72\x61\x79","\x73\x70\x6C\x69\x63\x65","\x5F\x5F\x76\x53\x79\x73\x4F\x62\x6A\x4B\x65\x79\x5F\x5F","\x76\x53\x79\x73\x4F\x62\x6A\x4B\x65\x79\x5F","\x72\x61\x6E\x64\x6F\x6D","\x5F","\x67\x65\x74\x54\x69\x6D\x65","\x63\x6F\x70\x79","\x68\x61\x73\x4F\x77\x6E\x50\x72\x6F\x70\x65\x72\x74\x79","\x63\x6F\x70\x79\x43\x6C\x61\x73\x73","\x63\x6C\x65\x61\x6E\x4F\x62\x6A","\x42\x61\x73\x65\x47\x61\x6D\x65","\x5F\x5F\x65\x78\x74\x65\x6E\x64\x73","\x63\x6F\x6E\x73\x74\x72\x75\x63\x74\x6F\x72","\x63\x72\x65\x61\x74\x65","\x61\x70\x70\x6C\x79","\x63\x74\x6F\x72","\x5F\x73\x75\x70\x65\x72","\x64\x65\x73\x74\x72\x75\x63\x74\x6F\x72","\x69\x6E\x69\x74\x4D\x6F\x64\x65\x6C","\x67\x61\x6D\x65\x4D\x6F\x64\x65\x6C","\x42\x61\x73\x65\x53\x63\x65\x6E\x65","\x65\x78\x74\x65\x6E\x64","\x53\x63\x65\x6E\x65","\x6F\x6E\x45\x78\x69\x74","\x47\x61\x6D\x65\x4F\x62\x6A\x65\x63\x74","\x3D\x3D\x3D\x3D\x3D\x3D\x20\x41\x50\x50\x20\x44\x45\x53\x54\x52\x55\x43\x54\x4F\x52\x20\x43\x41\x4C\x4C\x45\x44\x21\x20\x3D\x3D\x3D\x3D\x3D\x3D","\x6C\x6F\x67","\x73\x74\x61\x72\x74\x53\x63\x65\x6E\x65","\x67\x61\x6D\x65\x53\x63\x65\x6E\x65","\x67\x61\x6D\x65","\x72\x65\x74\x61\x69\x6E","\x72\x75\x6E\x53\x63\x65\x6E\x65","\x64\x69\x72\x65\x63\x74\x6F\x72","\x67\x61\x6D\x65\x5F\x6F\x6E\x5F\x65\x78\x69\x74","\x62\x69\x6E\x64","\x61\x64\x64\x43\x75\x73\x74\x6F\x6D\x4C\x69\x73\x74\x65\x6E\x65\x72","\x65\x76\x65\x6E\x74\x4D\x61\x6E\x61\x67\x65\x72","\x67\x65\x74\x49\x74\x65\x6D\x48\x69\x74","\x63\x6F\x6E\x76\x65\x72\x74\x54\x6F\x4E\x6F\x64\x65\x53\x70\x61\x63\x65","\x6C\x6F\x63\x61\x6C\x42\x6F\x75\x6E\x64","\x78","\x79","\x77\x69\x64\x74\x68","\x68\x65\x69\x67\x68\x74","\x72\x65\x63\x74","\x72\x65\x63\x74\x43\x6F\x6E\x74\x61\x69\x6E\x73\x50\x6F\x69\x6E\x74","\x6D\x65\x6E\x75\x4C\x69\x73\x74\x65\x6E\x65\x72","\x47\x61\x6D\x65\x53\x63\x65\x6E\x65\x3A\x3A\x6F\x6E\x45\x78\x69\x74\x20\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x20","\x72\x65\x6D\x6F\x76\x65\x4C\x69\x73\x74\x65\x6E\x65\x72","\x6F\x6E\x45\x6E\x74\x65\x72","\x47\x61\x6D\x65\x53\x63\x65\x6E\x65\x3A\x3A\x6F\x6E\x45\x6E\x74\x65\x72\x20\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x20","\x6D\x65\x6E\x75","\x61\x64\x64\x4C\x69\x73\x74\x65\x6E\x65\x72","\x67\x65\x74\x57\x69\x6E\x53\x69\x7A\x65","\x61\x64\x64\x43\x68\x69\x6C\x64","\x70","\x64\x72\x61\x77\x50\x6F\x6C\x79","\x6D\x65\x6E\x75\x49\x74\x65\x6D\x73","\x53\x70\x72\x69\x74\x65","\x42\x61\x63\x6B","\x45\x78\x69\x74","\x72\x65\x76\x65\x72\x73\x65","\x48\x65\x6C\x76\x65\x74\x69\x63\x61","\x4C\x61\x62\x65\x6C\x54\x54\x46","\x6E\x61\x6D\x65","\x74\x66","\x67\x65\x74\x43\x6F\x6E\x74\x65\x6E\x74\x53\x69\x7A\x65","\x73\x65\x74\x43\x6F\x6E\x74\x65\x6E\x74\x53\x69\x7A\x65","\x54\x4F\x55\x43\x48\x5F\x4F\x4E\x45\x5F\x42\x59\x5F\x4F\x4E\x45","\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x6F\x6E\x4D\x65\x6E\x75\x54\x6F\x75\x63\x68\x42\x65\x67\x61\x6E","\x6F\x6E\x4D\x65\x6E\x75\x54\x6F\x75\x63\x68\x45\x6E\x64\x65\x64","\x73\x65\x74\x43\x6F\x6C\x6F\x72","\x67\x65\x74\x4C\x6F\x63\x61\x74\x69\x6F\x6E","\x65\x6E\x64","\x47\x61\x6D\x65\x53\x63\x65\x6E\x65","\x53\x74\x61\x72\x74\x53\x63\x65\x6E\x65\x3A\x3A\x6F\x6E\x45\x78\x69\x74\x20\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x20","\x53\x74\x61\x72\x74\x53\x63\x65\x6E\x65\x3A\x3A\x6F\x6E\x45\x6E\x74\x65\x72\x20\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x2D\x20","\x50\x6C\x61\x79","\x53\x74\x61\x72\x74\x53\x63\x65\x6E\x65"];var __extends=function(){};var res=eval(_0x9b87[0]);var g_resources=eval(_0x9b87[1]);var core;(function(core){var _0x66aex5=(function(){function _0x66aex5(){this[_0x9b87[2]]= null;this[_0x9b87[3]]= _0x9b87[4];this[_0x9b87[5]]= null;this[_0x9b87[6]]= null;this[_0x9b87[7]]= false;this[_0x9b87[8]]= false}_0x66aex5[_0x9b87[10]][_0x9b87[9]]= function(_0x66aex6,_0x66aex7){this[_0x9b87[3]]= _0x66aex6;this[_0x9b87[2]]= _0x66aex7;return this};_0x66aex5[_0x9b87[10]][_0x9b87[11]]= function(){this[_0x9b87[2]]= null;this[_0x9b87[3]]= _0x9b87[4];this[_0x9b87[5]]= null;this[_0x9b87[6]]= null;this[_0x9b87[7]]= false;this[_0x9b87[8]]= false};return _0x66aex5})();core[_0x9b87[12]]= _0x66aex5})(core|| (core= {}));var core;(function(core){var _0x66aex8=(function(){function _0x66aex8(){this[_0x9b87[13]]= function(_0x66aex6,_0x66aex9,_0x66aexa){if(this[_0x9b87[14]]== null){this[_0x9b87[14]]= {}};var _0x66aexb=this[_0x9b87[14]][_0x66aex6];if(_0x66aexb== null){this[_0x9b87[14]][_0x66aex6]= [];_0x66aexb= this[_0x9b87[14]][_0x66aex6]};if(!this[_0x9b87[15]](_0x66aex6,_0x66aex9,_0x66aexa)){_0x66aexb[_0x66aexb[_0x9b87[16]]]= core[_0x9b87[18]][_0x9b87[17]](core.VListenerBinding)[_0x9b87[9]](_0x66aex9,_0x66aexa)}};this[_0x9b87[14]]= null}_0x66aex8[_0x9b87[10]][_0x9b87[19]]= function(_0x66aex6,_0x66aex9,_0x66aexa){if(this[_0x9b87[14]]){var _0x66aexc=this[_0x9b87[14]][_0x66aex6];var _0x66aexd=_0x66aexc?_0x66aexc[_0x9b87[16]]:0;if(_0x66aexd> 0){var _0x66aexe=0;var _0x66aexf= new Array(_0x66aexd- 1);for(var _0x66aex10=0;_0x66aex10< _0x66aexd;++_0x66aex10){var _0x66aex11=_0x66aexc[_0x66aex10];if(!_0x66aex11[_0x9b87[20]](_0x66aex9,_0x66aexa)){_0x66aexf[_0x66aexe++]= _0x66aex11}else {core[_0x9b87[18]][_0x9b87[21]](_0x66aex11,core.VListenerBinding)}};this[_0x9b87[14]][_0x66aex6]= _0x66aexf}}};_0x66aex8[_0x9b87[10]][_0x9b87[22]]= function(_0x66aex6){if(_0x66aex6=== void(0)){_0x66aex6= null};if(_0x66aex6&& this[_0x9b87[14]]){for(var _0x66aex10=0;_0x66aex10< this[_0x9b87[14]][_0x66aex6][_0x9b87[16]];++_0x66aex10){core[_0x9b87[18]][_0x9b87[21]](this[_0x9b87[14]][_0x66aex6][_0x66aex10],core.VListenerBinding)};delete this[_0x9b87[14]][_0x66aex6]}else {for(var _0x66aex12 in this[_0x9b87[14]]){if(this[_0x9b87[14]][_0x66aex12]){for(var _0x66aex10=0;_0x66aex10< this[_0x9b87[14]][_0x66aex12][_0x9b87[16]];++_0x66aex10){core[_0x9b87[18]][_0x9b87[21]](this[_0x9b87[14]][_0x66aex12][_0x66aex10],core.VListenerBinding)};delete this[_0x9b87[14]][_0x66aex12]}};this[_0x9b87[14]]= null}};;;_0x66aex8[_0x9b87[10]][_0x9b87[23]]= function(_0x66aex13){if((this[_0x9b87[14]]== null||  !(_0x66aex13[_0x9b87[3]] in  this[_0x9b87[14]]))){return};var _0x66aex14=_0x66aex13[_0x9b87[5]];_0x66aex13[_0x9b87[5]]= this;this[_0x9b87[24]](_0x66aex13);if(_0x66aex14){_0x66aex13[_0x9b87[5]]= _0x66aex14}};;;_0x66aex8[_0x9b87[10]][_0x9b87[24]]= function(_0x66aex13){var _0x66aexc=this[_0x9b87[14]]?this[_0x9b87[14]][_0x66aex13[_0x9b87[3]]]:null;var _0x66aexd=_0x66aexc== null?0:_0x66aexc[_0x9b87[16]];if(_0x66aexd){_0x66aex13[_0x9b87[6]]= this;for(var _0x66aex10=0;_0x66aex10< _0x66aexd;++_0x66aex10){var _0x66aex15=_0x66aexc[_0x66aex10];var _0x66aex16=_0x66aex15[_0x9b87[25]][_0x9b87[16]];if(_0x66aex16== 0){_0x66aex15[_0x9b87[25]][_0x9b87[27]](_0x66aex15[_0x9b87[26]])}else {if(_0x66aex16== 1){_0x66aex15[_0x9b87[25]][_0x9b87[27]](_0x66aex15[_0x9b87[26]],_0x66aex13)}};if(_0x66aex13[_0x9b87[8]]){return true}};return _0x66aex13[_0x9b87[7]]}else {return false}};;;_0x66aex8[_0x9b87[10]][_0x9b87[28]]= function(_0x66aex6,_0x66aex7){if(_0x66aex7=== void(0)){_0x66aex7= null};var _0x66aex13=core[_0x9b87[18]][_0x9b87[17]](core.VBaseEvent);_0x66aex13[_0x9b87[3]]= _0x66aex6;_0x66aex13[_0x9b87[2]]= _0x66aex7;this[_0x9b87[23]](_0x66aex13);core[_0x9b87[18]][_0x9b87[21]](_0x66aex13,core.VBaseEvent)};;;_0x66aex8[_0x9b87[10]][_0x9b87[15]]= function(_0x66aex6,_0x66aex9,_0x66aexa){if(!this[_0x9b87[14]]){return false};if(!this[_0x9b87[14]][_0x66aex6]){return false};var _0x66aexb=this[_0x9b87[14]][_0x66aex6];for(var _0x66aex10=0;_0x66aex10< _0x66aexb[_0x9b87[16]];_0x66aex10++){if(_0x66aexb[_0x66aex10][_0x9b87[25]]=== _0x66aex9&& _0x66aexb[_0x66aex10][_0x9b87[26]]=== _0x66aexa){return true}};return false};;;return _0x66aex8})();core[_0x9b87[29]]= _0x66aex8})(core|| (core= {}));var core;(function(core){var _0x66aex17=(function(){function _0x66aex17(){}_0x66aex17[_0x9b87[10]][_0x9b87[9]]= function(_0x66aex9,_0x66aexa){this[_0x9b87[25]]= _0x66aex9;this[_0x9b87[26]]= _0x66aexa;return this};_0x66aex17[_0x9b87[10]][_0x9b87[20]]= function(_0x66aex9,_0x66aexa){return this[_0x9b87[25]]=== _0x66aex9&& this[_0x9b87[26]]=== _0x66aexa};_0x66aex17[_0x9b87[10]][_0x9b87[11]]= function(){this[_0x9b87[25]]= null;this[_0x9b87[26]]= null};return _0x66aex17})();core[_0x9b87[30]]= _0x66aex17})(core|| (core= {}));var core;(function(core){var _0x66aex18=(function(){function _0x66aex18(){this[_0x9b87[31]]= 1000;this[_0x9b87[32]]= {}}_0x66aex18[_0x9b87[17]]= function(_0x66aex19){return _0x66aex18[_0x9b87[33]][_0x9b87[17]](_0x66aex19)};_0x66aex18[_0x9b87[21]]= function(_0x66aex1a,_0x66aex19){return _0x66aex18[_0x9b87[33]][_0x9b87[21]](_0x66aex1a,_0x66aex19)};_0x66aex18[_0x9b87[10]][_0x9b87[17]]= function(_0x66aex19){if(!this[_0x9b87[32]][core[_0x9b87[35]][_0x9b87[34]](_0x66aex19)]){this[_0x9b87[32]][core[_0x9b87[35]][_0x9b87[34]](_0x66aex19)]= []};if(this[_0x9b87[32]][core[_0x9b87[35]][_0x9b87[34]](_0x66aex19)][_0x9b87[16]]== 0){return  new _0x66aex19()};return this[_0x9b87[32]][core[_0x9b87[35]][_0x9b87[34]](_0x66aex19)][_0x9b87[36]]()};_0x66aex18[_0x9b87[10]][_0x9b87[21]]= function(_0x66aex1a,_0x66aex19){if(!this[_0x9b87[32]][core[_0x9b87[35]][_0x9b87[34]](_0x66aex19)]){this[_0x9b87[32]][core[_0x9b87[35]][_0x9b87[34]](_0x66aex19)]= []};if(_0x66aex1a[core[_0x9b87[35]][_0x9b87[37]]()]){delete _0x66aex1a[core[_0x9b87[35]][_0x9b87[37]]()]};if(!core[_0x9b87[35]][_0x9b87[38]](_0x66aex1a[_0x9b87[11]])){_0x66aex1a[_0x9b87[11]]()};if(this[_0x9b87[32]][core[_0x9b87[35]][_0x9b87[34]](_0x66aex19)][_0x9b87[16]]== this[_0x9b87[31]]){if(_0x66aex1a[_0x9b87[39]]){_0x66aex1a[_0x9b87[39]][_0x9b87[16]]?_0x66aex1a[_0x9b87[39]](true):_0x66aex1a[_0x9b87[39]]()};return false};this[_0x9b87[32]][core[_0x9b87[35]][_0x9b87[34]](_0x66aex19)][_0x9b87[40]](_0x66aex1a);return true};_0x66aex18[_0x9b87[10]][_0x9b87[41]]= function(){var _0x66aex1a;for(var _0x66aex6 in this[_0x9b87[32]]){for(var _0x66aex10=0;_0x66aex10< this[_0x9b87[32]][_0x66aex6][_0x9b87[16]];_0x66aex10++){_0x66aex1a= this[_0x9b87[32]][_0x66aex6][_0x66aex10];if(_0x66aex1a[_0x9b87[11]]){_0x66aex1a[_0x9b87[11]]()};if(_0x66aex1a[_0x9b87[39]]){_0x66aex1a[_0x9b87[39]][_0x9b87[16]]?_0x66aex1a[_0x9b87[39]](true):_0x66aex1a[_0x9b87[39]]()}};delete this[_0x9b87[32]][_0x66aex6]};this[_0x9b87[32]]= null};_0x66aex18[_0x9b87[33]]=  new _0x66aex18();return _0x66aex18})();core[_0x9b87[18]]= _0x66aex18})(core|| (core= {}));var core;(function(core){var _0x66aex1b=(function(){function _0x66aex1b(){}_0x66aex1b[_0x9b87[38]]= function(_0x66aex1c){return (_0x66aex1c=== null|| _0x66aex1c=== undefined)};_0x66aex1b[_0x9b87[42]]= function(_0x66aex1d,_0x66aex1e){for(var _0x66aex10=0;_0x66aex10< _0x66aex1d[_0x9b87[16]];_0x66aex10++){if(_0x66aex1d[_0x66aex10]=== _0x66aex1e){_0x66aex1d[_0x9b87[43]](_0x66aex10,1);return}}};_0x66aex1b[_0x9b87[34]]= function(_0x66aex1a){if(_0x66aex1a[_0x9b87[44]]){return _0x66aex1a[_0x9b87[44]]}else {return _0x66aex1a[_0x9b87[44]]= _0x9b87[45]+ Math[_0x9b87[46]]()* 2147483647+ _0x9b87[47]+  new Date()[_0x9b87[48]]()}};_0x66aex1b[_0x9b87[37]]= function(){return _0x9b87[44]};_0x66aex1b[_0x9b87[49]]= function(_0x66aex1f,_0x66aex20){if(!_0x66aex20){var _0x66aex10=1};for(var _0x66aex21 in _0x66aex1f){if(_0x66aex1f[_0x9b87[50]](_0x66aex21)){_0x66aex20[_0x66aex21]= _0x66aex1f[_0x66aex21]}}};_0x66aex1b[_0x9b87[51]]= function(_0x66aex1f,_0x66aex20){for(var _0x66aex21 in _0x66aex1f){if(_0x66aex1f[_0x9b87[50]](_0x66aex21)){_0x66aex20[_0x66aex21]= _0x66aex1f[_0x66aex21]}}};_0x66aex1b[_0x9b87[52]]= function(_0x66aex1a){for(var _0x66aex10 in _0x66aex1a){delete _0x66aex1a[_0x66aex10]}};return _0x66aex1b})();core[_0x9b87[35]]= _0x66aex1b})(core|| (core= {}));var game;(function(game){var _0x66aex23=(function(){function _0x66aex23(){}_0x66aex23[_0x9b87[10]][_0x9b87[39]]= function(){};return _0x66aex23})();game[_0x9b87[53]]= _0x66aex23})(game|| (game= {}));var __extends=(this&& this[_0x9b87[54]])|| function(_0x66aex24,_0x66aex25){for(var _0x66aex26 in _0x66aex25){if(_0x66aex25[_0x9b87[50]](_0x66aex26)){_0x66aex24[_0x66aex26]= _0x66aex25[_0x66aex26]}};function _0x66aex27(){this[_0x9b87[55]]= _0x66aex24}_0x66aex24[_0x9b87[10]]= _0x66aex25=== null?Object[_0x9b87[56]](_0x66aex25):(_0x66aex27[_0x9b87[10]]= _0x66aex25[_0x9b87[10]], new _0x66aex27())};var game;(function(game){var _0x66aex28=(function(_0x66aex29){__extends(_0x66aex28,_0x66aex29);function _0x66aex28(){_0x66aex29[_0x9b87[57]](this,arguments)}_0x66aex28[_0x9b87[10]][_0x9b87[58]]= function(){if(!this[_0x9b87[59]]){return};this._super()};_0x66aex28[_0x9b87[10]][_0x9b87[60]]= function(){};_0x66aex28[_0x9b87[10]][_0x9b87[61]]= function(_0x66aex2a){this[_0x9b87[62]]= _0x66aex2a};return _0x66aex28})(cc.Scene);game[_0x9b87[63]]= _0x66aex28})(game|| (game= {}));game[_0x9b87[63]]= cc[_0x9b87[65]][_0x9b87[64]]( new game.BaseScene());var game;(function(game){var _0x66aex2b=(function(_0x66aex29){__extends(_0x66aex2b,_0x66aex29);function _0x66aex2b(){_0x66aex29[_0x9b87[57]](this,arguments)}_0x66aex2b[_0x9b87[10]][_0x9b87[58]]= function(){if(!this[_0x9b87[59]]){return};this._super()};_0x66aex2b[_0x9b87[10]][_0x9b87[66]]= function(){_0x66aex29[_0x9b87[10]][_0x9b87[66]][_0x9b87[27]](this);core[_0x9b87[35]][_0x9b87[52]](this)};_0x66aex2b[_0x9b87[10]][_0x9b87[61]]= function(_0x66aex2a){this[_0x9b87[62]]= _0x66aex2a};return _0x66aex2b})(cc.Sprite);game[_0x9b87[67]]= _0x66aex2b})(game|| (game= {}));var Game=(function(_0x66aex29){__extends(Game,_0x66aex29);function Game(){_0x66aex29[_0x9b87[27]](this);this[_0x9b87[9]]()}Game[_0x9b87[10]][_0x9b87[60]]= function(){_0x66aex29[_0x9b87[10]][_0x9b87[39]][_0x9b87[27]](this);cc[_0x9b87[69]](_0x9b87[68]);this[_0x9b87[62]][_0x9b87[70]][_0x9b87[60]]();this[_0x9b87[62]][_0x9b87[71]][_0x9b87[60]]();this[_0x9b87[62]][_0x9b87[70]][_0x9b87[21]]();this[_0x9b87[62]][_0x9b87[71]][_0x9b87[21]]()};Game[_0x9b87[10]][_0x9b87[9]]= function(){this[_0x9b87[62]]=  new GameModel();this[_0x9b87[62]][_0x9b87[72]]= this;this[_0x9b87[62]][_0x9b87[70]]=  new StartScene();this[_0x9b87[62]][_0x9b87[70]][_0x9b87[61]](this[_0x9b87[62]]);this[_0x9b87[62]][_0x9b87[70]][_0x9b87[73]]();this[_0x9b87[62]][_0x9b87[71]]=  new GameScene();this[_0x9b87[62]][_0x9b87[71]][_0x9b87[61]](this[_0x9b87[62]]);this[_0x9b87[62]][_0x9b87[71]][_0x9b87[73]]();cc[_0x9b87[75]][_0x9b87[74]](this[_0x9b87[62]][_0x9b87[70]]);cc[_0x9b87[79]][_0x9b87[78]](_0x9b87[76],this[_0x9b87[60]][_0x9b87[77]](this))};return Game})(game.BaseGame);var GameModel=(function(){function GameModel(){}return GameModel})();var GameUtils=(function(){function GameUtils(){}GameUtils[_0x9b87[80]]= function(_0x66aex2f,_0x66aex30){for(var _0x66aex10=0;_0x66aex10< _0x66aex2f[_0x9b87[16]];_0x66aex10++){var _0x66aex31=_0x66aex2f[_0x66aex10];var _0x66aex32=_0x66aex31[_0x9b87[81]](_0x66aex30);var _0x66aex33=_0x66aex31[_0x9b87[82]];var _0x66aex34=cc[_0x9b87[87]](_0x66aex33[_0x9b87[83]],_0x66aex33[_0x9b87[84]],_0x66aex33[_0x9b87[85]],_0x66aex33[_0x9b87[86]]);if(cc[_0x9b87[88]](_0x66aex34,_0x66aex32)){return _0x66aex31}};return null};return GameUtils})();var GameScene=(function(_0x66aex29){__extends(GameScene,_0x66aex29);function GameScene(){_0x66aex29[_0x9b87[57]](this,arguments)}GameScene[_0x9b87[10]][_0x9b87[58]]= function(){if(!this[_0x9b87[59]]){return};this._super()};GameScene[_0x9b87[10]][_0x9b87[60]]= function(){this._super();this[_0x9b87[89]][_0x9b87[21]]()};GameScene[_0x9b87[10]][_0x9b87[66]]= function(){cc[_0x9b87[69]](_0x9b87[90]);cc[_0x9b87[79]][_0x9b87[91]](this[_0x9b87[89]]);this._super()};GameScene[_0x9b87[10]][_0x9b87[92]]= function(){cc[_0x9b87[69]](_0x9b87[93]);this._super();cc[_0x9b87[79]][_0x9b87[95]](this[_0x9b87[89]],this[_0x9b87[94]])};GameScene[_0x9b87[10]][_0x9b87[61]]= function(_0x66aex36){_0x66aex29[_0x9b87[10]][_0x9b87[61]][_0x9b87[27]](this,_0x66aex36);var _0x66aex37=cc[_0x9b87[75]];var _0x66aex38=_0x66aex37[_0x9b87[96]]();var _0x66aex39= new cc.DrawNode();this[_0x9b87[97]](_0x66aex39);_0x66aex39[_0x9b87[99]]([cc[_0x9b87[98]](0,0),cc[_0x9b87[98]](_0x66aex38[_0x9b87[85]],0),cc[_0x9b87[98]](_0x66aex38[_0x9b87[85]],_0x66aex38[_0x9b87[86]]),cc[_0x9b87[98]](0,_0x66aex38[_0x9b87[86]])], new cc.Color(0x22,0x22,0x22,255),1, new cc.Color(0,0,0,0));this[_0x9b87[100]]= [];var _0x66aex3a=cc[_0x9b87[101]][_0x9b87[56]]();this[_0x9b87[97]](_0x66aex3a);this[_0x9b87[94]]= _0x66aex3a;var _0x66aex3b=[_0x9b87[102],_0x9b87[103]];_0x66aex3b= _0x66aex3b[_0x9b87[104]]();var _0x66aex3c=0;for(var _0x66aex10=0;_0x66aex10< _0x66aex3b[_0x9b87[16]];_0x66aex10++){var _0x66aex3d=cc[_0x9b87[106]][_0x9b87[56]](_0x66aex3b[_0x66aex10],_0x9b87[105],30);var _0x66aex31=cc[_0x9b87[101]][_0x9b87[56]]();_0x66aex31[_0x9b87[107]]= _0x66aex3b[_0x66aex10];_0x66aex31[_0x9b87[108]]= _0x66aex3d;var _0x66aex3e=_0x66aex3d[_0x9b87[109]]();_0x66aex31[_0x9b87[82]]= cc[_0x9b87[87]](-_0x66aex3e[_0x9b87[85]]* 0.5,-_0x66aex3e[_0x9b87[86]]* 0.5,_0x66aex3e[_0x9b87[85]],_0x66aex3e[_0x9b87[86]]);_0x66aex31[_0x9b87[97]](_0x66aex3d);_0x66aex31[_0x9b87[83]]= 0;_0x66aex31[_0x9b87[84]]= 50* _0x66aex10;_0x66aex3a[_0x9b87[97]](_0x66aex31);this[_0x9b87[100]][_0x9b87[40]](_0x66aex31);_0x66aex3c= _0x66aex31[_0x9b87[84]]+ _0x66aex3d[_0x9b87[109]]()[_0x9b87[86]]};_0x66aex3a[_0x9b87[110]](0,_0x66aex3c);_0x66aex3a[_0x9b87[83]]= _0x66aex38[_0x9b87[85]]* 0.5;_0x66aex3a[_0x9b87[84]]= _0x66aex38[_0x9b87[86]]* 0.9- _0x66aex3a[_0x9b87[109]]()[_0x9b87[86]];var _0x66aex9={event:cc[_0x9b87[112]][_0x9b87[111]],swallowTouches:true,onTouchBegan:this[_0x9b87[113]][_0x9b87[77]](this),onTouchEnded:this[_0x9b87[114]][_0x9b87[77]](this)};this[_0x9b87[89]]= cc[_0x9b87[112]][_0x9b87[56]](_0x66aex9);this[_0x9b87[89]][_0x9b87[73]]();var _0x66aex3f= new cc.Sprite(res.HelloWorld_png);_0x66aex3f[_0x9b87[83]]= _0x66aex38[_0x9b87[85]]* 0.5;_0x66aex3f[_0x9b87[84]]= _0x66aex38[_0x9b87[86]]* 0.5- 50;this[_0x9b87[97]](_0x66aex3f)};GameScene[_0x9b87[10]][_0x9b87[114]]= function(_0x66aex40,_0x66aex1e){for(var _0x66aex10=0;_0x66aex10< this[_0x9b87[100]][_0x9b87[16]];_0x66aex10++){this[_0x9b87[100]][_0x66aex10][_0x9b87[108]][_0x9b87[115]]( new cc.Color(0xff,0xff,0xff,255))};var _0x66aex31=GameUtils[_0x9b87[80]](this[_0x9b87[100]],_0x66aex40[_0x9b87[116]]());if(!_0x66aex31){return false};var _0x66aex3d=_0x66aex31[_0x9b87[108]];switch(_0x66aex31[_0x9b87[107]]){case _0x9b87[102]:cc[_0x9b87[75]][_0x9b87[74]](this[_0x9b87[62]][_0x9b87[70]]);break;case _0x9b87[103]:cc[_0x9b87[69]](_0x9b87[103]);cc[_0x9b87[75]][_0x9b87[117]]();break};return true};GameScene[_0x9b87[10]][_0x9b87[113]]= function(_0x66aex40,_0x66aex1e){var _0x66aex31=GameUtils[_0x9b87[80]](this[_0x9b87[100]],_0x66aex40[_0x9b87[116]]());if(!_0x66aex31){return false};var _0x66aex3d=_0x66aex31[_0x9b87[108]];_0x66aex3d[_0x9b87[115]]( new cc.Color(0x88,0x88,0x88,255));return true};return GameScene})(game.BaseScene);this[_0x9b87[118]]= game[_0x9b87[63]][_0x9b87[64]]( new GameScene());var StartScene=(function(_0x66aex29){__extends(StartScene,_0x66aex29);function StartScene(){_0x66aex29[_0x9b87[57]](this,arguments)}StartScene[_0x9b87[10]][_0x9b87[58]]= function(){if(!this[_0x9b87[59]]){return};this._super()};StartScene[_0x9b87[10]][_0x9b87[60]]= function(){this._super();this[_0x9b87[89]][_0x9b87[21]]()};StartScene[_0x9b87[10]][_0x9b87[66]]= function(){cc[_0x9b87[69]](_0x9b87[119]);cc[_0x9b87[79]][_0x9b87[91]](this[_0x9b87[89]]);this._super()};StartScene[_0x9b87[10]][_0x9b87[92]]= function(){cc[_0x9b87[69]](_0x9b87[120]);this._super();cc[_0x9b87[79]][_0x9b87[95]](this[_0x9b87[89]],this[_0x9b87[94]])};StartScene[_0x9b87[10]][_0x9b87[61]]= function(_0x66aex36){_0x66aex29[_0x9b87[10]][_0x9b87[61]][_0x9b87[27]](this,_0x66aex36);var _0x66aex37=cc[_0x9b87[75]];var _0x66aex38=_0x66aex37[_0x9b87[96]]();var _0x66aex39= new cc.DrawNode();this[_0x9b87[97]](_0x66aex39);_0x66aex39[_0x9b87[99]]([cc[_0x9b87[98]](0,0),cc[_0x9b87[98]](_0x66aex38[_0x9b87[85]],0),cc[_0x9b87[98]](_0x66aex38[_0x9b87[85]],_0x66aex38[_0x9b87[86]]),cc[_0x9b87[98]](0,_0x66aex38[_0x9b87[86]])], new cc.Color(0x22,0x22,0x22,255),1, new cc.Color(0,0,0,0));this[_0x9b87[100]]= [];var _0x66aex3a=cc[_0x9b87[101]][_0x9b87[56]]();this[_0x9b87[97]](_0x66aex3a);this[_0x9b87[94]]= _0x66aex3a;var _0x66aex3b=[_0x9b87[121],_0x9b87[103]];_0x66aex3b= _0x66aex3b[_0x9b87[104]]();var _0x66aex3c=0;for(var _0x66aex10=0;_0x66aex10< _0x66aex3b[_0x9b87[16]];_0x66aex10++){var _0x66aex3d=cc[_0x9b87[106]][_0x9b87[56]](_0x66aex3b[_0x66aex10],_0x9b87[105],30);var _0x66aex31=cc[_0x9b87[101]][_0x9b87[56]]();_0x66aex31[_0x9b87[107]]= _0x66aex3b[_0x66aex10];_0x66aex31[_0x9b87[108]]= _0x66aex3d;var _0x66aex3e=_0x66aex3d[_0x9b87[109]]();_0x66aex31[_0x9b87[82]]= cc[_0x9b87[87]](-_0x66aex3e[_0x9b87[85]]* 0.5,-_0x66aex3e[_0x9b87[86]]* 0.5,_0x66aex3e[_0x9b87[85]],_0x66aex3e[_0x9b87[86]]);_0x66aex31[_0x9b87[97]](_0x66aex3d);_0x66aex31[_0x9b87[83]]= 0;_0x66aex31[_0x9b87[84]]= 50* _0x66aex10;_0x66aex3a[_0x9b87[97]](_0x66aex31);this[_0x9b87[100]][_0x9b87[40]](_0x66aex31);_0x66aex3c= _0x66aex31[_0x9b87[84]]+ _0x66aex3d[_0x9b87[109]]()[_0x9b87[86]]};_0x66aex3a[_0x9b87[110]](0,_0x66aex3c);_0x66aex3a[_0x9b87[83]]= _0x66aex38[_0x9b87[85]]* 0.5;_0x66aex3a[_0x9b87[84]]= _0x66aex38[_0x9b87[86]]* 0.9- _0x66aex3a[_0x9b87[109]]()[_0x9b87[86]];var _0x66aex9={event:cc[_0x9b87[112]][_0x9b87[111]],swallowTouches:true,onTouchBegan:this[_0x9b87[113]][_0x9b87[77]](this),onTouchEnded:this[_0x9b87[114]][_0x9b87[77]](this)};this[_0x9b87[89]]= cc[_0x9b87[112]][_0x9b87[56]](_0x66aex9);this[_0x9b87[89]][_0x9b87[73]]()};StartScene[_0x9b87[10]][_0x9b87[114]]= function(_0x66aex40,_0x66aex1e){for(var _0x66aex10=0;_0x66aex10< this[_0x9b87[100]][_0x9b87[16]];_0x66aex10++){this[_0x9b87[100]][_0x66aex10][_0x9b87[108]][_0x9b87[115]]( new cc.Color(0xff,0xff,0xff,255))};var _0x66aex31=GameUtils[_0x9b87[80]](this[_0x9b87[100]],_0x66aex40[_0x9b87[116]]());if(!_0x66aex31){return false};var _0x66aex3d=_0x66aex31[_0x9b87[108]];switch(_0x66aex31[_0x9b87[107]]){case _0x9b87[121]:cc[_0x9b87[75]][_0x9b87[74]](this[_0x9b87[62]][_0x9b87[71]]);break;case _0x9b87[103]:cc[_0x9b87[69]](_0x9b87[103]);cc[_0x9b87[75]][_0x9b87[117]]();break};return true};StartScene[_0x9b87[10]][_0x9b87[113]]= function(_0x66aex40,_0x66aex1e){var _0x66aex31=GameUtils[_0x9b87[80]](this[_0x9b87[100]],_0x66aex40[_0x9b87[116]]());if(!_0x66aex31){return false};var _0x66aex3d=_0x66aex31[_0x9b87[108]];_0x66aex3d[_0x9b87[115]]( new cc.Color(0x88,0x88,0x88,255));return true};return StartScene})(game.BaseScene);this[_0x9b87[122]]= game[_0x9b87[63]][_0x9b87[64]]( new StartScene())
+var __extends = function () { };
+var res = eval("res");
+var g_resources = eval("g_resources");
+var core;
+(function (core) {
+    var VBaseEvent = (function () {
+        function VBaseEvent() {
+            this.data = null;
+            this.type = "";
+            this.target = null;
+            this.currentTarget = null;
+            this.stopsPropagation = false;
+            this.stopsImmediatePropagation = false;
+        }
+        VBaseEvent.prototype.init = function (type, data) {
+            this.type = type;
+            this.data = data;
+            return this;
+        };
+        VBaseEvent.prototype.clean = function () {
+            this.data = null;
+            this.type = "";
+            this.target = null;
+            this.currentTarget = null;
+            this.stopsPropagation = false;
+            this.stopsImmediatePropagation = false;
+        };
+        return VBaseEvent;
+    })();
+    core.VBaseEvent = VBaseEvent;
+})(core || (core = {}));
+var core;
+(function (core) {
+    var VEventDispatcher = (function () {
+        function VEventDispatcher() {
+            this.addEventListener = function (type, listener, context) {
+                if (this.mEventListeners == null)
+                    this.mEventListeners = {};
+                var listeners = this.mEventListeners[type];
+                if (listeners == null) {
+                    this.mEventListeners[type] = [];
+                    listeners = this.mEventListeners[type];
+                }
+                if (!this.hasEventListener(type, listener, context))
+                    listeners[listeners.length] = core.VObjectPool.get(core.VListenerBinding).init(listener, context);
+            };
+            this.mEventListeners = null;
+        }
+        ;
+        VEventDispatcher.prototype.removeEventListener = function (type, listener, context) {
+            if (this.mEventListeners) {
+                var listenerBindings = this.mEventListeners[type];
+                var numListeners = listenerBindings ? listenerBindings.length : 0;
+                if (numListeners > 0) {
+                    var index = 0;
+                    var tempListenerBindings = new Array(numListeners - 1);
+                    for (var i = 0; i < numListeners; ++i) {
+                        var otherListener = listenerBindings[i];
+                        if (!otherListener.has(listener, context))
+                            tempListenerBindings[index++] = otherListener;
+                        else
+                            core.VObjectPool.release(otherListener, core.VListenerBinding);
+                    }
+                    this.mEventListeners[type] = tempListenerBindings;
+                }
+            }
+        };
+        VEventDispatcher.prototype.removeAllEventListeners = function (type) {
+            if (type === void 0) { type = null; }
+            if (type && this.mEventListeners) {
+                for (var i = 0; i < this.mEventListeners[type].length; ++i)
+                    core.VObjectPool.release(this.mEventListeners[type][i], core.VListenerBinding);
+                delete this.mEventListeners[type];
+            }
+            else {
+                for (var ty in this.mEventListeners) {
+                    if (this.mEventListeners[ty]) {
+                        for (var i = 0; i < this.mEventListeners[ty].length; ++i)
+                            core.VObjectPool.release(this.mEventListeners[ty][i], core.VListenerBinding);
+                        delete this.mEventListeners[ty];
+                    }
+                }
+                this.mEventListeners = null;
+            }
+        };
+        ;
+        VEventDispatcher.prototype.dispatchEvent = function (event) {
+            if ((this.mEventListeners == null || !(event.type in this.mEventListeners)))
+                return;
+            var previousTarget = event.target;
+            event.target = this;
+            this.invokeEvent(event);
+            if (previousTarget)
+                event.target = previousTarget;
+        };
+        ;
+        VEventDispatcher.prototype.invokeEvent = function (event) {
+            var listenerBindings = this.mEventListeners ? this.mEventListeners[event.type] : null;
+            var numListeners = listenerBindings == null ? 0 : listenerBindings.length;
+            if (numListeners) {
+                event.currentTarget = this;
+                for (var i = 0; i < numListeners; ++i) {
+                    var binding = listenerBindings[i];
+                    var numArgs = binding.listener.length;
+                    if (numArgs == 0)
+                        binding.listener.call(binding.context);
+                    else if (numArgs == 1)
+                        binding.listener.call(binding.context, event);
+                    if (event.stopsImmediatePropagation)
+                        return true;
+                }
+                return event.stopsPropagation;
+            }
+            else {
+                return false;
+            }
+        };
+        ;
+        VEventDispatcher.prototype.dispatchEventWith = function (type, data) {
+            if (data === void 0) { data = null; }
+            var event = core.VObjectPool.get(core.VBaseEvent);
+            event.type = type;
+            event.data = data;
+            this.dispatchEvent(event);
+            core.VObjectPool.release(event, core.VBaseEvent);
+        };
+        ;
+        VEventDispatcher.prototype.hasEventListener = function (type, listener, context) {
+            if (!this.mEventListeners)
+                return false;
+            if (!this.mEventListeners[type])
+                return false;
+            var listeners = this.mEventListeners[type];
+            for (var i = 0; i < listeners.length; i++) {
+                if (listeners[i].listener === listener && listeners[i].context === context)
+                    return true;
+            }
+            return false;
+        };
+        ;
+        return VEventDispatcher;
+    })();
+    core.VEventDispatcher = VEventDispatcher;
+})(core || (core = {}));
+var core;
+(function (core) {
+    var VListenerBinding = (function () {
+        function VListenerBinding() {
+        }
+        VListenerBinding.prototype.init = function (listener, context) {
+            this.listener = listener;
+            this.context = context;
+            return this;
+        };
+        VListenerBinding.prototype.has = function (listener, context) {
+            return this.listener === listener && this.context === context;
+        };
+        VListenerBinding.prototype.clean = function () {
+            this.listener = null;
+            this.context = null;
+        };
+        return VListenerBinding;
+    })();
+    core.VListenerBinding = VListenerBinding;
+})(core || (core = {}));
+var core;
+(function (core) {
+    var VObjectPool = (function () {
+        function VObjectPool() {
+            this.MAX_OBJECT = 1000;
+            this.pool = {};
+        }
+        VObjectPool.get = function (typeClass) {
+            return VObjectPool.instance.get(typeClass);
+        };
+        VObjectPool.release = function (obj, typeClass) {
+            return VObjectPool.instance.release(obj, typeClass);
+        };
+        VObjectPool.prototype.get = function (typeClass) {
+            if (!this.pool[core.VUtils.getObjKey(typeClass)])
+                this.pool[core.VUtils.getObjKey(typeClass)] = [];
+            if (this.pool[core.VUtils.getObjKey(typeClass)].length == 0) {
+                return new typeClass();
+            }
+            return this.pool[core.VUtils.getObjKey(typeClass)].pop();
+        };
+        VObjectPool.prototype.release = function (obj, typeClass) {
+            if (!this.pool[core.VUtils.getObjKey(typeClass)])
+                this.pool[core.VUtils.getObjKey(typeClass)] = [];
+            if (obj[core.VUtils.getObjKeyName()])
+                delete obj[core.VUtils.getObjKeyName()];
+            if (!core.VUtils.isNull(obj.clean))
+                obj.clean();
+            if (this.pool[core.VUtils.getObjKey(typeClass)].length == this.MAX_OBJECT) {
+                if (obj.destroy) {
+                    obj.destroy.length ? obj.destroy(true) : obj.destroy();
+                }
+                return false;
+            }
+            this.pool[core.VUtils.getObjKey(typeClass)].push(obj);
+            return true;
+        };
+        VObjectPool.prototype.clearAll = function () {
+            var obj;
+            for (var type in this.pool) {
+                for (var i = 0; i < this.pool[type].length; i++) {
+                    obj = this.pool[type][i];
+                    if (obj.clean)
+                        obj.clean();
+                    if (obj.destroy)
+                        obj.destroy.length ? obj.destroy(true) : obj.destroy();
+                }
+                delete this.pool[type];
+            }
+            this.pool = null;
+        };
+        VObjectPool.instance = new VObjectPool();
+        return VObjectPool;
+    })();
+    core.VObjectPool = VObjectPool;
+})(core || (core = {}));
+var core;
+(function (core) {
+    var VUtils = (function () {
+        function VUtils() {
+        }
+        VUtils.isNull = function (object) {
+            return (object === null || object === undefined);
+        };
+        VUtils.removeElementFromArray = function (arr, e) {
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] === e) {
+                    arr.splice(i, 1);
+                    return;
+                }
+            }
+        };
+        VUtils.getObjKey = function (obj) {
+            if (obj["__vSysObjKey__"])
+                return obj["__vSysObjKey__"];
+            else {
+                return obj["__vSysObjKey__"] = "vSysObjKey_" + Math.random() * 2147483647 + "_" + new Date().getTime();
+            }
+        };
+        VUtils.getObjKeyName = function () {
+            return "__vSysObjKey__";
+        };
+        VUtils.copy = function (source, des) {
+            if (!des) {
+                var i = 1;
+            }
+            for (var attr in source) {
+                if (source.hasOwnProperty(attr))
+                    des[attr] = source[attr];
+            }
+        };
+        VUtils.copyClass = function (source, des) {
+            for (var attr in source) {
+                if (source.hasOwnProperty(attr))
+                    des[attr] = source[attr];
+            }
+        };
+        VUtils.cleanObj = function (obj) {
+            for (var i in obj)
+                delete obj[i];
+        };
+        return VUtils;
+    })();
+    core.VUtils = VUtils;
+})(core || (core = {}));
+var game;
+(function (game) {
+    var BaseGame = (function () {
+        function BaseGame() {
+        }
+        BaseGame.prototype.destroy = function () {
+        };
+        return BaseGame;
+    })();
+    game.BaseGame = BaseGame;
+})(game || (game = {}));
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var game;
+(function (game) {
+    var BaseScene = (function (_super) {
+        __extends(BaseScene, _super);
+        function BaseScene() {
+            _super.apply(this, arguments);
+        }
+        BaseScene.prototype.ctor = function () {
+            if (!this._super)
+                return;
+            this._super();
+        };
+        BaseScene.prototype.destructor = function () {
+        };
+        BaseScene.prototype.initModel = function (gameModel) {
+            this.gameModel = gameModel;
+        };
+        return BaseScene;
+    })(cc.Scene);
+    game.BaseScene = BaseScene;
+})(game || (game = {}));
+game.BaseScene = cc.Scene['extend'](new game.BaseScene());
+var game;
+(function (game) {
+    var GameObject = (function (_super) {
+        __extends(GameObject, _super);
+        function GameObject() {
+            _super.apply(this, arguments);
+        }
+        GameObject.prototype.ctor = function () {
+            if (!this._super)
+                return;
+            this._super();
+        };
+        GameObject.prototype.onExit = function () {
+            _super.prototype.onExit.call(this);
+            core.VUtils.cleanObj(this);
+        };
+        GameObject.prototype.initModel = function (gameModel) {
+            this.gameModel = gameModel;
+        };
+        return GameObject;
+    })(cc.Sprite);
+    game.GameObject = GameObject;
+})(game || (game = {}));
+var Game = (function (_super) {
+    __extends(Game, _super);
+    function Game() {
+        _super.call(this);
+        this.init();
+    }
+    Game.prototype.destructor = function () {
+        _super.prototype.destroy.call(this);
+        cc.log("====== APP DESTRUCTOR CALLED! ======");
+        this.gameModel.startScene.destructor();
+        this.gameModel.gameScene.destructor();
+        this.gameModel.startScene.release();
+        this.gameModel.gameScene.release();
+    };
+    Game.prototype.init = function () {
+        this.gameModel = new GameModel();
+        this.gameModel.game = this;
+        this.gameModel.startScene = new StartScene();
+        this.gameModel.startScene.initModel(this.gameModel);
+        this.gameModel.startScene.retain();
+        this.gameModel.gameScene = new GameScene();
+        this.gameModel.gameScene.initModel(this.gameModel);
+        this.gameModel.gameScene.retain();
+        cc.director.runScene(this.gameModel.startScene);
+        cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
+    };
+    return Game;
+})(game.BaseGame);
+var GameModel = (function () {
+    function GameModel() {
+    }
+    return GameModel;
+})();
+var GameUtils = (function () {
+    function GameUtils() {
+    }
+    GameUtils.getItemHit = function (items, touchPos) {
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var mp = item.convertToNodeSpace(touchPos);
+            var r = item.localBound;
+            var rect = cc.rect(r.x, r.y, r.width, r.height);
+            if (cc.rectContainsPoint(rect, mp))
+                return item;
+        }
+        return null;
+    };
+    return GameUtils;
+})();
+var GameScene = (function (_super) {
+    __extends(GameScene, _super);
+    function GameScene() {
+        _super.apply(this, arguments);
+    }
+    GameScene.prototype.ctor = function () {
+        if (!this._super)
+            return;
+        this._super();
+    };
+    GameScene.prototype.destructor = function () {
+        this._super();
+        this.menuListener.release();
+    };
+    GameScene.prototype.onExit = function () {
+        cc.log("GameScene::onExit ----------------------- ");
+        cc.eventManager.removeListener(this.menuListener);
+        this._super();
+    };
+    GameScene.prototype.onEnter = function () {
+        cc.log("GameScene::onEnter ----------------------- ");
+        this._super();
+        cc.eventManager.addListener(this.menuListener, this.menu);
+    };
+    GameScene.prototype.initModel = function (model) {
+        _super.prototype.initModel.call(this, model);
+        var director = cc.director;
+        var winSize = director.getWinSize();
+        var bg = new cc.DrawNode();
+        this.addChild(bg);
+        bg.drawPoly([cc.p(0, 0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0, winSize.height)], new cc.Color(0x22, 0x22, 0x22, 255), 1, new cc.Color(0, 0, 0, 0));
+        this.menuItems = [];
+        var menu = cc.Sprite['create']();
+        this.addChild(menu);
+        this.menu = menu;
+        var itemNames = ["Back", "Exit"];
+        itemNames = itemNames.reverse();
+        var menuH = 0;
+        for (var i = 0; i < itemNames.length; i++) {
+            var tf = cc.LabelTTF['create'](itemNames[i], "Helvetica", 30);
+            var item = cc.Sprite['create']();
+            item['name'] = itemNames[i];
+            item['tf'] = tf;
+            var s = tf.getContentSize();
+            item['localBound'] = cc.rect(-s.width * 0.5, -s.height * 0.5, s.width, s.height);
+            item.addChild(tf);
+            item.x = 0;
+            item.y = 50 * i;
+            menu.addChild(item);
+            this.menuItems.push(item);
+            menuH = item.y + tf.getContentSize().height;
+        }
+        menu.setContentSize(0, menuH);
+        menu.x = winSize.width * 0.5;
+        menu.y = winSize.height * 0.9 - menu.getContentSize().height;
+        var listener = {
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: this.onMenuTouchBegan.bind(this),
+            onTouchEnded: this.onMenuTouchEnded.bind(this)
+        };
+        this.menuListener = cc.EventListener.create(listener);
+        this.menuListener.retain();
+        var sprite = new cc.Sprite(res.HelloWorld_png);
+        sprite.x = winSize.width * 0.5;
+        sprite.y = winSize.height * 0.5 - 50;
+        this.addChild(sprite);
+    };
+    GameScene.prototype.onMenuTouchEnded = function (touch, e) {
+        for (var i = 0; i < this.menuItems.length; i++)
+            this.menuItems[i].tf.setColor(new cc.Color(0xff, 0xff, 0xff, 255));
+        var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
+        if (!item)
+            return false;
+        var tf = item.tf;
+        switch (item.name) {
+            case "Back":
+                cc.director.runScene(this.gameModel.startScene);
+                break;
+            case "Exit":
+                cc.log("Exit");
+                cc.director.end();
+                break;
+        }
+        return true;
+    };
+    GameScene.prototype.onMenuTouchBegan = function (touch, e) {
+        var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
+        if (!item)
+            return false;
+        var tf = item.tf;
+        tf.setColor(new cc.Color(0x88, 0x88, 0x88, 255));
+        return true;
+    };
+    return GameScene;
+})(game.BaseScene);
+this['GameScene'] = game.BaseScene['extend'](new GameScene());
+var StartScene = (function (_super) {
+    __extends(StartScene, _super);
+    function StartScene() {
+        _super.apply(this, arguments);
+    }
+    StartScene.prototype.ctor = function () {
+        if (!this._super)
+            return;
+        this._super();
+    };
+    StartScene.prototype.destructor = function () {
+        this._super();
+        this.menuListener.release();
+    };
+    StartScene.prototype.onExit = function () {
+        cc.log("StartScene::onExit ----------------------- ");
+        cc.eventManager.removeListener(this.menuListener);
+        this._super();
+    };
+    StartScene.prototype.onEnter = function () {
+        cc.log("StartScene::onEnter ----------------------- ");
+        this._super();
+        cc.eventManager.addListener(this.menuListener, this.menu);
+    };
+    StartScene.prototype.initModel = function (model) {
+        _super.prototype.initModel.call(this, model);
+        var director = cc.director;
+        var winSize = director.getWinSize();
+        var bg = new cc.DrawNode();
+        this.addChild(bg);
+        bg.drawPoly([cc.p(0, 0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0, winSize.height)], new cc.Color(0x22, 0x22, 0x22, 255), 1, new cc.Color(0, 0, 0, 0));
+        this.menuItems = [];
+        var menu = cc.Sprite['create']();
+        this.addChild(menu);
+        this.menu = menu;
+        var itemNames = ["Play", "Exit"];
+        itemNames = itemNames.reverse();
+        var menuH = 0;
+        for (var i = 0; i < itemNames.length; i++) {
+            var tf = cc.LabelTTF['create'](itemNames[i], "Helvetica", 30);
+            var item = cc.Sprite['create']();
+            item['name'] = itemNames[i];
+            item['tf'] = tf;
+            var s = tf.getContentSize();
+            item['localBound'] = cc.rect(-s.width * 0.5, -s.height * 0.5, s.width, s.height);
+            item.addChild(tf);
+            item.x = 0;
+            item.y = 50 * i;
+            menu.addChild(item);
+            this.menuItems.push(item);
+            menuH = item.y + tf.getContentSize().height;
+        }
+        menu.setContentSize(0, menuH);
+        menu.x = winSize.width * 0.5;
+        menu.y = winSize.height * 0.9 - menu.getContentSize().height;
+        var listener = {
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: this.onMenuTouchBegan.bind(this),
+            onTouchEnded: this.onMenuTouchEnded.bind(this)
+        };
+        this.menuListener = cc.EventListener.create(listener);
+        this.menuListener.retain();
+    };
+    StartScene.prototype.onMenuTouchEnded = function (touch, e) {
+        for (var i = 0; i < this.menuItems.length; i++)
+            this.menuItems[i].tf.setColor(new cc.Color(0xff, 0xff, 0xff, 255));
+        var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
+        if (!item)
+            return false;
+        var tf = item.tf;
+        switch (item.name) {
+            case "Play":
+                cc.director.runScene(this.gameModel.gameScene);
+                break;
+            case "Exit":
+                cc.log("Exit");
+                cc.director.end();
+                break;
+        }
+        return true;
+    };
+    StartScene.prototype.onMenuTouchBegan = function (touch, e) {
+        var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
+        if (!item)
+            return false;
+        var tf = item.tf;
+        tf.setColor(new cc.Color(0x88, 0x88, 0x88, 255));
+        return true;
+    };
+    return StartScene;
+})(game.BaseScene);
+this['StartScene'] = game.BaseScene['extend'](new StartScene());
+//# sourceMappingURL=game.js.map
