@@ -53,7 +53,8 @@
         "src/GameModel.ts",
         "src/GameUtils.ts",
         "src/scenes/GameScene.ts",
-        "src/scenes/StartScene.ts"
+        "src/scenes/StartScene.ts",
+        "src/scenes/UIScene.ts"
     ],
     "compileOnSave": true,
     "compilerOptions": {
