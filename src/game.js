@@ -1,5 +1,6 @@
 var __extends = function () { };
 var res = eval("res");
+var TweenLite = eval("TweenLite");
 var g_resources = eval("g_resources");
 var core;
 (function (core) {
@@ -354,6 +355,7 @@ var Game = (function (_super) {
         this.gameModel.gameScene.retain();
         cc.director.runScene(this.gameModel.startScene);
         cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
+        setTimeout(function () { cc.log("here ==============="); }, 1000);
     };
     return Game;
 })(game.BaseGame);
@@ -395,12 +397,18 @@ var GameScene = (function (_super) {
     GameScene.prototype.onExit = function () {
         cc.log("GameScene::onExit ----------------------- ");
         cc.eventManager.removeListener(this.menuListener);
+        TweenLite.killTweensOf(this.sprite);
         this._super();
     };
     GameScene.prototype.onEnter = function () {
         cc.log("GameScene::onEnter ----------------------- ");
         this._super();
         cc.eventManager.addListener(this.menuListener, this.menu);
+        this.startTween();
+    };
+    GameScene.prototype.startTween = function () {
+        this.sprite.y = 250;
+        TweenLite.to(this.sprite, 2, { y: 200, onComplete: this.startTween.bind(this) });
     };
     GameScene.prototype.initModel = function (model) {
         _super.prototype.initModel.call(this, model);
@@ -443,8 +451,9 @@ var GameScene = (function (_super) {
         this.menuListener.retain();
         var sprite = new cc.Sprite(res.HelloWorld_png);
         sprite.x = winSize.width * 0.5;
-        sprite.y = winSize.height * 0.5 - 50;
+        sprite.y = 250;
         this.addChild(sprite);
+        this.sprite = sprite;
     };
     GameScene.prototype.onMenuTouchEnded = function (touch, e) {
         for (var i = 0; i < this.menuItems.length; i++)

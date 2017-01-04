@@ -41,16 +41,6 @@
 	```c
 	void Director::reset()
 	{    
-		if (_runningScene)
-		{
-			_runningScene->onExit();
-			_runningScene->cleanup();
-			_runningScene->release();
-		}
-		
-		_runningScene = nullptr;
-		_nextScene = nullptr;
-
 		Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("game_on_exit");
 		// ...
 	}

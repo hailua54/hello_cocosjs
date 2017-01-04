@@ -37,6 +37,8 @@ class Game extends game.BaseGame
     cc.director.runScene(this.gameModel.startScene);
 
 		cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
+
+		setTimeout(function(){cc.log("here ===============");}, 1000);
   }
 
 }

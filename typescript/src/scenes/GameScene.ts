@@ -3,6 +3,7 @@ class GameScene extends game.BaseScene
 	menuListener:cc.EventListener;
 	menuItems:Array<any>;
 	menu:any;
+	sprite:cc.Sprite;
 	public ctor()
 	{
 		// add this code to deal with the draw Object created to pass to Class::extend function
@@ -21,7 +22,7 @@ class GameScene extends game.BaseScene
   {
 		cc.log("GameScene::onExit ----------------------- ");
 		cc.eventManager.removeListener(this.menuListener);
-
+		TweenLite.killTweensOf(this.sprite);
 		// should call as the last code line to destroy app
 		this._super();
   }
@@ -32,6 +33,13 @@ class GameScene extends game.BaseScene
 		cc.log("GameScene::onEnter ----------------------- ");
 		this._super();
 		cc.eventManager.addListener(this.menuListener, this.menu);
+		this.startTween();
+	}
+
+	private startTween()
+	{
+		this.sprite.y = 250;
+		TweenLite.to(this.sprite, 2, {y:200, onComplete:this.startTween.bind(this)});
 	}
 
 	public initModel(model:GameModel)
@@ -93,9 +101,10 @@ class GameScene extends game.BaseScene
 		// add "HelloWorld" splash screen"
 		var sprite = new cc.Sprite(res.HelloWorld_png);
 		sprite.x = winSize.width*0.5;
-		sprite.y = winSize.height*0.5 - 50;
+		sprite.y = 250;
 		this.addChild(sprite);
 
+		this.sprite = sprite;
 	}
 
 	protected onMenuTouchEnded(touch:cc.Touch, e:cc.Event)
