@@ -445,15 +445,15 @@ var game;
         function BaseScene() {
             _super.apply(this, arguments);
         }
-        BaseScene.prototype.deepDestructor = function (node, deepth) {
+        BaseScene.prototype.deepDestructor = function (node) {
             for (var i = 0; i < node.children.length; i++) {
                 if (node.children[i]['destructor'])
                     node.children[i]['destructor']();
-                this.deepDestructor(node.children[i], deepth + 1);
+                this.deepDestructor(node.children[i]);
             }
         };
         BaseScene.prototype.destructor = function () {
-            this.deepDestructor(this, 0);
+            this.deepDestructor(this);
         };
         BaseScene.prototype.ctor = function () {
             if (!this._super)
@@ -479,6 +479,8 @@ var game;
             if (!this._super)
                 return;
             this._super();
+        };
+        GameObject.prototype.destructor = function () {
         };
         GameObject.prototype.onExit = function () {
             _super.prototype.onExit.call(this);
@@ -800,12 +802,13 @@ var UIScene = (function (_super) {
     };
     UIScene.prototype.initModel = function (model) {
         _super.prototype.initModel.call(this, model);
+        this.addChild(this.gameModel.loading);
+        this.gameModel.loading.show(true, "load ui scene assets");
     };
     UIScene.prototype.startLoading = function () {
         var resources = [
             "res/Login.json"
         ];
-        this.addChild(this.gameModel.loading);
         cc.loader.load(resources, this.loadAssetsProgress.bind(this), this.onLoadAssetComplete.bind(this));
     };
     UIScene.prototype.loadAssetsProgress = function (result, count, loadedCount) {
@@ -906,8 +909,13 @@ var MyCustomUIClass = (function (_super) {
         _super.prototype.initModel.call(this, gameModel);
         var logoutBtn = this.getChildByName("logoutBtn");
         logoutBtn.addClickEventListener(this.onLogoutHdl.bind(this));
+        var loginBtn = this.getChildByName("loginBtn");
+        loginBtn.addClickEventListener(this.onLoginHdl.bind(this));
     };
     MyCustomUIClass.prototype.onLogoutHdl = function () {
+        cc.director.end();
+    };
+    MyCustomUIClass.prototype.onLoginHdl = function () {
         cc.director.runScene(this.gameModel.gameScene);
     };
     return MyCustomUIClass;

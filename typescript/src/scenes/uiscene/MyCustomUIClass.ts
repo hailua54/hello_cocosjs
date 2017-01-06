@@ -21,9 +21,16 @@ class MyCustomUIClass extends game.GameObject
 		super.initModel(gameModel);
 		var logoutBtn:any = this.getChildByName("logoutBtn");
 		logoutBtn.addClickEventListener(this.onLogoutHdl.bind(this));
+		var loginBtn:any = this.getChildByName("loginBtn");
+		loginBtn.addClickEventListener(this.onLoginHdl.bind(this));
 	}
 
 	protected onLogoutHdl()
+	{
+		cc.director.end();
+	}
+
+	protected onLoginHdl()
 	{
 		cc.director.runScene(this.gameModel.gameScene);
 	}

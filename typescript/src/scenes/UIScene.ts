@@ -48,6 +48,8 @@ class UIScene extends game.BaseScene
 	public initModel(model:GameModel)
 	{
 		super.initModel(model);
+		this.addChild(this.gameModel.loading);
+		this.gameModel.loading.show(true, "load ui scene assets");
 	}
 
 	public startLoading()
@@ -55,7 +57,6 @@ class UIScene extends game.BaseScene
 		var resources:Array<string> = [
 			"res/Login.json"
 		];
-		this.addChild(this.gameModel.loading);
 		cc.loader.load(resources, this.loadAssetsProgress.bind(this), this.onLoadAssetComplete.bind(this));
 	}
 

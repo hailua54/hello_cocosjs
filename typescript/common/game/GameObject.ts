@@ -11,6 +11,10 @@ namespace game
 			this._super();
 		}
 
+		public destructor()
+		{
+		}
+
     // destructor
     public onExit(): void
     {
