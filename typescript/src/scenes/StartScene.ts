@@ -15,8 +15,8 @@ class StartScene extends game.BaseScene
 	// destructor
 	public destructor()
 	{
-		this._super();
 		this.menuListener.release();
+		this._super();
 	}
 
   public onExit(): void
@@ -48,7 +48,7 @@ class StartScene extends game.BaseScene
 		var bg:cc.DrawNode = new cc.DrawNode();
 		this.addChild(bg);
 		bg.drawPoly([cc.p(0,0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0,winSize.height)],
-			new cc.Color(0x22, 0x22, 0x22, 255), 1, new cc.Color(0, 0, 0, 0));
+			cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
 
 		this.menuItems = [];
 
@@ -95,7 +95,7 @@ class StartScene extends game.BaseScene
 
 	protected onMenuTouchEnded(touch:cc.Touch, e:cc.Event)
 	{
-		for (var i = 0; i < this.menuItems.length; i++) this.menuItems[i].tf.setColor(new cc.Color(0xff,0xff,0xff,255));
+		for (var i = 0; i < this.menuItems.length; i++) this.menuItems[i].tf.setColor(cc.color(0xff,0xff,0xff,255));
 		// check item hit
 		var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
 		if (!item) return false;
@@ -121,7 +121,7 @@ class StartScene extends game.BaseScene
 		var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
 		if (!item) return false;
     var tf:cc.LabelTTF = item.tf;
-		tf.setColor(new cc.Color(0x88,0x88,0x88,255));
+		tf.setColor(cc.color(0x88,0x88,0x88,255));
 		return true;
   }
 }

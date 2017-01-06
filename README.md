@@ -9,16 +9,6 @@
 
 ## Initialize
 
-- Modify cocos2d/core/platform.d.ts
-
-	```ts
-	//add the one more method Class
-	export class Class {
-		public _super():void;
-		//...
-	}
-	```
-	
 - Modify project.json (no more load app.js)
 	
 	```json
@@ -43,6 +33,14 @@
 	{    
 		Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("game_on_exit");
 		// ...
+	}
+	```
+- Modify timlineParser-2.x.js
+
+	```js
+	parser.initPanel = function(json, resourcePath){
+        var widget = json.UserData?eval('new ' + json.UserData + '()'):new ccui.Layout();
+		//...
 	}
 	```
 	

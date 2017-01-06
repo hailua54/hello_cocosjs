@@ -4,6 +4,7 @@ class GameScene extends game.BaseScene
 	menuItems:Array<any>;
 	menu:any;
 	sprite:cc.Sprite;
+	
 	public ctor()
 	{
 		// add this code to deal with the draw Object created to pass to Class::extend function
@@ -14,8 +15,8 @@ class GameScene extends game.BaseScene
 
 	public destructor()
 	{
-		this._super();
 		this.menuListener.release();
+		this._super();
 	}
 
   public onExit(): void
@@ -54,7 +55,7 @@ class GameScene extends game.BaseScene
 		var bg:cc.DrawNode = new cc.DrawNode();
 		this.addChild(bg);
 		bg.drawPoly([cc.p(0,0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0,winSize.height)],
-			new cc.Color(0x22, 0x22, 0x22, 255), 1, new cc.Color(0, 0, 0, 0));
+			cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
 
 		this.menuItems = [];
 
@@ -62,7 +63,7 @@ class GameScene extends game.BaseScene
 		this.addChild(menu);
 		this.menu = menu;
 
-		var itemNames = ["Back", "Exit"];
+		var itemNames = ["Next", "Back"];
 		itemNames = itemNames.reverse();
 
 		var menuH:number = 0;
@@ -109,7 +110,7 @@ class GameScene extends game.BaseScene
 
 	protected onMenuTouchEnded(touch:cc.Touch, e:cc.Event)
 	{
-		for (var i = 0; i < this.menuItems.length; i++) this.menuItems[i].tf.setColor(new cc.Color(0xff,0xff,0xff,255));
+		for (var i = 0; i < this.menuItems.length; i++) this.menuItems[i].tf.setColor(cc.color(0xff,0xff,0xff,255));
 		// check item hit
 		var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
 		if (!item) return false;
@@ -117,12 +118,17 @@ class GameScene extends game.BaseScene
 
 		switch(item.name)
 		{
-			case "Back":
-		    cc.director.runScene(this.gameModel.startScene);
+			case "Next":
+				if (!this.gameModel.uiScene)
+				{
+					this.gameModel.uiScene = new UIScene();
+					this.gameModel.uiScene.initModel(this.gameModel);
+					this.gameModel.uiScene.retain();
+				}
+		    cc.director.runScene(this.gameModel.uiScene);
 				break;
-			case "Exit":
-				cc.log("Exit");
-				cc.director.end();
+			case "Back":
+				cc.director.runScene(this.gameModel.startScene);
 				break;
 		}
 		return true;
@@ -135,7 +141,7 @@ class GameScene extends game.BaseScene
 		var item = GameUtils.getItemHit(this.menuItems, touch.getLocation());
 		if (!item) return false;
     var tf:cc.LabelTTF = item.tf;
-		tf.setColor(new cc.Color(0x88,0x88,0x88,255));
+		tf.setColor(cc.color(0x88,0x88,0x88,255));
 		return true;
   }
 }

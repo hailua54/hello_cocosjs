@@ -1,6 +1,6 @@
 namespace game
 {
-  export class GameObject extends cc.Sprite
+  export class GameObject extends cc.Node
   {
 		public gameModel:GameModel;
 
@@ -15,7 +15,6 @@ namespace game
     public onExit(): void
     {
       super.onExit();
-      core.VUtils.cleanObj(this);
     }
 
 		public initModel(gameModel:any)
@@ -25,3 +24,5 @@ namespace game
 
 	}
 }
+
+game.GameObject = cc.Node['extend'](new game.GameObject());

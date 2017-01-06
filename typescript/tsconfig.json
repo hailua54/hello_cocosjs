@@ -1,8 +1,9 @@
 {
     "filesGlob": [
-        "tsd/cocos2d-typescript-definitions/cocos2d/**/*.d.ts",
+        "tsd/cocos2d-typescript-definitions/**/*.d.ts",
         "src/sysinit.ts",
         "common/core/**/*.ts",
+        "common/vcom/**/*.ts",
         "common/game/**/*.ts",
         "src/**/*.ts",
         "!src/main.ts",
@@ -28,6 +29,7 @@
         "tsd/cocos2d-typescript-definitions/cocos2d/core/support.d.ts",
         "tsd/cocos2d-typescript-definitions/cocos2d/core/textures.d.ts",
         "tsd/cocos2d-typescript-definitions/cocos2d/extensions/ccpool/pool.d.ts",
+        "tsd/cocos2d-typescript-definitions/cocos2d/extensions/cocosstudio/ccextension.d.ts",
         "tsd/cocos2d-typescript-definitions/cocos2d/extensions/cocosstudio/load.d.ts",
         "tsd/cocos2d-typescript-definitions/cocos2d/extensions/gui/scrollview.d.ts",
         "tsd/cocos2d-typescript-definitions/cocos2d/jsb.d.ts",
@@ -46,15 +48,20 @@
         "common/core/VListenerBinding.ts",
         "common/core/VObjectPool.ts",
         "common/core/VUtils.ts",
+        "common/vcom/BaseComponent.ts",
+        "common/vcom/ComUtils.ts",
+        "common/vcom/Loading.ts",
         "common/game/BaseGame.ts",
         "common/game/BaseScene.ts",
         "common/game/GameObject.ts",
+        "common/game/GameUIObject.ts",
         "src/Game.ts",
         "src/GameModel.ts",
         "src/GameUtils.ts",
         "src/scenes/GameScene.ts",
         "src/scenes/StartScene.ts",
-        "src/scenes/UIScene.ts"
+        "src/scenes/UIScene.ts",
+        "src/scenes/uiscene/MyCustomUIClass.ts"
     ],
     "compileOnSave": true,
     "compilerOptions": {

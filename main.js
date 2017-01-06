@@ -54,27 +54,24 @@
 var LD_DESIGN_SIZE = 960;
 var HD_DESIGN_SIZE = 1920;
 
-var isMobile = function()
+cc.game.onStart = function()
 {
-  return cc.sys.os === cc.sys.OS_IOS || cc.sys.os === cc.sys.OS_ANDROID || cc.sys.os === cc.sys.OS_BLACKBERRY;
-}
-
-cc.game.onStart = function(){
     if(!cc.sys.isNative && document.getElementById("cocosLoading")) //If referenced loading.js, please remove it
         document.body.removeChild(document.getElementById("cocosLoading"));
 
     // Pass true to enable retina display, on Android disabled by default to improve performance
     cc.view.enableRetina(cc.sys.os === cc.sys.OS_IOS ? true : false);
+
     // Adjust viewport meta
     cc.view.adjustViewPort(true);
 
     var winSize = cc.view.getFrameSize();
     var size = cc.size();
 
-    if (!isMobile()) // desktop: use fix screen
+    if (!cc.sys.isNative || cc.sys.os === cc.sys.OS_WINDOWS) // desktop: use fix screen
     {
-      size.width = 400;
-      size.height = 600;
+      size.width = 640;
+      size.height = 860;
     }
     else { // mobile: get fullScreen
       if (winSize.width > winSize.height) // landscape
@@ -89,7 +86,7 @@ cc.game.onStart = function(){
         size.width = size.height*(winSize.width/winSize.height);
       }
     }
-
+		if (cc.sys.os === cc.sys.OS_WINDOWS) cc.view.setFrameSize(size.width, size.height);
     // Setup the resolution policy and design resolution size
     cc.view.setDesignResolutionSize(size.width, size.height, cc.ResolutionPolicy.SHOW_ALL);
 
@@ -99,9 +96,6 @@ cc.game.onStart = function(){
     // The game will be resized when browser size change
     cc.view.resizeWithBrowserSize(true);
     //load resources
-    cc.LoaderScene.preload(g_resources, function () {
-      //cc.director.runScene(new HelloWorldScene());
-      var game = new Game();
-    }, this);
+		var game = new Game();
 };
 cc.game.run();

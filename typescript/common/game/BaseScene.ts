@@ -4,15 +4,26 @@ namespace game
   {
 		public gameModel:GameModel;
 
+		protected deepDestructor(node:cc.Node, deepth:number)
+		{
+			for (var i = 0; i < node.children.length; i++)
+			{
+				if (node.children[i]['destructor']) node.children[i]['destructor']();
+				this.deepDestructor(node.children[i], deepth+1);
+			}
+		}
+
+		public destructor()
+		{
+			this.deepDestructor(this, 0);
+		}
+
     // constructor
     public ctor()
 		{
 			if (!this._super) return;
 			this._super();
-		}
-
-		public destructor()
-		{
+			// call destructor for all children
 		}
 
 		public initModel(gameModel:any)
