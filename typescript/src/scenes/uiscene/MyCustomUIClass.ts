@@ -1,4 +1,4 @@
-class MyCustomUIClass extends game.GameUIObject
+class MyCustomUIClass extends game.GameObject
 {
 	_self:any;
 
@@ -29,4 +29,4 @@ class MyCustomUIClass extends game.GameUIObject
 	}
 }
 
-this['MyCustomUIClass'] = game.GameUIObject['extend'](new MyCustomUIClass());
+this['MyCustomUIClass'] = game.GameObject['extend'](new MyCustomUIClass());

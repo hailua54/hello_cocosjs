@@ -38,8 +38,8 @@
 - Modify timlineParser-2.x.js
 
 	```js
-	parser.initPanel = function(json, resourcePath){
-        var widget = json.UserData?eval('new ' + json.UserData + '()'):new ccui.Layout();
+    parser.initSingleNode = function(json, resourcePath){
+        var node = json.UserData?eval('new ' + json.UserData + '()'):new cc.Node();
 		//...
 	}
 	```

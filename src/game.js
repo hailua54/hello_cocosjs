@@ -491,28 +491,6 @@ var game;
     game.GameObject = GameObject;
 })(game || (game = {}));
 game.GameObject = cc.Node['extend'](new game.GameObject());
-var game;
-(function (game) {
-    var GameUIObject = (function (_super) {
-        __extends(GameUIObject, _super);
-        function GameUIObject() {
-            _super.apply(this, arguments);
-        }
-        GameUIObject.prototype.destructor = function () {
-        };
-        GameUIObject.prototype.ctor = function () {
-            if (!this._super)
-                return;
-            this._super();
-        };
-        GameUIObject.prototype.initModel = function (gameModel) {
-            this.gameModel = gameModel;
-        };
-        return GameUIObject;
-    })(ccui.Layout);
-    game.GameUIObject = GameUIObject;
-})(game || (game = {}));
-game.GameUIObject = ccui.Layout['extend'](new game.GameUIObject());
 var Game = (function (_super) {
     __extends(Game, _super);
     function Game() {
@@ -933,6 +911,6 @@ var MyCustomUIClass = (function (_super) {
         cc.director.runScene(this.gameModel.gameScene);
     };
     return MyCustomUIClass;
-})(game.GameUIObject);
-this['MyCustomUIClass'] = game.GameUIObject['extend'](new MyCustomUIClass());
+})(game.GameObject);
+this['MyCustomUIClass'] = game.GameObject['extend'](new MyCustomUIClass());
 //# sourceMappingURL=game.js.map

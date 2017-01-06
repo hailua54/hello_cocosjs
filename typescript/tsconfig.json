@@ -54,7 +54,6 @@
         "common/game/BaseGame.ts",
         "common/game/BaseScene.ts",
         "common/game/GameObject.ts",
-        "common/game/GameUIObject.ts",
         "src/Game.ts",
         "src/GameModel.ts",
         "src/GameUtils.ts",
