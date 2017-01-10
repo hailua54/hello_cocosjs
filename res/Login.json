@@ -1,0 +1,382 @@
+{
+  "ID": "6dee98d0-f374-46a9-8713-54e294375bab",
+  "Version": "2.3.3.0",
+  "Name": "Login",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Tag": 15,
+        "Children": [
+          {
+            "AnchorPoint": {},
+            "Position": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": true,
+            "PrePosition": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "PreSize": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "RightMargin": 640.0,
+            "TopMargin": 960.0,
+            "UserData": "MyCustomUIClass",
+            "Tag": 17,
+            "Children": [
+              {
+                "FileData": {
+                  "Type": "Normal",
+                  "Path": "Login/LI07.jpg",
+                  "Plist": ""
+                },
+                "BlendFunc": {
+                  "Src": 770,
+                  "Dst": 771
+                },
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 320.0,
+                  "Y": 480.0
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "PreSize": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "RightMargin": -640.0,
+                "TopMargin": -960.0,
+                "Tag": 18,
+                "ActionTag": 580343649,
+                "Size": {
+                  "X": 640.0,
+                  "Y": 960.0
+                },
+                "Name": "bg",
+                "ctype": "SpriteObjectData"
+              },
+              {
+                "FontSize": 14,
+                "ButtonText": "",
+                "TextColor": {
+                  "R": 65,
+                  "G": 65,
+                  "B": 70
+                },
+                "DisabledFileData": {
+                  "Type": "Default",
+                  "Path": "Default/Button_Disable.png",
+                  "Plist": ""
+                },
+                "PressedFileData": {
+                  "Type": "Normal",
+                  "Path": "Login/LI02.png",
+                  "Plist": ""
+                },
+                "NormalFileData": {
+                  "Type": "Normal",
+                  "Path": "Login/LI01.png",
+                  "Plist": ""
+                },
+                "Scale9Enable": true,
+                "Scale9Width": 240,
+                "Scale9Height": 81,
+                "OutlineColor": {
+                  "R": 0,
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 0,
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "TouchEnable": true,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 453.4125,
+                  "Y": 112.7587
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.0
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "PreSize": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "HorizontalEdge": "RightEdge",
+                "LeftMargin": 333.4125,
+                "RightMargin": -573.4125,
+                "TopMargin": -153.2587,
+                "BottomMargin": 72.2587,
+                "Tag": 91,
+                "ActionTag": -697530034,
+                "Size": {
+                  "X": 240.0,
+                  "Y": 81.0
+                },
+                "Name": "logoutBtn",
+                "ctype": "ButtonObjectData"
+              },
+              {
+                "FontSize": 14,
+                "ButtonText": "",
+                "TextColor": {
+                  "R": 65,
+                  "G": 65,
+                  "B": 70
+                },
+                "DisabledFileData": {
+                  "Type": "Default",
+                  "Path": "Default/Button_Disable.png",
+                  "Plist": ""
+                },
+                "PressedFileData": {
+                  "Type": "Normal",
+                  "Path": "Login/BaS32.png",
+                  "Plist": ""
+                },
+                "NormalFileData": {
+                  "Type": "Normal",
+                  "Path": "Login/BaS31.png",
+                  "Plist": ""
+                },
+                "Scale9Enable": true,
+                "Scale9Width": 240,
+                "Scale9Height": 81,
+                "OutlineColor": {
+                  "R": 0,
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowColor": {
+                  "R": 0,
+                  "G": 0,
+                  "B": 0
+                },
+                "ShadowOffsetX": 2.0,
+                "ShadowOffsetY": -2.0,
+                "TouchEnable": true,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 199.2402,
+                  "Y": 110.8976
+                },
+                "Scale": {
+                  "ScaleX": 1.0,
+                  "ScaleY": 1.046
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "PreSize": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "LeftMargin": 79.2402,
+                "RightMargin": -319.2402,
+                "TopMargin": -151.3976,
+                "BottomMargin": 70.3976,
+                "Tag": 92,
+                "ActionTag": -1190346571,
+                "Size": {
+                  "X": 240.0,
+                  "Y": 81.0
+                },
+                "Name": "loginBtn",
+                "ctype": "ButtonObjectData"
+              },
+              {
+                "CheckedState": true,
+                "NormalBackFileData": {
+                  "Type": "Default",
+                  "Path": "Default/CheckBox_Normal.png",
+                  "Plist": ""
+                },
+                "PressedBackFileData": {
+                  "Type": "Default",
+                  "Path": "Default/CheckBox_Press.png",
+                  "Plist": ""
+                },
+                "DisableBackFileData": {
+                  "Type": "Default",
+                  "Path": "Default/CheckBox_Disable.png",
+                  "Plist": ""
+                },
+                "NodeNormalFileData": {
+                  "Type": "Default",
+                  "Path": "Default/CheckBoxNode_Normal.png",
+                  "Plist": ""
+                },
+                "NodeDisableFileData": {
+                  "Type": "Default",
+                  "Path": "Default/CheckBoxNode_Disable.png",
+                  "Plist": ""
+                },
+                "TouchEnable": true,
+                "AnchorPoint": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "Position": {
+                  "X": 102.8657,
+                  "Y": 205.2282
+                },
+                "Scale": {
+                  "ScaleX": 0.5,
+                  "ScaleY": 0.5
+                },
+                "CColor": {},
+                "IconVisible": false,
+                "PrePosition": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "PreSize": {
+                  "X": 0.0,
+                  "Y": 0.0
+                },
+                "LeftMargin": 82.8657,
+                "RightMargin": -122.8657,
+                "TopMargin": -225.2282,
+                "BottomMargin": 185.2282,
+                "Tag": 93,
+                "Children": [
+                  {
+                    "LabelText": "save password",
+                    "LabelBMFontFile_CNB": {
+                      "Type": "Default",
+                      "Path": "Default/defaultBMFont.fnt",
+                      "Plist": ""
+                    },
+                    "AnchorPoint": {
+                      "ScaleX": 0.5,
+                      "ScaleY": 0.5
+                    },
+                    "Position": {
+                      "X": 151.4658,
+                      "Y": 21.9979
+                    },
+                    "Scale": {
+                      "ScaleX": 1.2,
+                      "ScaleY": 1.2
+                    },
+                    "CColor": {
+                      "R": 12,
+                      "G": 7,
+                      "B": 7
+                    },
+                    "IconVisible": false,
+                    "PrePosition": {
+                      "X": 3.7866,
+                      "Y": 0.5499
+                    },
+                    "PreSize": {
+                      "X": 4.2,
+                      "Y": 0.9
+                    },
+                    "HorizontalEdge": "RightEdge",
+                    "LeftMargin": 67.4658,
+                    "RightMargin": -195.4658,
+                    "TopMargin": 0.0021,
+                    "BottomMargin": 3.9979,
+                    "Tag": 94,
+                    "ActionTag": 1116681915,
+                    "Size": {
+                      "X": 168.0,
+                      "Y": 36.0
+                    },
+                    "Name": "BitmapFontLabel_1",
+                    "ctype": "TextBMFontObjectData"
+                  }
+                ],
+                "ActionTag": 530263364,
+                "Size": {
+                  "X": 40.0,
+                  "Y": 40.0
+                },
+                "Name": "savePassChb",
+                "ctype": "CheckBoxObjectData"
+              }
+            ],
+            "ActionTag": 1026155077,
+            "Size": {
+              "X": 0.0,
+              "Y": 0.0
+            },
+            "Name": "view",
+            "ctype": "SingleNodeObjectData"
+          }
+        ],
+        "Size": {
+          "X": 640.0,
+          "Y": 960.0
+        },
+        "Name": "Scene",
+        "ctype": "SingleNodeObjectData"
+      },
+      "UsedResources": [
+        "Default/Button_Disable.png",
+        "Default/CheckBox_Disable.png",
+        "Default/CheckBox_Normal.png",
+        "Default/CheckBox_Press.png",
+        "Default/CheckBoxNode_Disable.png",
+        "Default/CheckBoxNode_Normal.png",
+        "Default/defaultBMFont.fnt",
+        "Default/defaultBMFont.png",
+        "Login/BaS31.png",
+        "Login/BaS32.png",
+        "Login/LI01.png",
+        "Login/LI02.png",
+        "Login/LI07.jpg"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Scene"
+}

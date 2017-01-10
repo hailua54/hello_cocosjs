@@ -1,0 +1,18 @@
+<Solution>
+  <PropertyGroup Name="hello_cocosjs" Version="2.3.3.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="Login">
+          <Image Name="BaS31.png" />
+          <Image Name="BaS32.png" />
+          <Image Name="Frd11.png" />
+          <Image Name="LI01.png" />
+          <Image Name="LI02.png" />
+          <Image Name="LI07.jpg" />
+        </Folder>
+        <Project Name="Login.csd" Type="Scene" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
