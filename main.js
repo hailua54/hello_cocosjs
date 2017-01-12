@@ -51,6 +51,7 @@
  }
  *
  */
+
 var LD_DESIGN_SIZE = 960;
 var HD_DESIGN_SIZE = 1920;
 

@@ -20,10 +20,10 @@
                 <FileData Type="Normal" Path="Login/LI07.jpg" Plist="" />
                 <BlendFunc Src="770" Dst="771" />
               </AbstractNodeData>
-              <AbstractNodeData Name="logoutBtn" ActionTag="-697530034" Tag="91" IconVisible="False" HorizontalEdge="RightEdge" LeftMargin="333.4125" RightMargin="-573.4125" TopMargin="-153.2587" BottomMargin="72.2587" TouchEnable="True" FontSize="14" Scale9Enable="True" Scale9Width="240" Scale9Height="81" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="logoutBtn" ActionTag="-697530034" Tag="91" IconVisible="False" HorizontalEdge="RightEdge" LeftMargin="333.4126" RightMargin="-573.4126" TopMargin="-153.7076" BottomMargin="72.7076" TouchEnable="True" FontSize="14" Scale9Enable="True" Scale9Width="240" Scale9Height="81" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="240.0000" Y="81.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="453.4125" Y="112.7587" />
+                <Position X="453.4126" Y="113.2076" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition />
@@ -35,10 +35,10 @@
                 <OutlineColor A="255" R="0" G="0" B="0" />
                 <ShadowColor A="255" R="0" G="0" B="0" />
               </AbstractNodeData>
-              <AbstractNodeData Name="loginBtn" ActionTag="-1190346571" Tag="92" IconVisible="False" LeftMargin="79.2402" RightMargin="-319.2402" TopMargin="-151.3976" BottomMargin="70.3976" TouchEnable="True" FontSize="14" Scale9Enable="True" Scale9Width="240" Scale9Height="81" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="loginBtn" ActionTag="-1190346571" Tag="92" IconVisible="False" LeftMargin="47.7444" RightMargin="-287.7444" TopMargin="-151.8446" BottomMargin="70.8446" TouchEnable="True" FontSize="14" Scale9Enable="True" Scale9Width="240" Scale9Height="81" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="240.0000" Y="81.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="199.2402" Y="110.8976" />
+                <Position X="167.7444" Y="111.3446" />
                 <Scale ScaleX="1.0000" ScaleY="1.0460" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition />
