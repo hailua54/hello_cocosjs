@@ -18,14 +18,14 @@ class UIScene extends game.BaseScene
 	// destructor
 	public destructor()
 	{
-		this.menuListener.release();
+		if (this.menuListener) this.menuListener.release();
 		this._super();
 	}
 
   public onExit(): void
   {
 		cc.log("StartScene::onExit ----------------------- ");
-		cc.eventManager.removeListener(this.menuListener);
+		if (this.menuListener) cc.eventManager.removeListener(this.menuListener);
 
 		// should call as the last code line to destroy app
 		this._super();
@@ -42,7 +42,7 @@ class UIScene extends game.BaseScene
 			return;
 		}
 
-		cc.eventManager.addListener(this.menuListener, this.menu);
+		if (this.menuListener) cc.eventManager.addListener(this.menuListener, this.menu);
 	}
 
 	public initModel(model:GameModel)
@@ -82,6 +82,7 @@ class UIScene extends game.BaseScene
 		bg.drawPoly([cc.p(0,0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0,winSize.height)],
 			cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
 
+		/*
 		this.menuItems = [];
 
 		var menu:cc.Sprite = cc.Sprite['create']();
@@ -124,7 +125,7 @@ class UIScene extends game.BaseScene
 		this.menuListener = cc.EventListener.create(listener);
 		this.menuListener.retain();
 		cc.eventManager.addListener(this.menuListener, this.menu);
-
+		*/
 		// init UI
     var json = ccs.load("res/Login.json");
 		this.addChild(json.node);

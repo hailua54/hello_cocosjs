@@ -62,7 +62,7 @@
 		
 		...
 		
-	- Check which Android Platform (coresponding to API level) supported: Go to Sdk\platforms
+	- Check which Android Platform (coresponding to API level) supported by the SDK: Go to Sdk\platforms
 	
 		Ex: android-22 <=> API level 22 <=> android 5.1
 		

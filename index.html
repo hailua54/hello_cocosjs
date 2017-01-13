@@ -10,6 +10,7 @@
     <meta name="screen-orientation" content="portrait"/>
     <meta name="x5-fullscreen" content="true"/>
     <meta name="360-fullscreen" content="true"/>
+		<!--
     <style>
         body, canvas, div {
             -moz-user-select: none;
@@ -19,28 +20,38 @@
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
     </style>
+		-->
+
 </head>
-<body style="padding:0; margin: 0; background: #000;">
-<script src="res/loading.js"></script>
-<canvas id="gameCanvas" width="480" height="720"></canvas>
-<script>
-    (function () {
-        var nav = window.navigator;
-        var ua = nav.userAgent.toLowerCase();
-        var uaResult = /android (\d+(?:\.\d+)+)/i.exec(ua) || /android (\d+(?:\.\d+)+)/i.exec(nav.platform);
-        if (uaResult) {
-            var osVersion = parseInt(uaResult[1]) || 0;
-            var browserCheck = ua.match(/(qzone|micromessenger|qqbrowser)/i);
-            if (browserCheck) {
-                var gameCanvas = document.getElementById("gameCanvas");
-                var ctx = gameCanvas.getContext('2d');
-                ctx.fillStyle = '#000000';
-                ctx.fillRect(0, 0, 1, 1);
-            }
-        }
-    })();
-</script>
-<script src="frameworks/cocos2d-html5/CCBoot.js"></script>
-<script cocos src="main.js"></script>
+
+<body id="body" style="margin:0; padding:0; overflow: hidden;">
+	<script src="res/loading.js"></script>
+  <div id="mainContainer" style="margin:0; padding:0;position:absolute"></div>
+	<canvas id="gameCanvas" width="900" height="900" style="position:absolute"></canvas> <!--seed to set size to display framework code loading before can be resize on cc.game.onStart-->
+  <div id="hContainer" style="margin:0; padding:0;position:absolute"/>
+	<!--
+  <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <clipPath id="vodPolygon"><polygon id="vodPoints" points=""></polygon></clipPath>
+  </svg>
+	-->
+	<script>
+	    (function () {
+	        var nav = window.navigator;
+	        var ua = nav.userAgent.toLowerCase();
+	        var uaResult = /android (\d+(?:\.\d+)+)/i.exec(ua) || /android (\d+(?:\.\d+)+)/i.exec(nav.platform);
+	        if (uaResult) {
+	            var osVersion = parseInt(uaResult[1]) || 0;
+	            var browserCheck = ua.match(/(qzone|micromessenger|qqbrowser)/i);
+	            if (browserCheck) {
+	                var gameCanvas = document.getElementById("gameCanvas");
+	                var ctx = gameCanvas.getContext('2d');
+	                ctx.fillStyle = '#000000';
+	                ctx.fillRect(0, 0, 1, 1);
+	            }
+	        }
+	    })();
+	</script>
+	<script src="frameworks/cocos2d-html5/CCBoot.js"></script>
+	<script cocos src="main.js"></script>
 </body>
 </html>

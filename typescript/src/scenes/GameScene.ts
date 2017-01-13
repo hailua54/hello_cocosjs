@@ -4,7 +4,7 @@ class GameScene extends game.BaseScene
 	menuItems:Array<any>;
 	menu:any;
 	sprite:cc.Sprite;
-	
+
 	public ctor()
 	{
 		// add this code to deal with the draw Object created to pass to Class::extend function
@@ -35,6 +35,10 @@ class GameScene extends game.BaseScene
 		this._super();
 		cc.eventManager.addListener(this.menuListener, this.menu);
 		this.startTween();
+	}
+
+	public sizeHandler()
+	{
 	}
 
 	private startTween()

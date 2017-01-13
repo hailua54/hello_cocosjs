@@ -2,6 +2,8 @@ var __extends = function () { };
 var res = eval("res");
 var TweenLite = eval("TweenLite");
 var g_resources = eval("g_resources");
+var CANVAS_WIDTH = eval("CANVAS_WIDTH");
+var CANVAS_HEIGHT = eval("CANVAS_HEIGHT");
 var core;
 (function (core) {
     var VBaseEvent = (function () {
@@ -524,6 +526,41 @@ var Game = (function (_super) {
         preloadScene.scheduleOnce(this.startLoading.bind(this), 0.1);
         this.loading = loading;
         loading.retain();
+        cc.log("cc.sys.isNative === " + cc.sys.isNative);
+        if (!cc.sys.isNative) {
+            var container = document.getElementById("Cocos2dGameContainer");
+            container.style.display = "none";
+            var gameCanvas = document.getElementById("gameCanvas");
+            gameCanvas.style.position = 'absolute';
+            document.getElementById("mainContainer").appendChild(gameCanvas);
+            window.onresize = this.sizeHandler.bind(this);
+        }
+        else {
+        }
+        this.sizeHandler();
+    };
+    Game.prototype.sizeHandler = function () {
+        var w, h;
+        var debugStr = "";
+        if (!cc.sys.isNative) {
+            window.scrollTo(0, 1);
+            h = GameUtils.getSize("Height") + 1;
+            w = GameUtils.getSize("Width");
+            var gameCanvas = document.getElementById("gameCanvas");
+            gameCanvas.width = w;
+            gameCanvas.height = h;
+            gameCanvas.style.width = w + 'px';
+            gameCanvas.style.height = h + 'px';
+        }
+        else {
+            var winSize = cc.view.getFrameSize();
+            w = winSize.width;
+            h = winSize.height;
+            if (cc.sys.isNative)
+                cc.view.setDesignResolutionSize(w, h, cc.ResolutionPolicy.EXACT_FIT);
+        }
+        cc.log("w ========= " + w);
+        cc.log("h ========= " + h);
     };
     Game.prototype.startLoading = function () {
         cc.loader.load(g_resources, this.loadCommonAssetsProgress.bind(this), this.onLoadCommonAssetComplete.bind(this));
@@ -532,6 +569,9 @@ var Game = (function (_super) {
         var percent = (loadedCount / count * 100) | 0;
         percent = Math.min(percent, 100);
         this.loading.updatePercent(percent);
+    };
+    Game.prototype.onWindowResize = function () {
+        cc.log("onWindowResize === ");
     };
     Game.prototype.onLoadCommonAssetComplete = function () {
         this.preloadScene.removeChild(this.loading);
@@ -547,6 +587,7 @@ var Game = (function (_super) {
         this.gameModel.gameScene.retain();
         cc.director.runScene(this.gameModel.startScene);
         cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
+        cc.eventManager.addCustomListener("glview_window_resized", this.onWindowResize.bind(this));
     };
     return Game;
 })(game.BaseGame);
@@ -568,6 +609,37 @@ var GameUtils = (function () {
                 return item;
         }
         return null;
+    };
+    GameUtils.getSize = function (Name) {
+        var size;
+        var name = Name.toLowerCase();
+        var document = window.document;
+        var documentElement = document.documentElement;
+        if (window["inner" + Name] === undefined) {
+            size = documentElement["client" + Name];
+        }
+        else if (window["inner" + Name] !== documentElement["client" + Name]) {
+            var bodyElement = document.createElement("body");
+            bodyElement.id = "vpw-test-b";
+            bodyElement.style.cssText = "overflow:scroll";
+            var divElement = document.createElement("div");
+            divElement.id = "vpw-test-d";
+            divElement.style.cssText = "position:absolute;top:-1000px";
+            divElement.innerHTML = "<style>@media(" + name + ":" + documentElement["client" + Name] + "px){body#vpw-test-b div#vpw-test-d{" + name + ":7px!important}}</style>";
+            bodyElement.appendChild(divElement);
+            documentElement.insertBefore(bodyElement, document.head);
+            if (divElement["offset" + Name] === 7) {
+                size = documentElement["client" + Name];
+            }
+            else {
+                size = window["inner" + Name];
+            }
+            documentElement.removeChild(bodyElement);
+        }
+        else {
+            size = window["inner" + Name];
+        }
+        return size;
     };
     return GameUtils;
 })();
@@ -596,6 +668,8 @@ var GameScene = (function (_super) {
         this._super();
         cc.eventManager.addListener(this.menuListener, this.menu);
         this.startTween();
+    };
+    GameScene.prototype.sizeHandler = function () {
     };
     GameScene.prototype.startTween = function () {
         this.sprite.y = 250;
@@ -701,6 +775,8 @@ var StartScene = (function (_super) {
     StartScene.prototype.onEnter = function () {
         cc.log("StartScene::onEnter ----------------------- ");
         this._super();
+        var winSize = cc.director.getWinSize();
+        this.bg.drawPoly([cc.p(0, 0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0, winSize.height)], cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
         cc.eventManager.addListener(this.menuListener, this.menu);
     };
     StartScene.prototype.initModel = function (model) {
@@ -710,6 +786,7 @@ var StartScene = (function (_super) {
         var bg = new cc.DrawNode();
         this.addChild(bg);
         bg.drawPoly([cc.p(0, 0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0, winSize.height)], cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
+        this.bg = bg;
         this.menuItems = [];
         var menu = cc.Sprite['create']();
         this.addChild(menu);
@@ -783,12 +860,14 @@ var UIScene = (function (_super) {
         this._super();
     };
     UIScene.prototype.destructor = function () {
-        this.menuListener.release();
+        if (this.menuListener)
+            this.menuListener.release();
         this._super();
     };
     UIScene.prototype.onExit = function () {
         cc.log("StartScene::onExit ----------------------- ");
-        cc.eventManager.removeListener(this.menuListener);
+        if (this.menuListener)
+            cc.eventManager.removeListener(this.menuListener);
         this._super();
     };
     UIScene.prototype.onEnter = function () {
@@ -798,7 +877,8 @@ var UIScene = (function (_super) {
             this.scheduleOnce(this.startLoading.bind(this), 0.1);
             return;
         }
-        cc.eventManager.addListener(this.menuListener, this.menu);
+        if (this.menuListener)
+            cc.eventManager.addListener(this.menuListener, this.menu);
     };
     UIScene.prototype.initModel = function (model) {
         _super.prototype.initModel.call(this, model);
@@ -824,39 +904,6 @@ var UIScene = (function (_super) {
         var bg = new cc.DrawNode();
         this.addChild(bg);
         bg.drawPoly([cc.p(0, 0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0, winSize.height)], cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
-        this.menuItems = [];
-        var menu = cc.Sprite['create']();
-        this.addChild(menu);
-        this.menu = menu;
-        var itemNames = ["Back", "Exit"];
-        itemNames = itemNames.reverse();
-        var menuH = 0;
-        for (var i = 0; i < itemNames.length; i++) {
-            var tf = cc.LabelTTF['create'](itemNames[i], "Helvetica", 30);
-            var item = cc.Sprite['create']();
-            item['name'] = itemNames[i];
-            item['tf'] = tf;
-            var s = tf.getContentSize();
-            item['localBound'] = cc.rect(-s.width * 0.5, -s.height * 0.5, s.width, s.height);
-            item.addChild(tf);
-            item.x = 0;
-            item.y = 50 * i;
-            menu.addChild(item);
-            this.menuItems.push(item);
-            menuH = item.y + tf.getContentSize().height;
-        }
-        menu.setContentSize(0, menuH);
-        menu.x = winSize.width * 0.5;
-        menu.y = winSize.height - menu.getContentSize().height - 20;
-        var listener = {
-            event: cc.EventListener.TOUCH_ONE_BY_ONE,
-            swallowTouches: true,
-            onTouchBegan: this.onMenuTouchBegan.bind(this),
-            onTouchEnded: this.onMenuTouchEnded.bind(this)
-        };
-        this.menuListener = cc.EventListener.create(listener);
-        this.menuListener.retain();
-        cc.eventManager.addListener(this.menuListener, this.menu);
         var json = ccs.load("res/Login.json");
         this.addChild(json.node);
         var uiView = json.node.getChildByName("view");

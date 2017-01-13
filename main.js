@@ -54,10 +54,12 @@
 
 var LD_DESIGN_SIZE = 960;
 var HD_DESIGN_SIZE = 1920;
+var CANVAS_WIDTH = 640;
+var CANVAS_HEIGHT = 860;
 
 cc.game.onStart = function()
 {
-    if(!cc.sys.isNative && document.getElementById("cocosLoading")) //If referenced loading.js, please remove it
+    if(!cc.sys.isNative) //If referenced loading.js, please remove it
         document.body.removeChild(document.getElementById("cocosLoading"));
 
     // Pass true to enable retina display, on Android disabled by default to improve performance
@@ -71,8 +73,8 @@ cc.game.onStart = function()
 
     if (!cc.sys.isNative || cc.sys.os === cc.sys.OS_WINDOWS) // desktop: use fix screen
     {
-      size.width = 640;
-      size.height = 860;
+      size.width = CANVAS_WIDTH;
+      size.height = CANVAS_HEIGHT;
     }
     else { // mobile: get fullScreen
       if (winSize.width > winSize.height) // landscape
@@ -89,13 +91,17 @@ cc.game.onStart = function()
     }
 		if (cc.sys.os === cc.sys.OS_WINDOWS) cc.view.setFrameSize(size.width, size.height);
     // Setup the resolution policy and design resolution size
-    cc.view.setDesignResolutionSize(size.width, size.height, cc.ResolutionPolicy.SHOW_ALL);
+
+    //if (cc.sys.isNative) cc.view.setDesignResolutionSize(size.width, size.height, cc.ResolutionPolicy.SHOW_ALL);
 
     // Instead of set design resolution, you can also set the real pixel resolution size
     // Uncomment the following line and delete the previous line.
-    // cc.view.setRealPixelResolution(960, 640, cc.ResolutionPolicy.SHOW_ALL);
+    //cc.view.setRealPixelResolution(size.width, size.height, cc.ResolutionPolicy.SHOW_ALL);
     // The game will be resized when browser size change
-    cc.view.resizeWithBrowserSize(true);
+
+		// cocos will Automatically adjust the game canvas container element with 'Cocos2dGameContainer'
+    //cc.view.resizeWithBrowserSize(true);
+
     //load resources
 		var game = new Game();
 };

@@ -40,6 +40,50 @@ class Game extends game.BaseGame
 		preloadScene.scheduleOnce(this.startLoading.bind(this), 0.1);
 		this.loading = loading;
 		loading.retain();
+		cc.log("cc.sys.isNative === " + cc.sys.isNative);
+		if (!cc.sys.isNative)
+		{
+			var container:any = document.getElementById("Cocos2dGameContainer");
+			container.style.display = "none";
+			var gameCanvas:any = document.getElementById("gameCanvas");
+			gameCanvas.style.position = 'absolute';
+			document.getElementById("mainContainer").appendChild(gameCanvas);
+
+			window.onresize = this.sizeHandler.bind(this);
+		}
+		else {
+
+		}
+
+    this.sizeHandler();
+	}
+
+	public sizeHandler():void
+  {
+		var w:number, h:number; // available width/height on devices
+    var debugStr:string = "";
+
+		if (!cc.sys.isNative) // web
+		{
+			window.scrollTo(0, 1); // autohide address bar for mobile
+	    h = GameUtils.getSize("Height") + 1; // for ios fullscreen
+	    w = GameUtils.getSize("Width");
+
+			var gameCanvas:any = document.getElementById("gameCanvas");
+			gameCanvas.width = w;
+			gameCanvas.height = h;
+			gameCanvas.style.width = w + 'px';
+			gameCanvas.style.height = h + 'px';
+		}
+		else {
+			var winSize = cc.view.getFrameSize();
+			w = winSize.width;
+			h = winSize.height;
+			if (cc.sys.isNative) cc.view.setDesignResolutionSize(w, h, cc.ResolutionPolicy.EXACT_FIT);
+		}
+
+		cc.log("w ========= " + w);
+		cc.log("h ========= " + h);
 	}
 
 	public startLoading()
@@ -52,6 +96,11 @@ class Game extends game.BaseGame
 		var percent = (loadedCount / count * 100) | 0;
 		percent = Math.min(percent, 100);
 		this.loading.updatePercent(percent);
+	}
+
+	public onWindowResize()
+	{
+		cc.log("onWindowResize === ");
 	}
 
   public onLoadCommonAssetComplete()
@@ -72,6 +121,7 @@ class Game extends game.BaseGame
 
     cc.director.runScene(this.gameModel.startScene);
 		cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
+		cc.eventManager.addCustomListener("glview_window_resized", this.onWindowResize.bind(this));
 
   }
 

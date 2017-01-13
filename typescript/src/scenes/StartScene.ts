@@ -3,6 +3,7 @@ class StartScene extends game.BaseScene
 	menuListener:cc.EventListener;
 	menu:any;
 	menuItems:Array<any>;
+	bg:cc.DrawNode;
 
 	public ctor()
 	{
@@ -33,6 +34,9 @@ class StartScene extends game.BaseScene
 	{
 		cc.log("StartScene::onEnter ----------------------- ");
 		this._super();
+		var winSize:cc.Size = cc.director.getWinSize();
+		this.bg.drawPoly([cc.p(0,0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0,winSize.height)],
+			cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
 		cc.eventManager.addListener(this.menuListener, this.menu);
 	}
 
@@ -50,6 +54,7 @@ class StartScene extends game.BaseScene
 		bg.drawPoly([cc.p(0,0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0,winSize.height)],
 			cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
 
+		this.bg = bg;
 		this.menuItems = [];
 
 		var menu:cc.Sprite = cc.Sprite['create']();
