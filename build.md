@@ -68,11 +68,15 @@
 		
 		to compile cocos with specific api level (25 as in this sample), use --ap android-25
 		
-	- Supported ABIs
+	- Supported ABIs (Application Binary Interface - CPU Instruction Set)
 		
 		https://developer.android.com/ndk/guides/abis.html#sa
 	
 		For ANDROID emulator: use ABI x86 --app-abi=x86
+		
+		For devices: try using default ABI: armeabi
+		
+	- Ex: cocos compile -p android --android-studio --ap android-22 --app-abi=x86
 	
 		
 	
