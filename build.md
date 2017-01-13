@@ -64,9 +64,9 @@
 		
 	- Check which Android Platform (coresponding to API level) supported: Go to Sdk\platforms
 	
-		Ex: android-20 <=> API level 20 <=> android 5.1.1
+		Ex: android-22 <=> API level 22 <=> android 5.1
 		
-		to compile cocos with specific api level (25 as in this sample), use --ap android-25
+		to compile cocos with specific api level (22 as in this sample), use --ap android-22
 		
 	- Supported ABIs (Application Binary Interface - CPU Instruction Set)
 		
