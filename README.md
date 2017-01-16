@@ -245,10 +245,10 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	#endif
 	```
 	
+	Declare static Java function for C++ to call via JNI:
+	
 	```java
 	package org.cocos2dx.javascript;
-	
-	Declare static Java function for C++ to call via JNI:
 	
 	import android.app.Activity;
 
