@@ -123,6 +123,7 @@ class GameScene extends game.BaseScene
 		switch(item.name)
 		{
 			case "Next":
+			/*
 				if (!this.gameModel.uiScene)
 				{
 					this.gameModel.uiScene = new UIScene();
@@ -130,9 +131,11 @@ class GameScene extends game.BaseScene
 					this.gameModel.uiScene.retain();
 				}
 		    cc.director.runScene(this.gameModel.uiScene);
+				cc.director.end();
 				break;
+				*/
 			case "Back":
-				cc.director.runScene(this.gameModel.startScene);
+				cc.director.runScene(this.gameModel.uiScene);
 				break;
 		}
 		return true;

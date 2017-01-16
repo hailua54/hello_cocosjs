@@ -4,6 +4,17 @@ var TweenLite = eval("TweenLite");
 var g_resources = eval("g_resources");
 var CANVAS_WIDTH = eval("CANVAS_WIDTH");
 var CANVAS_HEIGHT = eval("CANVAS_HEIGHT");
+var PORTRAIT = 1;
+var LANDSCAPE = 2;
+var CppSysInit = eval('CppSysInit');
+var sys;
+(function (sys) {
+    sys.ON_ORIENTATION_CHANGE = "sys_on_orientation_change";
+    function onOrientationChange(orientation) {
+        cc.eventManager.dispatchCustomEvent(sys.ON_ORIENTATION_CHANGE, orientation);
+    }
+    sys.onOrientationChange = onOrientationChange;
+})(sys || (sys = {}));
 var core;
 (function (core) {
     var VBaseEvent = (function () {
@@ -513,6 +524,7 @@ var Game = (function (_super) {
         this.gameModel.gameScene.release();
         if (this.gameModel.uiScene)
             this.gameModel.uiScene.release();
+        clearInterval(this.intervalId);
     };
     Game.prototype.init = function () {
         var winSize = cc.director.getWinSize();
@@ -536,8 +548,12 @@ var Game = (function (_super) {
             window.onresize = this.sizeHandler.bind(this);
         }
         else {
+            cc.eventManager.addCustomListener(sys.ON_ORIENTATION_CHANGE, this.onOrientationChange.bind(this));
         }
         this.sizeHandler();
+    };
+    Game.prototype.onOrientationChange = function (e) {
+        cc.log("onOrientationChange " + e.getUserData());
     };
     Game.prototype.sizeHandler = function () {
         var w, h;
@@ -554,6 +570,9 @@ var Game = (function (_super) {
         }
         else {
             var winSize = cc.view.getFrameSize();
+            var orientation = CppSysInit.getOrientation();
+            cc.log("Native: CppSysInit ============ " + CppSysInit);
+            cc.log("Native: orientation ============ " + orientation);
             w = winSize.width;
             h = winSize.height;
             if (cc.sys.isNative)
@@ -585,7 +604,10 @@ var Game = (function (_super) {
         this.gameModel.gameScene = new GameScene();
         this.gameModel.gameScene.initModel(this.gameModel);
         this.gameModel.gameScene.retain();
-        cc.director.runScene(this.gameModel.startScene);
+        this.gameModel.uiScene = new UIScene();
+        this.gameModel.uiScene.initModel(this.gameModel);
+        this.gameModel.uiScene.retain();
+        cc.director.runScene(this.gameModel.uiScene);
         cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
         cc.eventManager.addCustomListener("glview_window_resized", this.onWindowResize.bind(this));
     };
@@ -729,15 +751,8 @@ var GameScene = (function (_super) {
         var tf = item.tf;
         switch (item.name) {
             case "Next":
-                if (!this.gameModel.uiScene) {
-                    this.gameModel.uiScene = new UIScene();
-                    this.gameModel.uiScene.initModel(this.gameModel);
-                    this.gameModel.uiScene.retain();
-                }
-                cc.director.runScene(this.gameModel.uiScene);
-                break;
             case "Back":
-                cc.director.runScene(this.gameModel.startScene);
+                cc.director.runScene(this.gameModel.uiScene);
                 break;
         }
         return true;

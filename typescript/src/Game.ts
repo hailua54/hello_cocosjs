@@ -3,6 +3,9 @@ class Game extends game.BaseGame
   public gameModel:GameModel;
 	public preloadScene:cc.Scene;
 	public loading:vcom.Loading;
+	intervalId:number;
+	orgWW:number;
+	orgWH:number;
 
   constructor()
   {
@@ -24,6 +27,8 @@ class Game extends game.BaseGame
 		this.gameModel.startScene.release();
 		this.gameModel.gameScene.release();
 		if (this.gameModel.uiScene) this.gameModel.uiScene.release();
+
+		clearInterval(this.intervalId);
 		// -------------------------------------------
 	}
 
@@ -52,10 +57,15 @@ class Game extends game.BaseGame
 			window.onresize = this.sizeHandler.bind(this);
 		}
 		else {
-
+			cc.eventManager.addCustomListener(sys.ON_ORIENTATION_CHANGE, this.onOrientationChange.bind(this));
 		}
 
     this.sizeHandler();
+	}
+
+	public onOrientationChange(e:cc.EventCustom)
+	{
+		cc.log("onOrientationChange " + e.getUserData());
 	}
 
 	public sizeHandler():void
@@ -77,6 +87,9 @@ class Game extends game.BaseGame
 		}
 		else {
 			var winSize = cc.view.getFrameSize();
+			var orientation = CppSysInit.getOrientation();
+			cc.log("Native: CppSysInit ============ " + CppSysInit);
+			cc.log("Native: orientation ============ " + orientation);
 			w = winSize.width;
 			h = winSize.height;
 			if (cc.sys.isNative) cc.view.setDesignResolutionSize(w, h, cc.ResolutionPolicy.EXACT_FIT);
@@ -119,7 +132,11 @@ class Game extends game.BaseGame
 		this.gameModel.gameScene.initModel(this.gameModel);
 		this.gameModel.gameScene.retain();
 
-    cc.director.runScene(this.gameModel.startScene);
+		this.gameModel.uiScene = new UIScene();
+		this.gameModel.uiScene.initModel(this.gameModel);
+		this.gameModel.uiScene.retain();
+
+    cc.director.runScene(this.gameModel.uiScene);
 		cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
 		cc.eventManager.addCustomListener("glview_window_resized", this.onWindowResize.bind(this));
 

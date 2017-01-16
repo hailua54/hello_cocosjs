@@ -8,3 +8,15 @@ var TweenLite = eval("TweenLite");
 var g_resources = eval("g_resources");
 var CANVAS_WIDTH = eval("CANVAS_WIDTH");
 var CANVAS_HEIGHT = eval("CANVAS_HEIGHT");
+var PORTRAIT:number = 1;
+var LANDSCAPE:number = 2;
+var CppSysInit = eval('CppSysInit');
+
+namespace sys
+{
+	export var ON_ORIENTATION_CHANGE:string = "sys_on_orientation_change";
+	export function onOrientationChange(orientation:number)
+	{
+		cc.eventManager.dispatchCustomEvent(ON_ORIENTATION_CHANGE, orientation);
+	}
+}
