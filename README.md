@@ -59,7 +59,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 
 ## References
 
-- GC
+### GC
 
 	http://wiki.luajit.org/New-Garbage-Collector#gc-algorithms_two-color-mark-sweep
 
@@ -67,13 +67,13 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 
 	https://engineering.heroku.com/blogs/2015-02-04-incremental-gc/
 
-- Touch events
+### Touch events
 
 	http://www.cocos2d-x.org/wiki/EventDispatcher_Mechanism
 
-- JS call C++ sample:
+### JS call C++ sample:
 
-	+ custom_binding.h:
+	#### custom_binding.h:
 	
 	```c
 	#include "jsapi.h"
@@ -85,7 +85,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	void js_register_sys_CppUtils(JSContext *cx, JS::HandleObject global);
 	```
 
-	+ custom_binding.cpp:
+	#### custom_binding.cpp:
 	
 	```c
 	#include "custom_binding.h"
@@ -167,9 +167,9 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	}
 	```
 	
-- C++ call JS, C++ call Native, Native call C++:
+### C++ call JS, C++ call Native, Native call C++:
 
-	+ sys_init.h: 
+	#### sys_init.h: 
 	
 	```c
 	#ifndef  _SYS_INIT_H_
@@ -189,7 +189,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	#endif
 	```
 	
-	+ sys_init.cpp:
+	#### sys_init.cpp:
 	
 	```c
 	#include "sys_init.h"
@@ -246,7 +246,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	}
 	```
 	
-	+ Declare static Java function for C++ to call via JNI:
+	#### Declare static Java function for C++ to call via JNI:
 	
 	```java
 	package org.cocos2dx.javascript;
@@ -266,7 +266,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	}
 	```
 	
-	+ Declare native C++ for Java to call:
+	#### Declare native C++ for Java to call:
 	
 	```java
 	package org.cocos2dx.javascript;
@@ -280,17 +280,17 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	}
 	```
 	
-	sysinit.js
+	#### sysinit.js
 	
 	```js
 	var CppUtils = eval('CppUtils');
 	```
 	
-- Java call C++:
+### Java call C++:
 	
 	http://stnguyen.com/cocos2d-x/call-cpp-functions-from-java.html
 	
-- C++ call Java:
+### C++ call Java:
 
 	http://stnguyen.com/cocos2d-x/call-java-functions-from-cpp.html
 	
