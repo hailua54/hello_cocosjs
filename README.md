@@ -169,7 +169,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	
 - C++ call JS, C++ call Native, Native call C++:
 
-	###### sys_init.h: 
+	## sys_init.h: 
 	
 	```c
 	#ifndef  _SYS_INIT_H_
