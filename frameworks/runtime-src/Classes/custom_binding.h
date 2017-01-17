@@ -1,7 +1,7 @@
 #include "jsapi.h"
 
-extern JSClass  *jsb_CppSysInit_class;
-extern JSObject *jsb_CppSysInit_prototype;
+extern JSClass  *jsb_CppUtils_class;
+extern JSObject *jsb_CppUtils_prototype;
 
-bool js_CppSysInit_getOrientation(JSContext *cx, uint32_t argc, jsval *vp);
-void js_register_CppSysInit(JSContext *cx, JS::HandleObject global);
+bool js_sys_CppUtils_getOrientation(JSContext *cx, uint32_t argc, jsval *vp);
+void js_register_sys_CppUtils(JSContext *cx, JS::HandleObject global);

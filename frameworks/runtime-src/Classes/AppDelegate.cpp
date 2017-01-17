@@ -43,27 +43,10 @@
 #include "cocos/scripting/js-bindings/manual/platform/ios/JavaScriptObjCBridge.h"
 #endif
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-#include <jni.h>
-#include "platform/android/jni/JniHelper.h"
-#endif
-
-#include "CppSysInit.h"
+#include "sys_init.h"
 #include "custom_binding.h"
-
 USING_NS_CC;
 using namespace CocosDenshion;
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-// custom cpp functions for Java to call
-extern "C"
-void Java_org_cocos2dx_javascript_NativeCppFunctions_cppOrientationChange(JNIEnv* env, jobject /* this */, jint orientation)
-{
-	CCLOG("Java_org_cocos2dx_javascript_NativeCppFunctions_cppOrientationChange %d ", orientation);
-	int orient = orientation;
-	CppSysInit::cpp_2_js_orientationChange(orient);
-}
-#endif
 
 AppDelegate::AppDelegate()
 {
@@ -142,7 +125,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // 3d extension can be commented out to reduce the package
     sc->addRegisterCallback(register_all_cocos2dx_3d_extension);
 	
-	sc->addRegisterCallback(js_register_CppSysInit);
+	sc->addRegisterCallback(js_register_sys_CppUtils);
 
 #if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
     // Physics 3d can be commented out to reduce the package

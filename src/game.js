@@ -6,7 +6,7 @@ var CANVAS_WIDTH = eval("CANVAS_WIDTH");
 var CANVAS_HEIGHT = eval("CANVAS_HEIGHT");
 var PORTRAIT = 1;
 var LANDSCAPE = 2;
-var CppSysInit = eval('CppSysInit');
+var CppUtils = eval('CppUtils');
 var sys;
 (function (sys) {
     sys.ON_ORIENTATION_CHANGE = "sys_on_orientation_change";
@@ -538,7 +538,7 @@ var Game = (function (_super) {
         preloadScene.scheduleOnce(this.startLoading.bind(this), 0.1);
         this.loading = loading;
         loading.retain();
-        cc.log("cc.sys.isNative === " + cc.sys.isNative);
+        cc.log("cc.sys.isNative " + cc.sys.isNative);
         if (!cc.sys.isNative) {
             var container = document.getElementById("Cocos2dGameContainer");
             container.style.display = "none";
@@ -570,9 +570,12 @@ var Game = (function (_super) {
         }
         else {
             var winSize = cc.view.getFrameSize();
-            var orientation = CppSysInit.getOrientation();
-            cc.log("Native: CppSysInit ============ " + CppSysInit);
-            cc.log("Native: orientation ============ " + orientation);
+            var orientation = CppUtils.getOrientation();
+            cc.log("Native: orientation ========== " + orientation);
+            if (orientation == PORTRAIT) {
+            }
+            else {
+            }
             w = winSize.width;
             h = winSize.height;
             if (cc.sys.isNative)

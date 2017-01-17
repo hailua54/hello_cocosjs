@@ -45,7 +45,7 @@ class Game extends game.BaseGame
 		preloadScene.scheduleOnce(this.startLoading.bind(this), 0.1);
 		this.loading = loading;
 		loading.retain();
-		cc.log("cc.sys.isNative === " + cc.sys.isNative);
+		cc.log("cc.sys.isNative " + cc.sys.isNative);
 		if (!cc.sys.isNative)
 		{
 			var container:any = document.getElementById("Cocos2dGameContainer");
@@ -87,9 +87,16 @@ class Game extends game.BaseGame
 		}
 		else {
 			var winSize = cc.view.getFrameSize();
-			var orientation = CppSysInit.getOrientation();
-			cc.log("Native: CppSysInit ============ " + CppSysInit);
-			cc.log("Native: orientation ============ " + orientation);
+			var orientation = CppUtils.getOrientation();
+
+			cc.log("Native: orientation ========== " + orientation);
+			if (orientation == PORTRAIT)
+			{
+
+			}
+			else {
+
+			}
 			w = winSize.width;
 			h = winSize.height;
 			if (cc.sys.isNative) cc.view.setDesignResolutionSize(w, h, cc.ResolutionPolicy.EXACT_FIT);

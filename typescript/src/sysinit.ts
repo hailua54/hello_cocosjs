@@ -10,7 +10,7 @@ var CANVAS_WIDTH = eval("CANVAS_WIDTH");
 var CANVAS_HEIGHT = eval("CANVAS_HEIGHT");
 var PORTRAIT:number = 1;
 var LANDSCAPE:number = 2;
-var CppSysInit = eval('CppSysInit');
+var CppUtils = eval('CppUtils');
 
 namespace sys
 {
