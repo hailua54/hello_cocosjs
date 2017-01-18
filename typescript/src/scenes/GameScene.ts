@@ -4,6 +4,7 @@ class GameScene extends game.BaseScene
 	menuItems:Array<any>;
 	menu:any;
 	sprite:cc.Sprite;
+	bg:cc.DrawNode;
 
 	public ctor()
 	{
@@ -35,10 +36,19 @@ class GameScene extends game.BaseScene
 		this._super();
 		cc.eventManager.addListener(this.menuListener, this.menu);
 		this.startTween();
+		this.sizeHandler();
 	}
 
 	public sizeHandler()
 	{
+		var screen = GameUtils.getScreenSize();
+		this.bg.drawPoly([cc.p(0,0), cc.p(screen.width, 0), cc.p(screen.width, screen.height), cc.p(0,screen.height)],
+			cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
+		var menu:any = this.menu;
+		menu.x = screen.width*0.5;
+		menu.y = screen.height*0.9 - menu.getContentSize().height;
+		this.sprite.x = screen.width*0.5;
+		this.sprite.y = 250;
 	}
 
 	private startTween()
@@ -53,12 +63,13 @@ class GameScene extends game.BaseScene
 		//2. get the singleton director
 		var director:cc.Director = cc.director;
 		//get the screen size of your game canvas
-		var winSize:cc.Size = director.getWinSize();
+		var screen:cc.Size = GameUtils.getScreenSize();
 
 		// draw bg
 		var bg:cc.DrawNode = new cc.DrawNode();
+		this.bg = bg;
 		this.addChild(bg);
-		bg.drawPoly([cc.p(0,0), cc.p(winSize.width, 0), cc.p(winSize.width, winSize.height), cc.p(0,winSize.height)],
+		bg.drawPoly([cc.p(0,0), cc.p(screen.width, 0), cc.p(screen.width, screen.height), cc.p(0,screen.height)],
 			cc.color(0x22, 0x22, 0x22, 255), 1, cc.color(0, 0, 0, 0));
 
 		this.menuItems = [];
@@ -90,8 +101,8 @@ class GameScene extends game.BaseScene
 		}
 
 		menu.setContentSize(0, menuH);
-		menu.x = winSize.width*0.5;
-		menu.y = winSize.height*0.9 - menu.getContentSize().height;
+		menu.x = screen.width*0.5;
+		menu.y = screen.height*0.9 - menu.getContentSize().height;
 
 		var listener:any = {
 			event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -105,7 +116,7 @@ class GameScene extends game.BaseScene
 
 		// add "HelloWorld" splash screen"
 		var sprite = new cc.Sprite(res.HelloWorld_png);
-		sprite.x = winSize.width*0.5;
+		sprite.x = screen.width*0.5;
 		sprite.y = 250;
 		this.addChild(sprite);
 
@@ -123,19 +134,8 @@ class GameScene extends game.BaseScene
 		switch(item.name)
 		{
 			case "Next":
-			/*
-				if (!this.gameModel.uiScene)
-				{
-					this.gameModel.uiScene = new UIScene();
-					this.gameModel.uiScene.initModel(this.gameModel);
-					this.gameModel.uiScene.retain();
-				}
-		    cc.director.runScene(this.gameModel.uiScene);
-				cc.director.end();
-				break;
-				*/
 			case "Back":
-				cc.director.runScene(this.gameModel.uiScene);
+				cc.director.runScene(this.gameModel.startScene);
 				break;
 		}
 		return true;

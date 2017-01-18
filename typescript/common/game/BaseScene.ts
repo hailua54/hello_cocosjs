@@ -30,6 +30,12 @@ namespace game
 		{
       this.gameModel = gameModel;
 		}
+
+		public loadUI() {}
+
+		public orientationHandler() {}
+
+		public sizeHandler() {}
 	}
 }
 

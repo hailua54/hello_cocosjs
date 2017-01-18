@@ -43,10 +43,19 @@
 		//...
 	}
 	```
-	
+- Add "..Sdk\platform-tools" to system variable 'Path' to be able to use 'adb' command
 ## Compile
 
 - web: cocos compile -p web -m release --advanced
+
+- Android studio:
+	+ setup for debug on hardware device https://developer.android.com/studio/run/device.html#setting-up
+		
+		Enable USB debug mode on device
+		
+		Install driver: Ex: GT-I9100LKAXEU, install Kies to update driver http://www.samsung.com/uk/support/model/GT-I9100LKAXEU
+		
+	+ command: cocos compile cocos compile -p android --android-studio
 
 ## Tip
 
@@ -209,12 +218,14 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	{
 		CCLOG("Java_org_cocos2dx_javascript_NativeCppFunctions_cppOrientationChange %d ", orientation);
 		int orient = orientation;
-		sys::cpp_2_js_orientationChange(orient);
+		// should call the function in cocos thread http://discuss.cocos2d-x.org/t/solved-calling-javascript-from-c-crashes-on-android/22805/3
+		Director::getInstance()->getScheduler()->performFunctionInCocosThread([=] {sys::cpp_2_js_orientationChange(orient); });
 	}
 	#endif
 
 	void sys::cpp_2_js_orientationChange(int oritentation)
 	{
+		
 		ScriptingCore * scriptingCore = ScriptingCore::getInstance();
 
 		JSContext * cx = scriptingCore->getGlobalContext();
@@ -227,7 +238,6 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 		args[0] = INT_TO_JSVAL(oritentation);
 
 		scriptingCore->executeFunctionWithOwner(owner, "onOrientationChange", 1, args);
-
 	}
 
 	int sys::cpp_2_native_getOrientation()
@@ -243,40 +253,6 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 		}
 	#endif
 		return orientation;
-	}
-	```
-	
-	### Declare static Java function for C++ to call via JNI:
-	
-	```java
-	package org.cocos2dx.javascript;
-	
-	import android.app.Activity;
-
-	/**
-	 * Created by user on 1/16/2017.
-	 */
-
-	public class ExportJavaFunctions {
-		public static Activity activity;
-		public static int androidGetOrientation()
-		{
-			return activity.getResources().getConfiguration().orientation;
-		}
-	}
-	```
-	
-	### Declare native C++ for Java to call:
-	
-	```java
-	package org.cocos2dx.javascript;
-
-	/**
-	 * Created by user on 1/16/2017.
-	 */
-
-	public class NativeCppFunctions {
-		public static native void cppOrientationChange(int orientation);
 	}
 	```
 	

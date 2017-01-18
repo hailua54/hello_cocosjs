@@ -15,12 +15,14 @@ void Java_org_cocos2dx_javascript_NativeCppFunctions_cppOrientationChange(JNIEnv
 {
 	CCLOG("Java_org_cocos2dx_javascript_NativeCppFunctions_cppOrientationChange %d ", orientation);
 	int orient = orientation;
-	sys::cpp_2_js_orientationChange(orient);
+	// should call the function in cocos thread http://discuss.cocos2d-x.org/t/solved-calling-javascript-from-c-crashes-on-android/22805/3
+	Director::getInstance()->getScheduler()->performFunctionInCocosThread([=] {sys::cpp_2_js_orientationChange(orient); });
 }
 #endif
 
 void sys::cpp_2_js_orientationChange(int oritentation)
 {
+	
 	ScriptingCore * scriptingCore = ScriptingCore::getInstance();
 
 	JSContext * cx = scriptingCore->getGlobalContext();
@@ -33,7 +35,6 @@ void sys::cpp_2_js_orientationChange(int oritentation)
 	args[0] = INT_TO_JSVAL(oritentation);
 
 	scriptingCore->executeFunctionWithOwner(owner, "onOrientationChange", 1, args);
-
 }
 
 int sys::cpp_2_native_getOrientation()

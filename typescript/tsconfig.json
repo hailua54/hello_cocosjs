@@ -54,13 +54,14 @@
         "common/game/BaseGame.ts",
         "common/game/BaseScene.ts",
         "common/game/GameObject.ts",
+        "common/game/LayoutObject.ts",
         "src/Game.ts",
         "src/GameModel.ts",
+        "src/GameSettings.ts",
         "src/GameUtils.ts",
         "src/scenes/GameScene.ts",
         "src/scenes/StartScene.ts",
-        "src/scenes/UIScene.ts",
-        "src/scenes/uiscene/MyCustomUIClass.ts"
+        "src/scenes/ui/MyCustomUIClass.ts"
     ],
     "compileOnSave": true,
     "compilerOptions": {

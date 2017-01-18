@@ -52,56 +52,15 @@
  *
  */
 
-var LD_DESIGN_SIZE = 960;
-var HD_DESIGN_SIZE = 1920;
-var CANVAS_WIDTH = 640;
-var CANVAS_HEIGHT = 860;
-
 cc.game.onStart = function()
 {
-    if(!cc.sys.isNative) //If referenced loading.js, please remove it
-        document.body.removeChild(document.getElementById("cocosLoading"));
-
     // Pass true to enable retina display, on Android disabled by default to improve performance
     cc.view.enableRetina(cc.sys.os === cc.sys.OS_IOS ? true : false);
-
     // Adjust viewport meta
-    cc.view.adjustViewPort(true);
-
-    var winSize = cc.view.getFrameSize();
-    var size = cc.size();
-
-    if (!cc.sys.isNative || cc.sys.os === cc.sys.OS_WINDOWS) // desktop: use fix screen
-    {
-      size.width = CANVAS_WIDTH;
-      size.height = CANVAS_HEIGHT;
-    }
-    else { // mobile: get fullScreen
-      if (winSize.width > winSize.height) // landscape
-      {
-        size.width = winSize.width;
-        if (size.width > HD_DESIGN_SIZE) size.width = HD_DESIGN_SIZE;
-        size.height = size.width*(winSize.height/winSize.width);
-      }
-      else { // portrait
-        size.height = winSize.height;
-        if (size.height > HD_DESIGN_SIZE) size.height = HD_DESIGN_SIZE;
-        size.width = size.height*(winSize.width/winSize.height);
-      }
-    }
-		if (cc.sys.os === cc.sys.OS_WINDOWS) cc.view.setFrameSize(size.width, size.height);
-    // Setup the resolution policy and design resolution size
-
-    //if (cc.sys.isNative) cc.view.setDesignResolutionSize(size.width, size.height, cc.ResolutionPolicy.SHOW_ALL);
-
-    // Instead of set design resolution, you can also set the real pixel resolution size
-    // Uncomment the following line and delete the previous line.
-    //cc.view.setRealPixelResolution(size.width, size.height, cc.ResolutionPolicy.SHOW_ALL);
-    // The game will be resized when browser size change
-
-		// cocos will Automatically adjust the game canvas container element with 'Cocos2dGameContainer'
-    //cc.view.resizeWithBrowserSize(true);
-
+    //cc.view.adjustViewPort(true);
+		if (cc.sys.os === cc.sys.OS_WINDOWS) cc.view.setFrameSize(400, 700);
+		cc.view.resizeWithBrowserSize(true);
+		cc.view.setDesignResolutionSize(GameUtils.getScreenSize().width, GameUtils.getScreenSize().height, cc.ResolutionPolicy.SHOW_ALL);
     //load resources
 		var game = new Game();
 };

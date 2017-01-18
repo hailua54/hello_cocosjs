@@ -34,6 +34,8 @@ class Game extends game.BaseGame
 
 	public init()
 	{
+		GameSettings.LAST_ORIENTATION = GameUtils.getOrientation();
+
 		var winSize:cc.Size = cc.director.getWinSize();
 		var preloadScene:cc.Scene = new cc.Scene();
 		this.preloadScene = preloadScene;
@@ -42,18 +44,13 @@ class Game extends game.BaseGame
 		loading.show(true, "Load common assets");
 		preloadScene.addChild(loading);
 		loading.setSize(winSize.width, winSize.height);
+
 		preloadScene.scheduleOnce(this.startLoading.bind(this), 0.1);
 		this.loading = loading;
 		loading.retain();
-		cc.log("cc.sys.isNative " + cc.sys.isNative);
+
 		if (!cc.sys.isNative)
 		{
-			var container:any = document.getElementById("Cocos2dGameContainer");
-			container.style.display = "none";
-			var gameCanvas:any = document.getElementById("gameCanvas");
-			gameCanvas.style.position = 'absolute';
-			document.getElementById("mainContainer").appendChild(gameCanvas);
-
 			window.onresize = this.sizeHandler.bind(this);
 		}
 		else {
@@ -66,44 +63,36 @@ class Game extends game.BaseGame
 	public onOrientationChange(e:cc.EventCustom)
 	{
 		cc.log("onOrientationChange " + e.getUserData());
+		if (cc.director.getRunningScene() && cc.director.getRunningScene()['orientationHandler']) cc.director.getRunningScene()['orientationHandler']();
+		this.sizeHandler();
 	}
 
 	public sizeHandler():void
   {
 		var w:number, h:number; // available width/height on devices
     var debugStr:string = "";
+		var screen = GameUtils.getScreenSize();
 
 		if (!cc.sys.isNative) // web
 		{
-			window.scrollTo(0, 1); // autohide address bar for mobile
-	    h = GameUtils.getSize("Height") + 1; // for ios fullscreen
-	    w = GameUtils.getSize("Width");
-
-			var gameCanvas:any = document.getElementById("gameCanvas");
-			gameCanvas.width = w;
-			gameCanvas.height = h;
-			gameCanvas.style.width = w + 'px';
-			gameCanvas.style.height = h + 'px';
+			//window.scrollTo(0, 1); // autohide address bar for mobile
+	    w = screen.width;
+	    h = screen.height + 1; // for ios fullscreen
+			// check orientation change
+			if (GameUtils.getOrientation() != GameSettings.LAST_ORIENTATION)
+			{
+				GameSettings.LAST_ORIENTATION = GameUtils.getOrientation();
+				if (cc.director.getRunningScene() && cc.director.getRunningScene()['orientationHandler']) cc.director.getRunningScene()['orientationHandler']();
+			}
 		}
 		else {
-			var winSize = cc.view.getFrameSize();
-			var orientation = CppUtils.getOrientation();
-
-			cc.log("Native: orientation ========== " + orientation);
-			if (orientation == PORTRAIT)
-			{
-
-			}
-			else {
-
-			}
-			w = winSize.width;
-			h = winSize.height;
-			if (cc.sys.isNative) cc.view.setDesignResolutionSize(w, h, cc.ResolutionPolicy.EXACT_FIT);
+			w = screen.width;
+			h = screen.height;
 		}
-
-		cc.log("w ========= " + w);
-		cc.log("h ========= " + h);
+		cc.log("setDesignResolutionSize " + w + " " + h);
+		if (cc.director.getRunningScene() && cc.director.getRunningScene()['sizeHandler']) cc.director.getRunningScene()['sizeHandler']();
+		cc.view.setFrameSize(w, h);
+		cc.view.setDesignResolutionSize(w, h, cc.ResolutionPolicy.SHOW_ALL);
 	}
 
 	public startLoading()
@@ -116,11 +105,6 @@ class Game extends game.BaseGame
 		var percent = (loadedCount / count * 100) | 0;
 		percent = Math.min(percent, 100);
 		this.loading.updatePercent(percent);
-	}
-
-	public onWindowResize()
-	{
-		cc.log("onWindowResize === ");
 	}
 
   public onLoadCommonAssetComplete()
@@ -139,13 +123,8 @@ class Game extends game.BaseGame
 		this.gameModel.gameScene.initModel(this.gameModel);
 		this.gameModel.gameScene.retain();
 
-		this.gameModel.uiScene = new UIScene();
-		this.gameModel.uiScene.initModel(this.gameModel);
-		this.gameModel.uiScene.retain();
-
-    cc.director.runScene(this.gameModel.uiScene);
+    cc.director.runScene(this.gameModel.startScene);
 		cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
-		cc.eventManager.addCustomListener("glview_window_resized", this.onWindowResize.bind(this));
 
   }
 
