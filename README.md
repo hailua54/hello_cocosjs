@@ -44,6 +44,7 @@
 	}
 	```
 - Add "..Sdk\platform-tools" to system variable 'Path' to be able to use 'adb' command
+
 ## Compile
 
 - web: cocos compile -p web -m release --advanced
@@ -176,7 +177,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	}
 	```
 	
-- C++ call JS, C++ call Native, Native call C++:
+## C++ call JS, C++ call Native, Native call C++:
 
 	### sys_init.h: 
 	

@@ -28,14 +28,17 @@ class GameUtils
 			var srcNode = src.children[i];
 			var desNode = des.getChildByName(srcNode.name);
 			if (!desNode) continue;
-			if (srcNode instanceof ccui.CheckBox) GameUtils.copyCCCheckBoxStatus(srcNode, desNode);
+			if (srcNode instanceof ccui.CheckBox)
+			{
+				GameUtils.copyCCCheckBoxStatus(srcNode, desNode);
+			}
 			this.copyUIStatus(srcNode, desNode);
 		}
 	}
 
 	public static copyCCCheckBoxStatus(src:any, des:any)
 	{
-		des.setSelectedState(src.getSelectedState());
+		des.setSelected(src.isSelected());
 	}
 
 	public static getOrientation():number

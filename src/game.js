@@ -661,13 +661,14 @@ var GameUtils = (function () {
             var desNode = des.getChildByName(srcNode.name);
             if (!desNode)
                 continue;
-            if (srcNode instanceof ccui.CheckBox)
+            if (srcNode instanceof ccui.CheckBox) {
                 GameUtils.copyCCCheckBoxStatus(srcNode, desNode);
+            }
             this.copyUIStatus(srcNode, desNode);
         }
     };
     GameUtils.copyCCCheckBoxStatus = function (src, des) {
-        des.setSelectedState(src.getSelectedState());
+        des.setSelected(src.isSelected());
     };
     GameUtils.getOrientation = function () {
         if (!cc.sys.isNative) {
@@ -898,7 +899,10 @@ var StartScene = (function (_super) {
         var uiView = json.node.getChildByName("view");
         json.node.removeChild(uiView);
         uiView.initModel(this.gameModel);
+        cc.log("this.uiView  ======== " + this.uiView);
         if (this.uiView) {
+            cc.log("here ---");
+            GameUtils.copyUIStatus(this.uiView, uiView);
             this.removeChild(this.uiView);
             this.uiView.destructor();
         }

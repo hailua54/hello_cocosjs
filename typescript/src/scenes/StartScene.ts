@@ -95,10 +95,12 @@ class StartScene extends game.BaseScene
 		json.node.removeChild(uiView);
 		uiView.initModel(this.gameModel);
 		// destroy current uiView
+		cc.log("this.uiView  ======== " + this.uiView);
 		if (this.uiView)
 		{
+			cc.log("here ---");
 			// copy status from this.uiView to uiView
-			//GameUtils.copyUIStatus(this.uiView, uiView);
+			GameUtils.copyUIStatus(this.uiView, uiView);
 			this.removeChild(this.uiView);
 			this.uiView.destructor();
 		}
