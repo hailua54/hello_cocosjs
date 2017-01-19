@@ -63,10 +63,6 @@
 - The code using tab size = 2. To view the draw code with github, put a tab size on the url ?ts=2
 Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/StartScene.ts?ts=2
 
-- Android studio
-
-	cocos compile -p android --android-studio --app-abi=armeabi-v7a
-
 ## References
 
 - GC
