@@ -1,3 +1,4 @@
+startCCExtend();
 namespace vcom
 {
 	export class Loading extends BaseComponent
@@ -105,5 +106,5 @@ namespace vcom
 		}
 	}
 }
-
+endCCExtend();
 vcom.Loading = vcom.BaseComponent['extend'](new vcom.Loading());

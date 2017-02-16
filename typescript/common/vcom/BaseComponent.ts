@@ -7,9 +7,15 @@ namespace vcom
 {
 	export class BaseComponent extends cc.Node
 	{
-		constructor()
+    // constructor
+    public ctor()
 		{
-			super();
+			if (!this._super) return;
+			this._super();
+		}
+
+		public destructor()
+		{
 		}
 
 		public setStyle(style:any)

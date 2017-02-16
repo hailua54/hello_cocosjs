@@ -14,17 +14,16 @@ namespace game
 			}
 		}
 
-		public destructor()
-		{
-			this.deepDestructor(this);
-		}
-
     // constructor
     public ctor()
 		{
 			if (!this._super) return;
 			this._super();
-			// call destructor for all children
+		}
+
+		public destructor()
+		{
+			this.deepDestructor(this);
 		}
 
 		public initModel(gameModel:any)
