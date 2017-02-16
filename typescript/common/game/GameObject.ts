@@ -1,3 +1,4 @@
+startCCExtend();
 namespace game
 {
   export class GameObject extends cc.Node
@@ -28,5 +29,5 @@ namespace game
 
 	}
 }
-
+endCCExtend();
 game.GameObject = cc.Node['extend'](new game.GameObject());

@@ -1,4 +1,6 @@
-var __extends = function () { };
+var org_extends = eval('__extends');
+function startCCExtend() { var __extends = function () { }; }
+function endCCExtend() { var __extends = org_extends; }
 var res = eval("res");
 var TweenLite = eval("TweenLite");
 var g_resources = eval("g_resources");
@@ -484,6 +486,7 @@ var game;
     game.BaseScene = BaseScene;
 })(game || (game = {}));
 game.BaseScene = cc.Scene['extend'](new game.BaseScene());
+startCCExtend();
 var game;
 (function (game) {
     var GameObject = (function (_super) {
@@ -508,6 +511,7 @@ var game;
     })(cc.Node);
     game.GameObject = GameObject;
 })(game || (game = {}));
+endCCExtend();
 game.GameObject = cc.Node['extend'](new game.GameObject());
 var game;
 (function (game) {

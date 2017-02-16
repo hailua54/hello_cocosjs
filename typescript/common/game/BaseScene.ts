@@ -1,3 +1,4 @@
+startCCExtend();
 namespace game
 {
   export class BaseScene extends cc.Scene
@@ -38,5 +39,5 @@ namespace game
 		public sizeHandler() {}
 	}
 }
-
+endCCExtend();
 game.BaseScene = cc.Scene['extend'](new game.BaseScene());

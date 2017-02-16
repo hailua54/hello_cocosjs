@@ -38,10 +38,23 @@
 - Modify timlineParser-2.x.js
 
 	```js
+	
+	register.forEach(function(item){
+        parser.registerParser(item.name, function(options, resourcePath){
+            var node = item.handle.call(this, options, resourcePath);
+            this.parseChild(node, options["Children"], resourcePath);
+			if (node['onUIParseComplete']) node['onUIParseComplete']();
+			if (!isShowBackGroundColorOpacity && node.setBackGroundColorOpacity) node.setBackGroundColorOpacity(0);
+            DEBUG && node && (node.__parserName = item.name);
+            return node;
+        });
+    });
+	
     parser.initSingleNode = function(json, resourcePath){
         var node = json.UserData?eval('new ' + json.UserData + '()'):new cc.Node();
 		//...
 	}
+	
 	```
 - Add "..Sdk\platform-tools" to system variable 'Path' to be able to use 'adb' command
 

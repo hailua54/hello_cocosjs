@@ -1,3 +1,4 @@
+startCCExtend();
 namespace game
 {
   export class LayoutObject extends ccui.Layout
@@ -28,5 +29,5 @@ namespace game
 
 	}
 }
-
+endCCExtend();
 game.LayoutObject = ccui.Layout['extend'](new game.LayoutObject());
