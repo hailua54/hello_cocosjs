@@ -1,3 +1,4 @@
+startCCExtend();
 class StartScene extends game.BaseScene
 {
 	menuListener:cc.EventListener;
@@ -108,5 +109,5 @@ class StartScene extends game.BaseScene
 		this.addChild(uiView);
 	}
 }
-
+endCCExtend();
 this['StartScene'] = game.BaseScene['extend'](new StartScene());

@@ -1,3 +1,4 @@
+startCCExtend();
 class MyCustomUIClass extends game.LayoutObject
 {
 	_self:any;
@@ -35,5 +36,5 @@ class MyCustomUIClass extends game.LayoutObject
 		cc.director.runScene(this.gameModel.gameScene);
 	}
 }
-
+endCCExtend();
 this['MyCustomUIClass'] = game.LayoutObject['extend'](new MyCustomUIClass());

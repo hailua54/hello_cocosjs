@@ -3,9 +3,8 @@
 //const std::string GLViewImpl::EVENT_WINDOW_UNFOCUSED = "glview_window_unfocused";
 // override extends function of tsc. Nomore using typescript extends. Use cocos Class::extend Instead
 //var __extends = function(){}
-var org_extends = eval('__extends');
-function startCCExtend() {var __extends = function(){}}
-function endCCExtend() {var __extends = org_extends}
+function startCCExtend() {this['org_extends'] = this['__extends']; this['__extends'] = function(){}}
+function endCCExtend() {this['__extends'] = this['org_extends']}
 var res = eval("res");
 var TweenLite = eval("TweenLite");
 var g_resources = eval("g_resources");

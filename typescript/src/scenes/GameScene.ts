@@ -1,3 +1,4 @@
+startCCExtend();
 class GameScene extends game.BaseScene
 {
 	menuListener:cc.EventListener;
@@ -152,5 +153,5 @@ class GameScene extends game.BaseScene
 		return true;
   }
 }
-
+endCCExtend();
 this['GameScene'] = game.BaseScene['extend'](new GameScene());

@@ -1,6 +1,5 @@
-var org_extends = eval('__extends');
-function startCCExtend() { var __extends = function () { }; }
-function endCCExtend() { var __extends = org_extends; }
+function startCCExtend() { this['org_extends'] = this['__extends']; this['__extends'] = function () { }; }
+function endCCExtend() { this['__extends'] = this['org_extends']; }
 var res = eval("res");
 var TweenLite = eval("TweenLite");
 var g_resources = eval("g_resources");
@@ -289,22 +288,31 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var vcom;
-(function (vcom) {
+startCCExtend();
+var com;
+(function (com) {
     var BaseComponent = (function (_super) {
         __extends(BaseComponent, _super);
         function BaseComponent() {
-            _super.call(this);
+            _super.apply(this, arguments);
         }
+        BaseComponent.prototype.ctor = function () {
+            if (!this._super)
+                return;
+            this._super();
+        };
+        BaseComponent.prototype.destructor = function () {
+        };
         BaseComponent.prototype.setStyle = function (style) {
         };
         return BaseComponent;
     })(cc.Node);
-    vcom.BaseComponent = BaseComponent;
-})(vcom || (vcom = {}));
-vcom.BaseComponent = cc.Node['extend'](new vcom.BaseComponent());
-var vcom;
-(function (vcom) {
+    com.BaseComponent = BaseComponent;
+})(com || (com = {}));
+endCCExtend();
+com.BaseComponent = cc.Node['extend'](new com.BaseComponent());
+var com;
+(function (com) {
     var ComUtils = (function () {
         function ComUtils() {
         }
@@ -355,10 +363,11 @@ var vcom;
         };
         return ComUtils;
     })();
-    vcom.ComUtils = ComUtils;
-})(vcom || (vcom = {}));
-var vcom;
-(function (vcom) {
+    com.ComUtils = ComUtils;
+})(com || (com = {}));
+startCCExtend();
+var com;
+(function (com) {
     var Loading = (function (_super) {
         __extends(Loading, _super);
         function Loading(bgAlpha) {
@@ -391,9 +400,9 @@ var vcom;
                 circle.y = r * Math.sin(ang * Math.PI / 180);
                 ang -= devided;
             }
-            this.tf = vcom.ComUtils.createText('', { fontFamily: "dinbold", fontSize: 20, fontStyle: 'bold', fill: 0xffffff });
+            this.tf = com.ComUtils.createText('', { fontFamily: "dinbold", fontSize: 20, fontStyle: 'bold', fill: 0xffffff });
             this.addChild(this.tf);
-            this.titleTf = vcom.ComUtils.createText('', { fontFamily: "dinbold", fontSize: 12, fontStyle: 'bold', fill: 0xffffff });
+            this.titleTf = com.ComUtils.createText('', { fontFamily: "dinbold", fontSize: 12, fontStyle: 'bold', fill: 0xffffff });
             this.addChild(this.titleTf);
         };
         Loading.prototype.onExit = function () {
@@ -419,7 +428,7 @@ var vcom;
             this.anim.rotation += 7;
         };
         Loading.prototype.updatePercent = function (percent) {
-            this.tf.setString(vcom.ComUtils.getIntInFormat(percent));
+            this.tf.setString(com.ComUtils.getIntInFormat(percent));
         };
         Loading.prototype.show = function (hasPercent, title, showBg) {
             if (hasPercent === void 0) { hasPercent = true; }
@@ -438,10 +447,11 @@ var vcom;
             this.visible = false;
         };
         return Loading;
-    })(vcom.BaseComponent);
-    vcom.Loading = Loading;
-})(vcom || (vcom = {}));
-vcom.Loading = vcom.BaseComponent['extend'](new vcom.Loading());
+    })(com.BaseComponent);
+    com.Loading = Loading;
+})(com || (com = {}));
+endCCExtend();
+com.Loading = com.BaseComponent['extend'](new com.Loading());
 var game;
 (function (game) {
     var BaseGame = (function () {
@@ -453,6 +463,7 @@ var game;
     })();
     game.BaseGame = BaseGame;
 })(game || (game = {}));
+startCCExtend();
 var game;
 (function (game) {
     var BaseScene = (function (_super) {
@@ -467,13 +478,13 @@ var game;
                 this.deepDestructor(node.children[i]);
             }
         };
-        BaseScene.prototype.destructor = function () {
-            this.deepDestructor(this);
-        };
         BaseScene.prototype.ctor = function () {
             if (!this._super)
                 return;
             this._super();
+        };
+        BaseScene.prototype.destructor = function () {
+            this.deepDestructor(this);
         };
         BaseScene.prototype.initModel = function (gameModel) {
             this.gameModel = gameModel;
@@ -485,6 +496,7 @@ var game;
     })(cc.Scene);
     game.BaseScene = BaseScene;
 })(game || (game = {}));
+endCCExtend();
 game.BaseScene = cc.Scene['extend'](new game.BaseScene());
 startCCExtend();
 var game;
@@ -513,6 +525,7 @@ var game;
 })(game || (game = {}));
 endCCExtend();
 game.GameObject = cc.Node['extend'](new game.GameObject());
+startCCExtend();
 var game;
 (function (game) {
     var LayoutObject = (function (_super) {
@@ -537,6 +550,7 @@ var game;
     })(ccui.Layout);
     game.LayoutObject = LayoutObject;
 })(game || (game = {}));
+endCCExtend();
 game.LayoutObject = ccui.Layout['extend'](new game.LayoutObject());
 var Game = (function (_super) {
     __extends(Game, _super);
@@ -564,7 +578,7 @@ var Game = (function (_super) {
         var preloadScene = new cc.Scene();
         this.preloadScene = preloadScene;
         cc.director.runScene(preloadScene);
-        var loading = new vcom.Loading(0.5);
+        var loading = new com.Loading(0.5);
         loading.show(true, "Load common assets");
         preloadScene.addChild(loading);
         loading.setSize(winSize.width, winSize.height);
@@ -726,6 +740,7 @@ var GameUtils = (function () {
     };
     return GameUtils;
 })();
+startCCExtend();
 var GameScene = (function (_super) {
     __extends(GameScene, _super);
     function GameScene() {
@@ -837,7 +852,9 @@ var GameScene = (function (_super) {
     };
     return GameScene;
 })(game.BaseScene);
+endCCExtend();
 this['GameScene'] = game.BaseScene['extend'](new GameScene());
+startCCExtend();
 var StartScene = (function (_super) {
     __extends(StartScene, _super);
     function StartScene() {
@@ -915,7 +932,9 @@ var StartScene = (function (_super) {
     };
     return StartScene;
 })(game.BaseScene);
+endCCExtend();
 this['StartScene'] = game.BaseScene['extend'](new StartScene());
+startCCExtend();
 var MyCustomUIClass = (function (_super) {
     __extends(MyCustomUIClass, _super);
     function MyCustomUIClass() {
@@ -945,5 +964,6 @@ var MyCustomUIClass = (function (_super) {
     };
     return MyCustomUIClass;
 })(game.LayoutObject);
+endCCExtend();
 this['MyCustomUIClass'] = game.LayoutObject['extend'](new MyCustomUIClass());
 //# sourceMappingURL=game.js.map

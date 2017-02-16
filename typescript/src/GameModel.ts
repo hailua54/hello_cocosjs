@@ -4,7 +4,7 @@ class GameModel
 	public startScene:StartScene;
 	public gameScene:GameScene;
 	public uiScene:UIScene;
-	public loading:vcom.Loading;
+	public loading:com.Loading;
 
 	constructor()
 	{

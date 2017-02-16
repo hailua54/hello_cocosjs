@@ -2,7 +2,7 @@ class Game extends game.BaseGame
 {
   public gameModel:GameModel;
 	public preloadScene:cc.Scene;
-	public loading:vcom.Loading;
+	public loading:com.Loading;
 	intervalId:number;
 	orgWW:number;
 	orgWH:number;
@@ -40,7 +40,7 @@ class Game extends game.BaseGame
 		var preloadScene:cc.Scene = new cc.Scene();
 		this.preloadScene = preloadScene;
 		cc.director.runScene(preloadScene);
-		var loading:vcom.Loading = new vcom.Loading(0.5);
+		var loading:com.Loading = new com.Loading(0.5);
 		loading.show(true, "Load common assets");
 		preloadScene.addChild(loading);
 		loading.setSize(winSize.width, winSize.height);
@@ -81,7 +81,7 @@ class Game extends game.BaseGame
 			// check orientation change
 			if (GameUtils.getOrientation() != GameSettings.LAST_ORIENTATION)
 			{
-				GameSettings.LAST_ORIENTATION = GameUtils.getOrientation();
+				GameSettings.LAST_ORIENTATION = GameUtils.getOrientation()
 				if (cc.director.getRunningScene() && cc.director.getRunningScene()['orientationHandler']) cc.director.getRunningScene()['orientationHandler']();
 			}
 		}
