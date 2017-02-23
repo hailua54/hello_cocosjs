@@ -30,7 +30,7 @@
 	
 	```c
 	void Director::reset()
-	{    
+	{   // ...
 		Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("game_on_exit");
 		// ...
 	}
