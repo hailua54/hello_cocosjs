@@ -114,6 +114,27 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
     }
 	```
 
+- Load image from server:
+
+	```js
+	cc.loader.loadImg(url, {isCrossOrigin: false}, function(error:any, img:any){
+	if (error) return;
+	if (isWeb())
+	{
+		var avatarTex = new cc.Texture2D();
+		avatarTex.initWithElement(img);
+		avatarTex.handleLoadedTexture();
+		var avatar = new cc.Sprite(avatarTex);
+		this.resizeAvatar(avatar);
+	}
+	else {
+		var avatar = new cc.Sprite();
+		avatar.initWithTexture(img);
+		this.resizeAvatar(avatar);
+	}
+}.bind(this));
+	```
+	
 - JS call C++ sample:
 
 	### custom_binding.h:
