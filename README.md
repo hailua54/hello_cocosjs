@@ -78,6 +78,50 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 
 ## References
 
+- Android Flow:
+	
+	+ Build libcocos2dandroid:
+	
+		frameworks\cocos2d-x\cocos\platform\android\Android.mk ( ... javaactivity-android.cpp \ ...)
+		
+		javaactivity-android.cpp => frameworks\runtime-src\proj.android-studio\app\jni\hellojavascript\main.cpp:
+			
+			* cocos_android_app_init(JniHelper::getEnv()); 
+			
+			* init C++ for java to call via jni:
+			
+			```c
+			JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
+			{
+				auto director = cocos2d::Director::getInstance();
+				auto glview = director->getOpenGLView();
+				if (!glview)
+				{
+					glview = cocos2d::GLViewImpl::create("Android app");
+					glview->setFrameSize(w, h);
+					director->setOpenGLView(glview);
+
+					cocos2d::Application::getInstance()->run();
+				}
+				else
+				{
+					...
+				}
+				cocos2d::network::_preloadJavaDownloaderClass();
+			}
+			```
+			
+		frameworks\cocos2d-x\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxRenderer.java:
+			
+			```java
+			@Override
+			public void onSurfaceCreated(final GL10 GL10, final EGLConfig EGLConfig) {
+				Cocos2dxRenderer.nativeInit(this.mScreenWidth, this.mScreenHeight);
+				this.mLastTickInNanoSeconds = System.nanoTime();
+				mNativeInitCompleted = true;
+			}
+			```
+		
 - GC
 
 	http://wiki.luajit.org/New-Garbage-Collector#gc-algorithms_two-color-mark-sweep
