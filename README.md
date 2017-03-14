@@ -121,6 +121,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 				mNativeInitCompleted = true;
 			}
 			```
+		check: http://cnguyen93.blogspot.com/2014/03/khoi-tao-opengl-es-20-tren-android.html
 		
 - GC
 
