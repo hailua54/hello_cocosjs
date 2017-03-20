@@ -195,6 +195,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 - Load image from server:
 
 	```js
+	
 	cc.loader.loadImg(url, {isCrossOrigin: false}, function(error:any, img:any){
 	if (error) return;
 	if (isWeb())
@@ -210,7 +211,8 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 		avatar.initWithTexture(img);
 		this.resizeAvatar(avatar);
 	}
-}.bind(this));
+	}.bind(this));
+	
 	```
 	
 - JS call C++ sample:
@@ -411,7 +413,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 
 	+  Binding:
 	
-		# frameworks\cocos2d-x\cocos\scripting\js-bindings\manual\experimental\jsb_cocos2dx_experimental_video_manual.cpp
+		### frameworks\cocos2d-x\cocos\scripting\js-bindings\manual\experimental\jsb_cocos2dx_experimental_video_manual.cpp
 	
 		```c
 		static bool jsb_cocos2dx_experimental_ui_VideoPlayer_addEventListener(JSContext *cx, uint32_t argc, jsval *vp)
@@ -444,7 +446,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 		}
 		```
 	
-		# frameworks\cocos2d-x\cocos\scripting\js-bindings\auto\jsb_cocos2dx_experimental_video_auto.cpp
+		### frameworks\cocos2d-x\cocos\scripting\js-bindings\auto\jsb_cocos2dx_experimental_video_auto.cpp
 	
 		```c
 		bool js_cocos2dx_experimental_video_VideoPlayer_onPlayEvent(JSContext *cx, uint32_t argc, jsval *vp)
@@ -471,7 +473,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 		
 	+ JS code:
 		
-		# frameworks\cocos2d-x\cocos\scripting\js-bindings\script\ccui\jsb_cocos2d_ui.js
+		### frameworks\cocos2d-x\cocos\scripting\js-bindings\script\ccui\jsb_cocos2d_ui.js
 		
 		```js
 		ccui.VideoPlayer.prototype.setEventListener = function(event, callback){
@@ -504,7 +506,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 		
 	+ Andoid cpp:
 		
-		# frameworks\cocos2d-x\cocos\ui\UIVideoPlayer-android.cpp
+		### frameworks\cocos2d-x\cocos\ui\UIVideoPlayer-android.cpp
 		
 		```c
 		
