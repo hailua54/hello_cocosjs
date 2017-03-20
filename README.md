@@ -58,6 +58,25 @@
 	```
 - Add "..Sdk\platform-tools" to system variable 'Path' to be able to use 'adb' command
 
+- Appdelegate.cpp
+
+	```c
+	static u_long myNextRandom = 1;
+	double atof(const char *nptr)
+	{
+		return (strtod(nptr, NULL));
+	}
+
+	int rand(void)
+	{
+		return (int)((myNextRandom = (1103515245 * myNextRandom) + 12345) % ((u_long)RAND_MAX + 1));
+	}
+
+	void srand(u_int seed)
+	{
+		myNextRandom = seed;
+	}
+	```
 ## Compile
 
 - web: cocos compile -p web -m release --advanced
@@ -69,7 +88,7 @@
 		
 		Install driver: Ex: GT-I9100LKAXEU, install Kies to update driver http://www.samsung.com/uk/support/model/GT-I9100LKAXEU
 		
-	+ command: cocos compile cocos compile -p android --android-studio
+	+ command: cocos compile cocos compile -p android --android-studio --app-abi=x86 --ap android-22
 
 ## Tip
 
@@ -78,6 +97,8 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 
 ## References
 
+- Android VideoPlayer: check frameworks\cocos2d-x\cocos\ui\UIVideoPlayer-android.cpp
+	
 - Android Flow:
 	
 	+ Build libcocos2dandroid:
@@ -91,6 +112,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 			* init C++ for java to call via jni:
 			
 			```c
+			// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
 			JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
 			{
 				auto director = cocos2d::Director::getInstance();
@@ -109,6 +131,13 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 				}
 				cocos2d::network::_preloadJavaDownloaderClass();
 			}
+			
+			
+			// in frameworks\cocos2d-x\cocos\platform\android\jni\Java_org_cocos2dx_lib_Cocos2dxRenderer.cpp
+			
+			JNIEXPORT void JNICALL Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeRender(JNIEnv* env) {
+				cocos2d::Director::getInstance()->mainLoop();
+			}
 			```
 			
 		frameworks\cocos2d-x\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxRenderer.java:
@@ -120,6 +149,10 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 				this.mLastTickInNanoSeconds = System.nanoTime();
 				mNativeInitCompleted = true;
 			}
+			
+			public void onDrawFrame(GL10 unused)
+			
+			public void onSurfaceChanged(GL10 unused, int width, int height)
 			```
 		check: http://cnguyen93.blogspot.com/2014/03/khoi-tao-opengl-es-20-tren-android.html
 		
@@ -369,9 +402,122 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 - C++ call Java:
 
 	http://stnguyen.com/cocos2d-x/call-java-functions-from-cpp.html
+
+- Build:
+
+	+ Android: https://developer.android.com/ndk/guides/prebuilts.html#dm
 	
+- Video Player:
+
+	+  Binding:
 	
+		# frameworks\cocos2d-x\cocos\scripting\js-bindings\manual\experimental\jsb_cocos2dx_experimental_video_manual.cpp
 	
+		```c
+		static bool jsb_cocos2dx_experimental_ui_VideoPlayer_addEventListener(JSContext *cx, uint32_t argc, jsval *vp)
+		{
+			JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+			JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+			js_proxy_t *proxy = jsb_get_js_proxy(obj);
+			experimental::ui::VideoPlayer* cobj = (experimental::ui::VideoPlayer *)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( cobj, cx, false, "Invalid Native Object");
+
+			if(argc == 1){
+				std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, obj, args.get(0)));
+				cobj->addEventListener([=](Ref* widget, experimental::ui::VideoPlayer::EventType type)->void{
+					jsval arg[2];
+					JS::RootedObject jsobj(cx, js_get_or_create_jsobject<Ref>(cx, widget));
+					arg[0] = OBJECT_TO_JSVAL(jsobj);
+					arg[1] = int32_to_jsval(cx, (int32_t)type);
+					JS::RootedValue rval(cx);
+
+					bool ok = func->invoke(2, arg, &rval);
+					if (!ok && JS_IsExceptionPending(cx)) {
+						JS_ReportPendingException(cx);
+					}
+				});
+				return true;
+			}
+
+			JS_ReportError(cx, "jsb_cocos2dx_experimental_ui_VideoPlayer_addEventListener : wrong number of arguments: %d, was expecting %d", argc, 1);
+			return false;
+		}
+		```
 	
+		# frameworks\cocos2d-x\cocos\scripting\js-bindings\auto\jsb_cocos2dx_experimental_video_auto.cpp
+	
+		```c
+		bool js_cocos2dx_experimental_video_VideoPlayer_onPlayEvent(JSContext *cx, uint32_t argc, jsval *vp)
+		{
+			JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
+			bool ok = true;
+			JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
+			js_proxy_t *proxy = jsb_get_js_proxy(obj);
+			cocos2d::experimental::ui::VideoPlayer* cobj = (cocos2d::experimental::ui::VideoPlayer *)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_experimental_video_VideoPlayer_onPlayEvent : Invalid Native Object");
+			if (argc == 1) {
+				int arg0 = 0;
+				ok &= jsval_to_int32(cx, args.get(0), (int32_t *)&arg0);
+				JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_experimental_video_VideoPlayer_onPlayEvent : Error processing arguments");
+				cobj->onPlayEvent(arg0);
+				args.rval().setUndefined();
+				return true;
+			}
+
+			JS_ReportError(cx, "js_cocos2dx_experimental_video_VideoPlayer_onPlayEvent : wrong number of arguments: %d, was expecting %d", argc, 1);
+			return false;
+		}
+		```
+		
+	+ JS code:
+		
+		# frameworks\cocos2d-x\cocos\scripting\js-bindings\script\ccui\jsb_cocos2d_ui.js
+		
+		```js
+		ccui.VideoPlayer.prototype.setEventListener = function(event, callback){
+			if (!this.videoPlayerCallback)
+			{
+				this.videoPlayerCallback = function(sender, eventType){
+					cc.log("videoEventCallback eventType:" + eventType);
+					switch (eventType) {
+						case 0:
+							this["VideoPlayer_"+ccui.VideoPlayer.EventType.PLAYING] && this["VideoPlayer_"+ccui.VideoPlayer.EventType.PLAYING](sender);
+							break;
+						case 1:
+							this["VideoPlayer_"+ccui.VideoPlayer.EventType.PAUSED] && this["VideoPlayer_"+ccui.VideoPlayer.EventType.PAUSED](sender);
+							break;
+						case 2:
+							this["VideoPlayer_"+ccui.VideoPlayer.EventType.STOPPED] && this["VideoPlayer_"+ccui.VideoPlayer.EventType.STOPPED](sender);
+							break;
+						case 3:
+							this["VideoPlayer_"+ccui.VideoPlayer.EventType.COMPLETED] && this["VideoPlayer_"+ccui.VideoPlayer.EventType.COMPLETED](sender);
+							break;
+						default:
+							break;
+					}
+				};
+				this.addEventListener(this.videoPlayerCallback);
+			}
+			this["VideoPlayer_"+event] = callback;
+		};
+		```
+		
+	+ Andoid cpp:
+		
+		# frameworks\cocos2d-x\cocos\ui\UIVideoPlayer-android.cpp
+		
+		```c
+		
+		#include "ui/UIVideoPlayer.h"
+		
+		//...
+		
+		void VideoPlayer::addEventListener(const VideoPlayer::ccVideoPlayerCallback& callback)
+		{
+			_eventCallback = callback;
+		}
+		```
+		
+		
 	
 		
