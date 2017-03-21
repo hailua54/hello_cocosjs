@@ -8,6 +8,7 @@ var CANVAS_HEIGHT = eval("CANVAS_HEIGHT");
 var PORTRAIT = 1;
 var LANDSCAPE = 2;
 var CppUtils = eval('CppUtils');
+var isShowBackGroundColorOpacity = true;
 var sys;
 (function (sys) {
     sys.ON_ORIENTATION_CHANGE = "sys_on_orientation_change";
@@ -913,22 +914,33 @@ var StartScene = (function (_super) {
         this.loadUI();
         this.sizeHandler();
     };
+    StartScene.prototype.initVod = function () {
+        if (cc.sys.os == cc.sys.OS_WINDOWS)
+            return;
+        var screen = GameUtils.getScreenSize();
+        var layer = cc.LayerColor.create(cc.color(0, 0, 0, 0), 232, 240);
+        layer.setBlendFunc(cc.BlendFunc.DISABLE);
+        this.addChild(layer);
+        var vurl = "res/cocosvideo.mp4";
+        if (cc.sys.platform == cc.sys.ANDROID) {
+            var video = new ccui.VideoPlayer();
+            video.setContentSize(432, 240);
+            video.setKeepAspectRatioEnabled(true);
+            this.addChild(video);
+            video.setFileName(vurl);
+            video.anchorX = 0;
+            video.anchorY = 0;
+            video.x = 0;
+            video.y = 0;
+            video.setEventListener(ccui.VideoPlayer.EventType.PLAYING, function () {
+                cc.log("ccui.VideoPlayer.EventType.PLAYING ==== ");
+            }.bind(this));
+            video.play();
+        }
+    };
     StartScene.prototype.loadUI = function () {
         var screen = GameUtils.getScreenSize();
-        var jsonFile = GameUtils.getOrientation() == PORTRAIT ? "res/Login_portrait.json" : "res/Login_landscape.json";
-        var json = ccs.load(jsonFile);
-        var uiView = json.node.getChildByName("view");
-        json.node.removeChild(uiView);
-        uiView.initModel(this.gameModel);
-        cc.log("this.uiView  ======== " + this.uiView);
-        if (this.uiView) {
-            cc.log("here ---");
-            GameUtils.copyUIStatus(this.uiView, uiView);
-            this.removeChild(this.uiView);
-            this.uiView.destructor();
-        }
-        this.uiView = uiView;
-        this.addChild(uiView);
+        this.initVod();
     };
     return StartScene;
 })(game.BaseScene);

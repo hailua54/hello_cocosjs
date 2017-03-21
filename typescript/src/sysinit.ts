@@ -13,6 +13,7 @@ var CANVAS_HEIGHT = eval("CANVAS_HEIGHT");
 var PORTRAIT:number = 1;
 var LANDSCAPE:number = 2;
 var CppUtils = eval('CppUtils');
+var isShowBackGroundColorOpacity = true;
 
 namespace sys
 {

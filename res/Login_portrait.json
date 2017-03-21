@@ -60,7 +60,7 @@
               {
                 "FileData": {
                   "Type": "Normal",
-                  "Path": "login/.Login_PList.Dir/Login_LI07.jpg",
+                  "Path": "Login/LI07.jpg",
                   "Plist": ""
                 },
                 "Scale9OriginX": 211,
@@ -72,8 +72,8 @@
                   "ScaleY": 0.5
                 },
                 "Position": {
-                  "X": 320.0003,
-                  "Y": 481.8614
+                  "X": 320.0,
+                  "Y": 480.0
                 },
                 "Scale": {
                   "ScaleX": 1.0,
@@ -85,7 +85,7 @@
                 "PositionPercentYEnabled": true,
                 "PrePosition": {
                   "X": 0.5,
-                  "Y": 0.5019
+                  "Y": 0.5
                 },
                 "PercentWidthEnable": true,
                 "PercentHeightEnable": true,
@@ -95,10 +95,6 @@
                   "X": 1.0,
                   "Y": 1.0
                 },
-                "LeftMargin": 0.0003,
-                "RightMargin": -0.0003,
-                "TopMargin": -1.8614,
-                "BottomMargin": 1.8614,
                 "Tag": 8,
                 "ActionTag": -324153660,
                 "Size": {
@@ -232,19 +228,17 @@
                 },
                 "PressedFileData": {
                   "Type": "Normal",
-                  "Path": "login/.Login_PList.Dir/Login_BaS32.png",
+                  "Path": "Login/BaS32.png",
                   "Plist": ""
                 },
                 "NormalFileData": {
                   "Type": "Normal",
-                  "Path": "login/.Login_PList.Dir/Login_BaS31.png",
+                  "Path": "Login/BaS31.png",
                   "Plist": ""
                 },
                 "Scale9Enable": true,
-                "Scale9OriginX": 79,
-                "Scale9OriginY": 26,
-                "Scale9Width": 82,
-                "Scale9Height": 29,
+                "Scale9Width": 240,
+                "Scale9Height": 81,
                 "OutlineColor": {
                   "R": 0,
                   "G": 0,
@@ -310,19 +304,17 @@
                 },
                 "PressedFileData": {
                   "Type": "Normal",
-                  "Path": "login/.Login_PList.Dir/Login_LI02.png",
+                  "Path": "Login/LI02.png",
                   "Plist": ""
                 },
                 "NormalFileData": {
                   "Type": "Normal",
-                  "Path": "login/.Login_PList.Dir/Login_LI01.png",
+                  "Path": "Login/LI01.png",
                   "Plist": ""
                 },
                 "Scale9Enable": true,
-                "Scale9OriginX": 79,
-                "Scale9OriginY": 26,
-                "Scale9Width": 82,
-                "Scale9Height": 29,
+                "Scale9Width": 240,
+                "Scale9Height": 81,
                 "OutlineColor": {
                   "R": 0,
                   "G": 0,
@@ -397,11 +389,11 @@
         "Default/CheckBox_Press.png",
         "Default/CheckBoxNode_Disable.png",
         "Default/CheckBoxNode_Normal.png",
-        "login/.Login_PList.Dir/Login_BaS31.png",
-        "login/.Login_PList.Dir/Login_BaS32.png",
-        "login/.Login_PList.Dir/Login_LI01.png",
-        "login/.Login_PList.Dir/Login_LI02.png",
-        "login/.Login_PList.Dir/Login_LI07.jpg"
+        "Login/BaS31.png",
+        "Login/BaS32.png",
+        "Login/LI01.png",
+        "Login/LI02.png",
+        "Login/LI07.jpg"
       ],
       "ctype": "GameFileData"
     }

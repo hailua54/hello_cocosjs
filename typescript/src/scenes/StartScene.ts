@@ -85,10 +85,42 @@ class StartScene extends game.BaseScene
 		this.sizeHandler();
 	}
 
+	protected initVod():void
+	{
+		if (cc.sys.os == cc.sys.OS_WINDOWS) return;
+		var screen:cc.Size = GameUtils.getScreenSize();
+		var layer:cc.LayerColor = cc.LayerColor.create(cc.color(0,0,0,0), 232, 240);
+		layer.setBlendFunc(cc.BlendFunc.DISABLE);
+		this.addChild(layer);
+
+		var vurl:string = "res/cocosvideo.mp4";
+		if (cc.sys.platform == cc.sys.ANDROID)
+		{
+			var video:ccui.VideoPlayer = new ccui.VideoPlayer();
+			//Fuk: MUST set content size here to trigger surfaceCreated(SurfaceHolder holder) on Cocos2dxVideoView
+			video.setContentSize(432, 240);
+			video.setKeepAspectRatioEnabled(true);
+			this.addChild(video);
+			video.setFileName(vurl);
+			video.anchorX = 0;
+			video.anchorY = 0;
+			video.x = 0;
+			video.y = 0;
+			video.setEventListener(ccui.VideoPlayer.EventType.PLAYING, function(){
+				// get real video width/height
+				cc.log("ccui.VideoPlayer.EventType.PLAYING ==== ");
+			}.bind(this))
+			video.play();
+		}
+	}
+
 	public loadUI()
 	{
-		//get the screen size of your game canvas
 		var screen:cc.Size = GameUtils.getScreenSize();
+		this.initVod();
+		/*
+		//get the screen size of your game canvas
+
 		var jsonFile:string = GameUtils.getOrientation() == PORTRAIT ? "res/Login_portrait.json" : "res/Login_landscape.json";
 		// init UI
     var json = ccs.load(jsonFile);
@@ -106,7 +138,8 @@ class StartScene extends game.BaseScene
 			this.uiView.destructor();
 		}
 		this.uiView = uiView;
-		this.addChild(uiView);
+		this.uiView.addChild(uiView);
+		*/
 	}
 }
 endCCExtend();
