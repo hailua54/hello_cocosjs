@@ -93,15 +93,16 @@
 
 ## Tip
 
-- The code using tab size = 2. To view the draw code with github, put a tab size on the url ?ts=2
-Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/StartScene.ts?ts=2
-
 		```c
 		void srand(u_int seed)
 		{
 			myNextRandom = seed;
 		}
 		```
+- The code using tab size = 2. To view the draw code with github, put a tab size on the url ?ts=2
+Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/StartScene.ts?ts=2
+
+
 		
 ## References
 - Android VideoPlayer: check frameworks\cocos2d-x\cocos\ui\UIVideoPlayer-android.cpp :
