@@ -57,26 +57,6 @@
 	```
 	
 - Add "..Sdk\platform-tools" to system variable 'Path' to be able to use 'adb' command
-
-- Appdelegate.cpp
-
-	```c
-	static u_long myNextRandom = 1;
-	double atof(const char *nptr)
-	{
-		return (strtod(nptr, NULL));
-	}
-
-	int rand(void)
-	{
-		return (int)((myNextRandom = (1103515245 * myNextRandom) + 12345) % ((u_long)RAND_MAX + 1));
-	}
-
-	void srand(u_int seed)
-	{
-		myNextRandom = seed;
-	}
-	```
 	
 - frameworks\cocos2d-x\cocos\platform\android\jni\Java_org_cocos2dx_lib_Cocos2dxRenderer.cpp
 	
@@ -86,7 +66,7 @@
                 //Application::getInstance()->applicationDidEnterBackground();
                 cocos2d::EventCustom backgroundEvent(EVENT_COME_TO_BACKGROUND);
                 cocos2d::Director::getInstance()->getEventDispatcher()->dispatchEvent(&backgroundEvent);
-				Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("custom_game_event_hide");
+                Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("custom_game_event_hide");
         }
     }
 	```
@@ -142,6 +122,8 @@
 		Install driver: Ex: GT-I9100LKAXEU, install Kies to update driver http://www.samsung.com/uk/support/model/GT-I9100LKAXEU
 		
 	+ command: cocos compile cocos compile -p android --android-studio --app-abi=x86 --ap android-22
+	
+	+ - atof + srand error use --ap android-22
 
 ## Tip
 	
