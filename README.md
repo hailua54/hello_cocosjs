@@ -78,6 +78,22 @@
 	}
 	```
 	
+	
+## Compile
+
+- web: cocos compile -p web -m release --advanced
+
+- Android studio:
+	+ setup for debug on hardware device https://developer.android.com/studio/run/device.html#setting-up
+		
+		Enable USB debug mode on device
+		
+		Install driver: Ex: GT-I9100LKAXEU, install Kies to update driver http://www.samsung.com/uk/support/model/GT-I9100LKAXEU
+		
+	+ command: cocos compile cocos compile -p android --android-studio --app-abi=x86 --ap android-22
+
+## Tip
+
 	```c
 	// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
 	JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
@@ -107,21 +123,6 @@
 	}
 	```
 	
-## Compile
-
-- web: cocos compile -p web -m release --advanced
-
-- Android studio:
-	+ setup for debug on hardware device https://developer.android.com/studio/run/device.html#setting-up
-		
-		Enable USB debug mode on device
-		
-		Install driver: Ex: GT-I9100LKAXEU, install Kies to update driver http://www.samsung.com/uk/support/model/GT-I9100LKAXEU
-		
-	+ command: cocos compile cocos compile -p android --android-studio --app-abi=x86 --ap android-22
-
-## Tip
-
 - The code using tab size = 2. To view the draw code with github, put a tab size on the url ?ts=2
 Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/StartScene.ts?ts=2
 
