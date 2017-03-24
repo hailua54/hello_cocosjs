@@ -97,10 +97,10 @@
 Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/StartScene.ts?ts=2
 
 		```c
-			// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
-			JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
-			{
-			}
+		void srand(u_int seed)
+		{
+			myNextRandom = seed;
+		}
 		```
 		
 ## References
