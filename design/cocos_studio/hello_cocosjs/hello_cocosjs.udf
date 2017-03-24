@@ -28,5 +28,14 @@
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="Login_portrait.csd" />
+          <FilePathData Path="Login_landscape.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="Login_portrait.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>

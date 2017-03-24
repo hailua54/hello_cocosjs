@@ -20,21 +20,26 @@
 - Modify main.js to create Game object
 
 	```js
+	
 	cc.LoaderScene.preload(g_resources, function () {
 		//cc.director.runScene(new HelloWorldScene()); 
 		var game = new Game();
 	}, this);
+	
 	```
 		
 - Modify frameworks/cocos2d-x/cocos/base/CCDirector.cpp
 	
 	```c
+	
 	void Director::reset()
 	{   // ...
 		Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("game_on_exit");
 		// ...
 	}
+	
 	```
+	
 - Modify timlineParser-2.x.js
 
 	```js
@@ -56,11 +61,13 @@
 	}
 	
 	```
+	
 - Add "..Sdk\platform-tools" to system variable 'Path' to be able to use 'adb' command
 
 - Appdelegate.cpp
 
 	```c
+	
 	static u_long myNextRandom = 1;
 	double atof(const char *nptr)
 	{
@@ -76,7 +83,9 @@
 	{
 		myNextRandom = seed;
 	}
+	
 	```
+	
 ## Compile
 
 - web: cocos compile -p web -m release --advanced
@@ -112,6 +121,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 			* init C++ for java to call via jni:
 			
 			```c
+			
 			// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
 			JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
 			{
@@ -138,11 +148,13 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 			JNIEXPORT void JNICALL Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeRender(JNIEnv* env) {
 				cocos2d::Director::getInstance()->mainLoop();
 			}
+			
 			```
 			
 		frameworks\cocos2d-x\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxRenderer.java:
 			
 			```java
+			
 			@Override
 			public void onSurfaceCreated(final GL10 GL10, final EGLConfig EGLConfig) {
 				Cocos2dxRenderer.nativeInit(this.mScreenWidth, this.mScreenHeight);
@@ -153,7 +165,9 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 			public void onDrawFrame(GL10 unused)
 			
 			public void onSurfaceChanged(GL10 unused, int width, int height)
+			
 			```
+			
 		check: http://cnguyen93.blogspot.com/2014/03/khoi-tao-opengl-es-20-tren-android.html
 		
 - GC
@@ -171,6 +185,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 - Resolution policy: check CCEGLView.js
 	
 	```js
+	
 	_setupContainer: function (view, w, h) {
         var locCanvas = cc.game.canvas, locContainer = cc.game.container;
         if (cc.sys.isMobile) {
@@ -220,6 +235,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	### custom_binding.h:
 	
 	```c
+	
 	#include "jsapi.h"
 
 	extern JSClass  *jsb_CppUtils_class;
@@ -232,6 +248,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	### custom_binding.cpp:
 	
 	```c
+	
 	#include "custom_binding.h"
 	#include "sys_init.h"
 	#include "scripting/js-bindings/manual/ScriptingCore.h"

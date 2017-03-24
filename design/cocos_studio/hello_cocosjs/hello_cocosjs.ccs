@@ -12,8 +12,8 @@
           <Image Name="LI07.jpg" />
           <Image Name="sky.png" />
         </Folder>
-        <Project Name="Login_portrait.csd" Type="Scene" />
         <Project Name="Login_landscape.csd" Type="Scene" />
+        <Project Name="Login_portrait.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>
