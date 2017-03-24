@@ -78,6 +78,57 @@
 	}
 	```
 	
+- frameworks\cocos2d-x\cocos\platform\android\jni\Java_org_cocos2dx_lib_Cocos2dxRenderer.cpp
+	
+	```c
+	JNIEXPORT void JNICALL Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeOnPause() {
+        if (Director::getInstance()->getOpenGLView()) {
+                //Application::getInstance()->applicationDidEnterBackground();
+                cocos2d::EventCustom backgroundEvent(EVENT_COME_TO_BACKGROUND);
+                cocos2d::Director::getInstance()->getEventDispatcher()->dispatchEvent(&backgroundEvent);
+				Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("custom_game_event_hide");
+        }
+    }
+	```
+	
+- frameworks\cocos2d-x\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxGLSurfaceView.java
+
+	```java
+	@Override
+    public void onPause() {
+        this.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+               Cocos2dxGLSurfaceView.this.mCocos2dxRenderer.handleOnPause();
+            }
+        });
+        //this.setRenderMode(RENDERMODE_WHEN_DIRTY);
+        //super.onPause();
+    }
+	
+	Cocos2dxGLSurfaceView.sHandler = new Handler() {
+		@Override
+		public void handleMessage(final Message msg) {
+			switch (msg.what) {
+				case HANDLER_OPEN_IME_KEYBOARD:
+					Cocos2dxGLSurfaceView.this.mCocos2dxEditText.setVisibility(View.VISIBLE);
+					//Cocos2dxGLSurfaceView.mCocos2dxGLSurfaceView.setVisibility(View.GONE);
+					Cocos2dxGLSurfaceView.cppOnOpenIMEKeyboard(true);
+					//...
+					break;
+
+				case HANDLER_CLOSE_IME_KEYBOARD:
+					Cocos2dxGLSurfaceView.this.mCocos2dxEditText.setVisibility(View.GONE);
+					//Cocos2dxGLSurfaceView.mCocos2dxGLSurfaceView.setVisibility(View.VISIBLE);
+					Cocos2dxGLSurfaceView.cppOnOpenIMEKeyboard(false);
+					//...
+					break;
+			}
+		}
+	};
+	
+	public static native void cppOnOpenIMEKeyboard(boolean isOpen);
+	```
 	
 ## Compile
 
@@ -345,7 +396,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	#include "scripting/js-bindings/manual/ScriptingCore.h"
 	USING_NS_CC;
 
-	#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+	#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 	#include <jni.h>
 	#include "platform/android/jni/JniHelper.h"
 	#endif
@@ -355,10 +406,27 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	extern "C"
 	void Java_org_cocos2dx_javascript_NativeCppFunctions_cppOrientationChange(JNIEnv* env, jobject /* this */, jint orientation)
 	{
-		CCLOG("Java_org_cocos2dx_javascript_NativeCppFunctions_cppOrientationChange %d ", orientation);
 		int orient = orientation;
 		// should call the function in cocos thread http://discuss.cocos2d-x.org/t/solved-calling-javascript-from-c-crashes-on-android/22805/3
-		Director::getInstance()->getScheduler()->performFunctionInCocosThread([=] {sys::cpp_2_js_orientationChange(orient); });
+		Director::getInstance()->getScheduler()->performFunctionInCocosThread([=] {
+			CCLOG("Java_org_cocos2dx_javascript_NativeCppFunctions_cppOrientationChange %d ", orient);
+			sys::cpp_2_js_orientationChange(orient); 
+		});
+	}
+
+	// custom cpp functions for Java to call
+	extern "C"
+	void Java_org_cocos2dx_lib_Cocos2dxGLSurfaceView_cppOnOpenIMEKeyboard(JNIEnv* env, jobject /* this */, jboolean isOpen)
+	{
+		bool opened = isOpen;
+		Director::getInstance()->getScheduler()->performFunctionInCocosThread([=] {
+			CCLOG("Java_org_cocos2dx_lib_Cocos2dxGLSurfaceView_cppOnOpenIMEKeyboard %d ", opened);
+			if (opened) Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("IME_keyboard_open");
+			else
+			{
+				Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("IME_keyboard_close");
+			}
+		});
 	}
 	#endif
 
