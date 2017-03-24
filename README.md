@@ -97,7 +97,34 @@
 Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/StartScene.ts?ts=2
 
 ## References
+```c
+	// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
+	JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
+	{
+		auto director = cocos2d::Director::getInstance();
+		auto glview = director->getOpenGLView();
+		if (!glview)
+		{
+			glview = cocos2d::GLViewImpl::create("Android app");
+			glview->setFrameSize(w, h);
+			director->setOpenGLView(glview);
 
+			cocos2d::Application::getInstance()->run();
+		}
+		else
+		{
+			...
+		}
+		cocos2d::network::_preloadJavaDownloaderClass();
+	}
+	
+	
+	// in frameworks\cocos2d-x\cocos\platform\android\jni\Java_org_cocos2dx_lib_Cocos2dxRenderer.cpp
+	
+	JNIEXPORT void JNICALL Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeRender(JNIEnv* env) {
+		cocos2d::Director::getInstance()->mainLoop();
+	}
+	```
 - Android VideoPlayer: check frameworks\cocos2d-x\cocos\ui\UIVideoPlayer-android.cpp
 	
 - Android Flow:
@@ -173,7 +200,6 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 - Resolution policy: check CCEGLView.js
 	
 	```js
-	
 	_setupContainer: function (view, w, h) {
         var locCanvas = cc.game.canvas, locContainer = cc.game.container;
         if (cc.sys.isMobile) {
