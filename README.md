@@ -104,6 +104,14 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 - Android Flow:
 	
 	+ Build libcocos2dandroid:
+	
+		frameworks\cocos2d-x\cocos\platform\android\Android.mk ( ... javaactivity-android.cpp \ ...)
+		
+		javaactivity-android.cpp => frameworks\runtime-src\proj.android-studio\app\jni\hellojavascript\main.cpp:
+			
+		1. cocos_android_app_init(JniHelper::getEnv()); 
+		
+		2. init C++ for java to call via jni:
 		
 		```c
 		// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
@@ -136,18 +144,18 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 			
 		frameworks\cocos2d-x\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxRenderer.java:
 			
-			```java
-			@Override
-			public void onSurfaceCreated(final GL10 GL10, final EGLConfig EGLConfig) {
-				Cocos2dxRenderer.nativeInit(this.mScreenWidth, this.mScreenHeight);
-				this.mLastTickInNanoSeconds = System.nanoTime();
-				mNativeInitCompleted = true;
-			}
-			
-			public void onDrawFrame(GL10 unused)
-			
-			public void onSurfaceChanged(GL10 unused, int width, int height)
-			```
+		```java
+		@Override
+		public void onSurfaceCreated(final GL10 GL10, final EGLConfig EGLConfig) {
+			Cocos2dxRenderer.nativeInit(this.mScreenWidth, this.mScreenHeight);
+			this.mLastTickInNanoSeconds = System.nanoTime();
+			mNativeInitCompleted = true;
+		}
+		
+		public void onDrawFrame(GL10 unused)
+		
+		public void onSurfaceChanged(GL10 unused, int width, int height)
+		```
 			
 		check: http://cnguyen93.blogspot.com/2014/03/khoi-tao-opengl-es-20-tren-android.html
 		
