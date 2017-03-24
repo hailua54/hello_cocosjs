@@ -137,6 +137,24 @@
 	
 	+ atof / srand error use --ap android-22
 	
+	```c
+	static u_long myNextRandom = 1;
+	double atof(const char *nptr)
+	{
+	return (strtod(nptr, NULL));
+	}
+
+	int rand(void)
+	{
+	return (int)((myNextRandom = (1103515245 * myNextRandom) + 12345) % ((u_long)RAND_MAX + 1));
+	}
+
+	void srand(u_int seed)
+	{
+	myNextRandom = seed;
+	}
+	```
+	
 	+ build bug report frameworks\runtime-src\proj.android-studio\app\build\outputs\logs
 
 ## Tip
