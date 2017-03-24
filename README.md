@@ -103,14 +103,7 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	
 	+ Build libcocos2dandroid:
 	
-		frameworks\cocos2d-x\cocos\platform\android\Android.mk ( ... javaactivity-android.cpp \ ...)
-		
-		javaactivity-android.cpp => frameworks\runtime-src\proj.android-studio\app\jni\hellojavascript\main.cpp:
-			
-			1. cocos_android_app_init(JniHelper::getEnv()); 
-			
-			2. init C++ for java to call via jni:
-			
+
 			```c
 			// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
 			JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
