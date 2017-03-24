@@ -7,6 +7,18 @@
 - Cososjs typescript definition (https://github.com/jamma/cocos2d-typescript-definitions.git)
 - Cocos2d-x 3.11.1+
 
+## create project
+
+- command:
+
+	cocos new -l js -p com.vgame.hello_cocosjs hello_cocosjs
+	
+	"com.vgame.hello_cocosjs" will be  
+	
+		applicationId in frameworks\runtime-src\proj.android-studio\app\build.gradle
+		
+		package="com.vgame.hello_cocosjs" in frameworks\runtime-src\proj.android-studio\app\AndroidManifest.xml
+		
 ## Initialize
 
 - Modify project.json (no more load app.js)
@@ -123,7 +135,27 @@
 		
 	+ command: cocos compile cocos compile -p android --android-studio --app-abi=x86 --ap android-22
 	
-	+ - atof + srand error use --ap android-22
+	+ atof / srand error use --ap android-22
+	
+	```c
+	static u_long myNextRandom = 1;
+	double atof(const char *nptr)
+	{
+	return (strtod(nptr, NULL));
+	}
+
+	int rand(void)
+	{
+	return (int)((myNextRandom = (1103515245 * myNextRandom) + 12345) % ((u_long)RAND_MAX + 1));
+	}
+
+	void srand(u_int seed)
+	{
+	myNextRandom = seed;
+	}
+	```
+	
+	+ build bug report frameworks\runtime-src\proj.android-studio\app\build\outputs\logs
 
 ## Tip
 	
