@@ -104,43 +104,35 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 - Android Flow:
 	
 	+ Build libcocos2dandroid:
-	
-		frameworks\cocos2d-x\cocos\platform\android\Android.mk ( ... javaactivity-android.cpp \ ...)
 		
-		
-			
-			1. cocos_android_app_init(JniHelper::getEnv()); 
-			
-			2. init C++ for java to call via jni:
-			
-			```c
-			// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
-			JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
+		```c
+		// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
+		JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
+		{
+			auto director = cocos2d::Director::getInstance();
+			auto glview = director->getOpenGLView();
+			if (!glview)
 			{
-				auto director = cocos2d::Director::getInstance();
-				auto glview = director->getOpenGLView();
-				if (!glview)
-				{
-					glview = cocos2d::GLViewImpl::create("Android app");
-					glview->setFrameSize(w, h);
-					director->setOpenGLView(glview);
+				glview = cocos2d::GLViewImpl::create("Android app");
+				glview->setFrameSize(w, h);
+				director->setOpenGLView(glview);
 
-					cocos2d::Application::getInstance()->run();
-				}
-				else
-				{
-					//...
-				}
-				cocos2d::network::_preloadJavaDownloaderClass();
+				cocos2d::Application::getInstance()->run();
 			}
-			
-			
-			// in frameworks\cocos2d-x\cocos\platform\android\jni\Java_org_cocos2dx_lib_Cocos2dxRenderer.cpp
-			
-			JNIEXPORT void JNICALL Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeRender(JNIEnv* env) {
-				cocos2d::Director::getInstance()->mainLoop();
+			else
+			{
+				//...
 			}
-			```
+			cocos2d::network::_preloadJavaDownloaderClass();
+		}
+		
+		
+		// in frameworks\cocos2d-x\cocos\platform\android\jni\Java_org_cocos2dx_lib_Cocos2dxRenderer.cpp
+		
+		JNIEXPORT void JNICALL Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeRender(JNIEnv* env) {
+			cocos2d::Director::getInstance()->mainLoop();
+		}
+		```
 			
 		frameworks\cocos2d-x\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxRenderer.java:
 			
