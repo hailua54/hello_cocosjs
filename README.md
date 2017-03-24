@@ -20,30 +20,25 @@
 - Modify main.js to create Game object
 
 	```js
-	
 	cc.LoaderScene.preload(g_resources, function () {
 		//cc.director.runScene(new HelloWorldScene()); 
 		var game = new Game();
 	}, this);
-	
 	```
 		
 - Modify frameworks/cocos2d-x/cocos/base/CCDirector.cpp
 	
 	```c
-	
 	void Director::reset()
 	{   // ...
 		Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("game_on_exit");
 		// ...
 	}
-	
 	```
 	
 - Modify timlineParser-2.x.js
 
 	```js
-	
 	register.forEach(function(item){
         parser.registerParser(item.name, function(options, resourcePath){
             var node = item.handle.call(this, options, resourcePath);
@@ -59,7 +54,6 @@
         var node = json.UserData?eval('new ' + json.UserData + '()'):new cc.Node();
 		//...
 	}
-	
 	```
 	
 - Add "..Sdk\platform-tools" to system variable 'Path' to be able to use 'adb' command
@@ -67,7 +61,6 @@
 - Appdelegate.cpp
 
 	```c
-	
 	static u_long myNextRandom = 1;
 	double atof(const char *nptr)
 	{
@@ -83,7 +76,6 @@
 	{
 		myNextRandom = seed;
 	}
-	
 	```
 	
 ## Compile
@@ -116,12 +108,11 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 		
 		javaactivity-android.cpp => frameworks\runtime-src\proj.android-studio\app\jni\hellojavascript\main.cpp:
 			
-			* cocos_android_app_init(JniHelper::getEnv()); 
+			1. cocos_android_app_init(JniHelper::getEnv()); 
 			
-			* init C++ for java to call via jni:
+			2. init C++ for java to call via jni:
 			
 			```c
-			
 			// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
 			JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
 			{
@@ -148,13 +139,11 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 			JNIEXPORT void JNICALL Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeRender(JNIEnv* env) {
 				cocos2d::Director::getInstance()->mainLoop();
 			}
-			
 			```
 			
 		frameworks\cocos2d-x\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxRenderer.java:
 			
 			```java
-			
 			@Override
 			public void onSurfaceCreated(final GL10 GL10, final EGLConfig EGLConfig) {
 				Cocos2dxRenderer.nativeInit(this.mScreenWidth, this.mScreenHeight);
@@ -165,7 +154,6 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 			public void onDrawFrame(GL10 unused)
 			
 			public void onSurfaceChanged(GL10 unused, int width, int height)
-			
 			```
 			
 		check: http://cnguyen93.blogspot.com/2014/03/khoi-tao-opengl-es-20-tren-android.html
