@@ -93,28 +93,9 @@
 
 ## Tip
 
-	```c
-	static u_long myNextRandom = 1;
-	double atof(const char *nptr)
-	{
-		return (strtod(nptr, NULL));
-	}
-
-	int rand(void)
-	{
-		return (int)((myNextRandom = (1103515245 * myNextRandom) + 12345) % ((u_long)RAND_MAX + 1));
-	}
-
-	void srand(u_int seed)
-	{
-		myNextRandom = seed;
-	}
-	```
 - The code using tab size = 2. To view the draw code with github, put a tab size on the url ?ts=2
 Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/StartScene.ts?ts=2
 
-
-		
 ## References
 - Android VideoPlayer: check frameworks\cocos2d-x\cocos\ui\UIVideoPlayer-android.cpp :
 	
@@ -130,7 +111,6 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 			
 			2. init C++ for java to call via jni:
 			
-			```c
 			// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
 			JNIEXPORT void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thiz, jint w, jint h)
 			{
