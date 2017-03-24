@@ -92,7 +92,6 @@
 		
 	+ command: cocos compile cocos compile -p android --android-studio --app-abi=x86 --ap android-22
 
-## Tip
 
 	```c
 	// in frameworks\cocos2d-x\cocos\platform\android\javaactivity-android.cpp
