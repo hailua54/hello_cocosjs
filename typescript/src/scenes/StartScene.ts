@@ -51,9 +51,12 @@ class StartScene extends game.BaseScene
 	public sizeHandler()
 	{
 		var screen = GameUtils.getScreenSize();
-		this.uiView.setContentSize(screen);
-		cc.log("StartScene sizeHandler screen " + screen.width + " " + screen.height);
-		ccui['helper'].doLayout(this.uiView);
+		if (this.uiView)
+		{
+			this.uiView.setContentSize(screen);
+			cc.log("StartScene sizeHandler screen " + screen.width + " " + screen.height);
+			ccui['helper'].doLayout(this.uiView);
+		}
 	}
 
 	public orientationHandler()
@@ -88,14 +91,13 @@ class StartScene extends game.BaseScene
 	protected initVod():void
 	{
 		if (cc.sys.os == cc.sys.OS_WINDOWS) return;
-		var screen:cc.Size = GameUtils.getScreenSize();
-		var layer:cc.LayerColor = cc.LayerColor.create(cc.color(0,0,0,0), 232, 240);
-		layer.setBlendFunc(cc.BlendFunc.DISABLE);
-		this.addChild(layer);
-
 		var vurl:string = "res/cocosvideo.mp4";
 		if (cc.sys.platform == cc.sys.ANDROID)
 		{
+			var screen:cc.Size = GameUtils.getScreenSize();
+			var layer:cc.LayerColor = cc.LayerColor.create(cc.color(0,0,0,0), 232, 240);
+			layer.setBlendFunc(cc.BlendFunc.DISABLE);
+			this.addChild(layer);
 			var video:ccui.VideoPlayer = new ccui.VideoPlayer();
 			//Fuk: MUST set content size here to trigger surfaceCreated(SurfaceHolder holder) on Cocos2dxVideoView
 			video.setContentSize(432, 240);
@@ -117,8 +119,7 @@ class StartScene extends game.BaseScene
 	public loadUI()
 	{
 		var screen:cc.Size = GameUtils.getScreenSize();
-		this.initVod();
-		/*
+
 		//get the screen size of your game canvas
 
 		var jsonFile:string = GameUtils.getOrientation() == PORTRAIT ? "res/Login_portrait.json" : "res/Login_landscape.json";
@@ -139,7 +140,8 @@ class StartScene extends game.BaseScene
 		}
 		this.uiView = uiView;
 		this.uiView.addChild(uiView);
-		*/
+
+		this.initVod();
 	}
 }
 endCCExtend();

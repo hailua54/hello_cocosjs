@@ -55,9 +55,10 @@
 cc.game.onStart = function()
 {
     // Pass true to enable retina display, on Android disabled by default to improve performance
-    cc.view.enableRetina(cc.sys.os === cc.sys.OS_IOS ? true : false);
+    //cc.view.enableRetina(cc.sys.os === cc.sys.OS_IOS ? true : false);
+    cc.view.enableRetina(true);
     // Adjust viewport meta
-    //cc.view.adjustViewPort(true);
+    cc.view.adjustViewPort(true);
 		if (cc.sys.os === cc.sys.OS_WINDOWS) cc.view.setFrameSize(400, 700);
 		cc.view.resizeWithBrowserSize(true);
 		cc.view.setDesignResolutionSize(GameUtils.getScreenSize().width, GameUtils.getScreenSize().height, cc.ResolutionPolicy.SHOW_ALL);
