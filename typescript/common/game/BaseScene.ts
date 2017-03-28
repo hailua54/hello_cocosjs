@@ -3,7 +3,6 @@ namespace game
 {
   export class BaseScene extends cc.Scene
   {
-    public vname = "i am BaseScene";
 		public gameModel:GameModel;
 
     constructor()
