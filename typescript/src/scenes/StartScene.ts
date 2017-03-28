@@ -5,6 +5,7 @@ class StartScene extends game.BaseScene
 
 	isInited:boolean;
 	uiView:any;
+	video:any;
 
 	public ctor()
 	{
@@ -90,6 +91,7 @@ class StartScene extends game.BaseScene
 
 	protected initVod():void
 	{
+		if (this.video) return;
 		if (cc.sys.os == cc.sys.OS_WINDOWS) return;
 		var vurl:string = "res/cocosvideo.mp4";
 		if (cc.sys.platform == cc.sys.ANDROID)
@@ -108,6 +110,7 @@ class StartScene extends game.BaseScene
 			video.anchorY = 0;
 			video.x = 0;
 			video.y = 0;
+			this.video = video;
 			video.setEventListener(ccui.VideoPlayer.EventType.PLAYING, function(){
 				// get real video width/height
 				cc.log("ccui.VideoPlayer.EventType.PLAYING ==== ");

@@ -1,3 +1,8 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 function startCCExtend() { this['org_extends'] = this['__extends']; this['__extends'] = function () { }; }
 function endCCExtend() { this['__extends'] = this['org_extends']; }
 var res = eval("res");
@@ -42,7 +47,7 @@ var core;
             this.stopsImmediatePropagation = false;
         };
         return VBaseEvent;
-    })();
+    }());
     core.VBaseEvent = VBaseEvent;
 })(core || (core = {}));
 var core;
@@ -155,7 +160,7 @@ var core;
         };
         ;
         return VEventDispatcher;
-    })();
+    }());
     core.VEventDispatcher = VEventDispatcher;
 })(core || (core = {}));
 var core;
@@ -176,7 +181,7 @@ var core;
             this.context = null;
         };
         return VListenerBinding;
-    })();
+    }());
     core.VListenerBinding = VListenerBinding;
 })(core || (core = {}));
 var core;
@@ -232,7 +237,7 @@ var core;
         };
         VObjectPool.instance = new VObjectPool();
         return VObjectPool;
-    })();
+    }());
     core.VObjectPool = VObjectPool;
 })(core || (core = {}));
 var core;
@@ -281,14 +286,9 @@ var core;
                 delete obj[i];
         };
         return VUtils;
-    })();
+    }());
     core.VUtils = VUtils;
 })(core || (core = {}));
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 startCCExtend();
 var com;
 (function (com) {
@@ -307,7 +307,7 @@ var com;
         BaseComponent.prototype.setStyle = function (style) {
         };
         return BaseComponent;
-    })(cc.Node);
+    }(cc.Node));
     com.BaseComponent = BaseComponent;
 })(com || (com = {}));
 endCCExtend();
@@ -363,7 +363,7 @@ var com;
             return zero.substr(0, d - str.length) + str;
         };
         return ComUtils;
-    })();
+    }());
     com.ComUtils = ComUtils;
 })(com || (com = {}));
 startCCExtend();
@@ -448,7 +448,7 @@ var com;
             this.visible = false;
         };
         return Loading;
-    })(com.BaseComponent);
+    }(com.BaseComponent));
     com.Loading = Loading;
 })(com || (com = {}));
 endCCExtend();
@@ -461,7 +461,7 @@ var game;
         BaseGame.prototype.destroy = function () {
         };
         return BaseGame;
-    })();
+    }());
     game.BaseGame = BaseGame;
 })(game || (game = {}));
 startCCExtend();
@@ -494,7 +494,7 @@ var game;
         BaseScene.prototype.orientationHandler = function () { };
         BaseScene.prototype.sizeHandler = function () { };
         return BaseScene;
-    })(cc.Scene);
+    }(cc.Scene));
     game.BaseScene = BaseScene;
 })(game || (game = {}));
 endCCExtend();
@@ -521,7 +521,7 @@ var game;
             this.gameModel = gameModel;
         };
         return GameObject;
-    })(cc.Node);
+    }(cc.Node));
     game.GameObject = GameObject;
 })(game || (game = {}));
 endCCExtend();
@@ -548,7 +548,7 @@ var game;
             this.gameModel = gameModel;
         };
         return LayoutObject;
-    })(ccui.Layout);
+    }(ccui.Layout));
     game.LayoutObject = LayoutObject;
 })(game || (game = {}));
 endCCExtend();
@@ -647,17 +647,17 @@ var Game = (function (_super) {
         cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
     };
     return Game;
-})(game.BaseGame);
+}(game.BaseGame));
 var GameModel = (function () {
     function GameModel() {
     }
     return GameModel;
-})();
+}());
 var GameSettings = (function () {
     function GameSettings() {
     }
     return GameSettings;
-})();
+}());
 var GameUtils = (function () {
     function GameUtils() {
     }
@@ -740,7 +740,7 @@ var GameUtils = (function () {
         return size;
     };
     return GameUtils;
-})();
+}());
 startCCExtend();
 var GameScene = (function (_super) {
     __extends(GameScene, _super);
@@ -852,7 +852,7 @@ var GameScene = (function (_super) {
         return true;
     };
     return GameScene;
-})(game.BaseScene);
+}(game.BaseScene));
 endCCExtend();
 this['GameScene'] = game.BaseScene['extend'](new GameScene());
 startCCExtend();
@@ -917,6 +917,8 @@ var StartScene = (function (_super) {
         this.sizeHandler();
     };
     StartScene.prototype.initVod = function () {
+        if (this.video)
+            return;
         if (cc.sys.os == cc.sys.OS_WINDOWS)
             return;
         var vurl = "res/cocosvideo.mp4";
@@ -934,6 +936,7 @@ var StartScene = (function (_super) {
             video.anchorY = 0;
             video.x = 0;
             video.y = 0;
+            this.video = video;
             video.setEventListener(ccui.VideoPlayer.EventType.PLAYING, function () {
                 cc.log("ccui.VideoPlayer.EventType.PLAYING ==== ");
             }.bind(this));
@@ -959,7 +962,7 @@ var StartScene = (function (_super) {
         this.initVod();
     };
     return StartScene;
-})(game.BaseScene);
+}(game.BaseScene));
 endCCExtend();
 this['StartScene'] = game.BaseScene['extend'](new StartScene());
 startCCExtend();
@@ -991,7 +994,7 @@ var MyCustomUIClass = (function (_super) {
         cc.director.runScene(this.gameModel.gameScene);
     };
     return MyCustomUIClass;
-})(game.LayoutObject);
+}(game.LayoutObject));
 endCCExtend();
 this['MyCustomUIClass'] = game.LayoutObject['extend'](new MyCustomUIClass());
 //# sourceMappingURL=game.js.map
