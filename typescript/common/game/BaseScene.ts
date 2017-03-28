@@ -44,6 +44,4 @@ namespace game
 }
 endCCExtend();
 
-var prop = new game.BaseScene();
-cc.log("game.BaseScene here  ==================================================== " + prop.initModel);
-game.BaseScene = cc.Scene['extend'](prop);
+game.BaseScene = cc.Scene['extend'](game.BaseScene());
