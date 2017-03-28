@@ -1,13 +1,8 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 function startCCExtend() { this['org_extends'] = this['__extends']; this['__extends'] = function () { }; }
 function endCCExtend() { this['__extends'] = this['org_extends']; }
 var res = eval("res");
@@ -242,7 +237,6 @@ var core;
         };
         return VObjectPool;
     }());
-    VObjectPool.instance = new VObjectPool();
     core.VObjectPool = VObjectPool;
 })(core || (core = {}));
 var core;
@@ -924,6 +918,8 @@ var StartScene = (function (_super) {
         this.sizeHandler();
     };
     StartScene.prototype.initVod = function () {
+        if (this.video)
+            return;
         if (cc.sys.os == cc.sys.OS_WINDOWS)
             return;
         var vurl = "res/cocosvideo.mp4";
@@ -941,6 +937,7 @@ var StartScene = (function (_super) {
             video.anchorY = 0;
             video.x = 0;
             video.y = 0;
+            this.video = video;
             video.setEventListener(ccui.VideoPlayer.EventType.PLAYING, function () {
                 cc.log("ccui.VideoPlayer.EventType.PLAYING ==== ");
             }.bind(this));
