@@ -1,6 +1,7 @@
 startCCExtend();
 class GameScene extends game.BaseScene
 {
+
 	menuListener:cc.EventListener;
 	menuItems:Array<any>;
 	menu:any;

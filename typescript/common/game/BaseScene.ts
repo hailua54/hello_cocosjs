@@ -9,15 +9,6 @@ namespace game
     constructor()
     {}
 
-		protected deepDestructor(node:cc.Node)
-		{
-			for (var i = 0; i < node.children.length; i++)
-			{
-				if (node.children[i]['destructor']) node.children[i]['destructor']();
-				this.deepDestructor(node.children[i]);
-			}
-		}
-
     // constructor
     public ctor()
 		{
@@ -28,6 +19,15 @@ namespace game
 		public destructor()
 		{
 			this.deepDestructor(this);
+		}
+
+    protected deepDestructor(node:cc.Node)
+		{
+			for (var i = 0; i < node.children.length; i++)
+			{
+				if (node.children[i]['destructor']) node.children[i]['destructor']();
+				this.deepDestructor(node.children[i]);
+			}
 		}
 
     public initModel(model:GameModel)
@@ -42,6 +42,6 @@ namespace game
 		public sizeHandler() {}
 	}
 }
-endCCExtend();
 
-game.BaseScene = cc.Scene['extend'](game.BaseScene());
+endCCExtend();
+game.BaseScene = cc.Scene['extend'](new game.BaseScene());

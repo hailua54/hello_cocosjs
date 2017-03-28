@@ -7,6 +7,9 @@ namespace com
 {
 	export class BaseComponent extends cc.Node
 	{
+		constructor()
+		{}
+		
     // constructor
     public ctor()
 		{
