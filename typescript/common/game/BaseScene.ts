@@ -3,7 +3,11 @@ namespace game
 {
   export class BaseScene extends cc.Scene
   {
+    public vname = "i am BaseScene";
 		public gameModel:GameModel;
+
+    constructor()
+    {}
 
 		protected deepDestructor(node:cc.Node)
 		{
@@ -26,9 +30,9 @@ namespace game
 			this.deepDestructor(this);
 		}
 
-		public initModel(gameModel:any)
+    public initModel(model:GameModel)
 		{
-      this.gameModel = gameModel;
+      this.gameModel = model;
 		}
 
 		public loadUI() {}
@@ -39,4 +43,7 @@ namespace game
 	}
 }
 endCCExtend();
-game.BaseScene = cc.Scene['extend'](new game.BaseScene());
+
+var prop = new game.BaseScene();
+cc.log("game.BaseScene here  ==================================================== " + prop.initModel);
+game.BaseScene = cc.Scene['extend'](prop);

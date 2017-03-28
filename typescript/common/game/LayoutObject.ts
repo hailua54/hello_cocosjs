@@ -6,6 +6,10 @@ namespace game
 		public gameModel:GameModel;
 
     // constructor
+    constructor()
+    {
+    }
+    
     public ctor()
 		{
 			if (!this._super) return;
