@@ -1,13 +1,3 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 function startCCExtend() { this['org_extends'] = this['__extends']; this['__extends'] = function () { }; }
 function endCCExtend() { this['__extends'] = this['org_extends']; }
 var res = eval("res");
@@ -52,7 +42,7 @@ var core;
             this.stopsImmediatePropagation = false;
         };
         return VBaseEvent;
-    }());
+    })();
     core.VBaseEvent = VBaseEvent;
 })(core || (core = {}));
 var core;
@@ -165,7 +155,7 @@ var core;
         };
         ;
         return VEventDispatcher;
-    }());
+    })();
     core.VEventDispatcher = VEventDispatcher;
 })(core || (core = {}));
 var core;
@@ -186,7 +176,7 @@ var core;
             this.context = null;
         };
         return VListenerBinding;
-    }());
+    })();
     core.VListenerBinding = VListenerBinding;
 })(core || (core = {}));
 var core;
@@ -240,9 +230,9 @@ var core;
             }
             this.pool = null;
         };
+        VObjectPool.instance = new VObjectPool();
         return VObjectPool;
-    }());
-    VObjectPool.instance = new VObjectPool();
+    })();
     core.VObjectPool = VObjectPool;
 })(core || (core = {}));
 var core;
@@ -291,16 +281,21 @@ var core;
                 delete obj[i];
         };
         return VUtils;
-    }());
+    })();
     core.VUtils = VUtils;
 })(core || (core = {}));
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 startCCExtend();
 var com;
 (function (com) {
     var BaseComponent = (function (_super) {
         __extends(BaseComponent, _super);
         function BaseComponent() {
-            return _super !== null && _super.apply(this, arguments) || this;
+            _super.apply(this, arguments);
         }
         BaseComponent.prototype.ctor = function () {
             if (!this._super)
@@ -312,7 +307,7 @@ var com;
         BaseComponent.prototype.setStyle = function (style) {
         };
         return BaseComponent;
-    }(cc.Node));
+    })(cc.Node);
     com.BaseComponent = BaseComponent;
 })(com || (com = {}));
 endCCExtend();
@@ -368,7 +363,7 @@ var com;
             return zero.substr(0, d - str.length) + str;
         };
         return ComUtils;
-    }());
+    })();
     com.ComUtils = ComUtils;
 })(com || (com = {}));
 startCCExtend();
@@ -378,9 +373,8 @@ var com;
         __extends(Loading, _super);
         function Loading(bgAlpha) {
             if (bgAlpha === void 0) { bgAlpha = 1; }
-            var _this = _super.call(this) || this;
-            _this.bgAlpha = bgAlpha;
-            return _this;
+            _super.call(this);
+            this.bgAlpha = bgAlpha;
         }
         Loading.prototype.ctor = function () {
             if (!this._super)
@@ -454,7 +448,7 @@ var com;
             this.visible = false;
         };
         return Loading;
-    }(com.BaseComponent));
+    })(com.BaseComponent);
     com.Loading = Loading;
 })(com || (com = {}));
 endCCExtend();
@@ -467,7 +461,7 @@ var game;
         BaseGame.prototype.destroy = function () {
         };
         return BaseGame;
-    }());
+    })();
     game.BaseGame = BaseGame;
 })(game || (game = {}));
 startCCExtend();
@@ -476,7 +470,7 @@ var game;
     var BaseScene = (function (_super) {
         __extends(BaseScene, _super);
         function BaseScene() {
-            return _super !== null && _super.apply(this, arguments) || this;
+            _super.apply(this, arguments);
         }
         BaseScene.prototype.deepDestructor = function (node) {
             for (var i = 0; i < node.children.length; i++) {
@@ -500,7 +494,7 @@ var game;
         BaseScene.prototype.orientationHandler = function () { };
         BaseScene.prototype.sizeHandler = function () { };
         return BaseScene;
-    }(cc.Scene));
+    })(cc.Scene);
     game.BaseScene = BaseScene;
 })(game || (game = {}));
 endCCExtend();
@@ -511,7 +505,7 @@ var game;
     var GameObject = (function (_super) {
         __extends(GameObject, _super);
         function GameObject() {
-            return _super !== null && _super.apply(this, arguments) || this;
+            _super.apply(this, arguments);
         }
         GameObject.prototype.ctor = function () {
             if (!this._super)
@@ -527,7 +521,7 @@ var game;
             this.gameModel = gameModel;
         };
         return GameObject;
-    }(cc.Node));
+    })(cc.Node);
     game.GameObject = GameObject;
 })(game || (game = {}));
 endCCExtend();
@@ -538,7 +532,7 @@ var game;
     var LayoutObject = (function (_super) {
         __extends(LayoutObject, _super);
         function LayoutObject() {
-            return _super !== null && _super.apply(this, arguments) || this;
+            _super.apply(this, arguments);
         }
         LayoutObject.prototype.ctor = function () {
             if (!this._super)
@@ -554,7 +548,7 @@ var game;
             this.gameModel = gameModel;
         };
         return LayoutObject;
-    }(ccui.Layout));
+    })(ccui.Layout);
     game.LayoutObject = LayoutObject;
 })(game || (game = {}));
 endCCExtend();
@@ -562,9 +556,8 @@ game.LayoutObject = ccui.Layout['extend'](new game.LayoutObject());
 var Game = (function (_super) {
     __extends(Game, _super);
     function Game() {
-        var _this = _super.call(this) || this;
-        _this.init();
-        return _this;
+        _super.call(this);
+        this.init();
     }
     Game.prototype.destructor = function () {
         _super.prototype.destroy.call(this);
@@ -654,17 +647,17 @@ var Game = (function (_super) {
         cc.eventManager.addCustomListener("game_on_exit", this.destructor.bind(this));
     };
     return Game;
-}(game.BaseGame));
+})(game.BaseGame);
 var GameModel = (function () {
     function GameModel() {
     }
     return GameModel;
-}());
+})();
 var GameSettings = (function () {
     function GameSettings() {
     }
     return GameSettings;
-}());
+})();
 var GameUtils = (function () {
     function GameUtils() {
     }
@@ -747,12 +740,12 @@ var GameUtils = (function () {
         return size;
     };
     return GameUtils;
-}());
+})();
 startCCExtend();
 var GameScene = (function (_super) {
     __extends(GameScene, _super);
     function GameScene() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        _super.apply(this, arguments);
     }
     GameScene.prototype.ctor = function () {
         if (!this._super)
@@ -859,14 +852,14 @@ var GameScene = (function (_super) {
         return true;
     };
     return GameScene;
-}(game.BaseScene));
+})(game.BaseScene);
 endCCExtend();
 this['GameScene'] = game.BaseScene['extend'](new GameScene());
 startCCExtend();
 var StartScene = (function (_super) {
     __extends(StartScene, _super);
     function StartScene() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        _super.apply(this, arguments);
     }
     StartScene.prototype.ctor = function () {
         if (!this._super)
@@ -962,18 +955,18 @@ var StartScene = (function (_super) {
             this.uiView.destructor();
         }
         this.uiView = uiView;
-        this.uiView.addChild(uiView);
+        this.addChild(uiView);
         this.initVod();
     };
     return StartScene;
-}(game.BaseScene));
+})(game.BaseScene);
 endCCExtend();
 this['StartScene'] = game.BaseScene['extend'](new StartScene());
 startCCExtend();
 var MyCustomUIClass = (function (_super) {
     __extends(MyCustomUIClass, _super);
     function MyCustomUIClass() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        _super.apply(this, arguments);
     }
     MyCustomUIClass.prototype.ctor = function () {
         if (!this._super)
@@ -998,7 +991,7 @@ var MyCustomUIClass = (function (_super) {
         cc.director.runScene(this.gameModel.gameScene);
     };
     return MyCustomUIClass;
-}(game.LayoutObject));
+})(game.LayoutObject);
 endCCExtend();
 this['MyCustomUIClass'] = game.LayoutObject['extend'](new MyCustomUIClass());
 //# sourceMappingURL=game.js.map

@@ -139,7 +139,7 @@ class StartScene extends game.BaseScene
 			this.uiView.destructor();
 		}
 		this.uiView = uiView;
-		this.uiView.addChild(uiView);
+		this.addChild(uiView);
 
 		this.initVod();
 	}
