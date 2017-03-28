@@ -137,6 +137,8 @@
 	
 	+ atof / srand error use --ap android-22
 	
+	AppDelegate.cpp:
+	
 	```c
 	static u_long myNextRandom = 1;
 	double atof(const char *nptr)
