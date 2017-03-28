@@ -11,15 +11,11 @@ namespace com
 
 		constructor(bgAlpha:number = 1)
 		{
-			super();
 			this.bgAlpha = bgAlpha;
 		}
 
 		public ctor()
 		{
-			// add this code to deal with the draw Object created to pass to Class::extend function
-			if (!this._super) return;
-			// -------------------------------
 			this._super();
 
 			this.bg = new cc.DrawNode();

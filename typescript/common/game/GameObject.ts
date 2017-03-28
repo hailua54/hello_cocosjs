@@ -10,7 +10,6 @@ namespace game
 
     public ctor()
 		{
-			if (!this._super) return;
 			this._super();
 		}
 

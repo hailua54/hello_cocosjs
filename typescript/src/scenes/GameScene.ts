@@ -8,11 +8,10 @@ class GameScene extends game.BaseScene
 	sprite:cc.Sprite;
 	bg:cc.DrawNode;
 
+	constructor(){}
+	
 	public ctor()
 	{
-		// add this code to deal with the draw Object created to pass to Class::extend function
-		if (!this._super) return;
-		// -------------------------------
 		this._super();
 	}
 

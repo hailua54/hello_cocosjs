@@ -7,14 +7,8 @@ class StartScene extends game.BaseScene
 	uiView:any;
 	video:any;
 
-	public ctor()
-	{
-		// add this code to deal with the draw Object created to pass to Class::extend function
-		if (!this._super) return;
-		// -------------------------------
-		this._super();
-	}
-
+  constructor(){}
+	
 	// destructor
 	public destructor()
 	{

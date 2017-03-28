@@ -1,19 +1,9 @@
 startCCExtend();
 class MyCustomUIClass extends game.LayoutObject
 {
-	_self:any;
 
-	public constructor()
-	{}
+	constructor(){}
 	
-	public ctor()
-	{
-		// add this code to deal with the draw Object created to pass to Class::extend function
-		if (!this._super) return;
-		// -------------------------------
-		this._super();
-	}
-
 	public destructor()
 	{
 		cc.log("=========== MyCustomUIClass destructor ===========");

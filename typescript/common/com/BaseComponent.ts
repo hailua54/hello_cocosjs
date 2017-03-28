@@ -9,11 +9,10 @@ namespace com
 	{
 		constructor()
 		{}
-		
+
     // constructor
     public ctor()
 		{
-			if (!this._super) return;
 			this._super();
 		}
 
