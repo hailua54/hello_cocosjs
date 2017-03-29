@@ -109,6 +109,7 @@ class Game extends game.BaseGame
 
   public onLoadCommonAssetComplete()
   {
+    trace("onLoadCommonAssetComplete --- ");
 		this.preloadScene.removeChild(this.loading);
 		this.preloadScene = null;
     this.gameModel = new GameModel();

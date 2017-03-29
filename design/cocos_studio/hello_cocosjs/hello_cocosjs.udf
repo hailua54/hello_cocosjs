@@ -4,7 +4,7 @@
       <Value ctype="CocosRecentOperation">
         <LastPublishType Value="Resource" />
         <IsLastPublish Value="True" />
-        <LastRunType Value="Windows" />
+        <LastRunType Value="Mac" />
       </Value>
     </Item>
     <Item Key="PackageParamsKey">
@@ -16,7 +16,7 @@
         <AndroidkeyStore Value="" />
         <AndroidVersion Value="" />
         <iOS_Target Value="hello_cocosjs iOS" />
-        <iOS_BundleID Value="" />
+        <iOS_BundleID Value="iPhone Developer: Anh Nguyen (VZXUK5J73U)" />
         <Platform Value="None" />
         <RunPlatform Value="None" />
         <FrameworkVersion Value="None" />
@@ -26,15 +26,6 @@
         <KeystoreAliasPassword Value="" />
         <EnableSourceMap Value="False" />
         <EnableHTML5Advanced Value="False" />
-      </Value>
-    </Item>
-    <Item Key="TabsParamsKey">
-      <Value ctype="TabsInfo">
-        <OpenedDocuments>
-          <FilePathData Path="Login_portrait.csd" />
-          <FilePathData Path="Login_landscape.csd" />
-        </OpenedDocuments>
-        <ActiveDocument Path="Login_portrait.csd" />
       </Value>
     </Item>
   </Properties>
