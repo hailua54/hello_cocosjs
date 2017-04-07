@@ -6,34 +6,34 @@
       <ObjectData Name="Scene" Tag="15" ctype="GameNodeObjectData">
         <Size X="960.0000" Y="640.0000" />
         <Children>
-          <AbstractNodeData Name="view" ActionTag="-485060982" UserData="MyCustomUIClass" Tag="16" IconVisible="False" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+          <AbstractNodeData Name="view" ActionTag="-485060982" UserData="MyCustomUIClass" Tag="16" IconVisible="False" TouchEnable="True" ClipAble="False" BackColorAlpha="106" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
             <Size X="960.0000" Y="640.0000" />
             <Children>
-              <AbstractNodeData Name="bg" ActionTag="-1476481219" Tag="17" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftEage="211" RightEage="211" TopEage="103" BottomEage="103" Scale9OriginX="211" Scale9OriginY="103" Scale9Width="170" Scale9Height="107" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="bg" ActionTag="-1476481219" Tag="17" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftEage="211" RightEage="211" TopEage="103" BottomEage="103" Scale9OriginX="211" Scale9OriginY="103" Scale9Width="272" Scale9Height="182" ctype="ImageViewObjectData">
                 <Size X="960.0000" Y="640.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="480.0000" Y="320.0000" />
+                <AnchorPoint />
+                <Position />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5000" Y="0.5000" />
+                <PrePosition />
                 <PreSize X="1.0000" Y="1.0000" />
                 <FileData Type="Normal" Path="Login/sky.png" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="savePassChb" ActionTag="1906162282" Tag="18" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="63.5042" RightMargin="856.4958" TopMargin="434.2646" BottomMargin="165.7354" TouchEnable="True" CheckedState="True" ctype="CheckBoxObjectData">
+              <AbstractNodeData Name="savePassChb" ActionTag="1906162282" Tag="18" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="63.4880" RightMargin="856.5120" TopMargin="434.2640" BottomMargin="165.7360" TouchEnable="True" CheckedState="True" ctype="CheckBoxObjectData">
                 <Size X="40.0000" Y="40.0000" />
                 <Children>
-                  <AbstractNodeData Name="BitmapFontLabel_1" ActionTag="776204382" Tag="19" IconVisible="False" HorizontalEdge="RightEdge" LeftMargin="66.3772" RightMargin="-110.3772" TopMargin="11.5021" BottomMargin="13.4979" LabelText="save password" ctype="TextBMFontObjectData">
-                    <Size X="84.0000" Y="15.0000" />
+                  <AbstractNodeData Name="BitmapFontLabel_1" ActionTag="776204382" Tag="19" IconVisible="False" HorizontalEdge="RightEdge" LeftMargin="68.3772" RightMargin="-110.3772" TopMargin="11.5021" BottomMargin="13.4979" LabelText="save password" ctype="TextBMFontObjectData">
+                    <Size X="82.0000" Y="15.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="108.3772" Y="20.9979" />
+                    <Position X="109.3772" Y="20.9979" />
                     <Scale ScaleX="1.2000" ScaleY="1.2000" />
                     <CColor A="255" R="12" G="7" B="7" />
-                    <PrePosition X="2.7094" Y="0.5249" />
-                    <PreSize X="2.1000" Y="0.3750" />
+                    <PrePosition X="2.7344" Y="0.5249" />
+                    <PreSize X="2.0500" Y="0.3750" />
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.3952" ScaleY="0.6566" />
-                <Position X="79.3118" Y="192.0000" />
+                <Position X="79.2960" Y="192.0000" />
                 <Scale ScaleX="0.5000" ScaleY="0.5000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.0826" Y="0.3000" />

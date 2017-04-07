@@ -5,6 +5,7 @@
 //var __extends = function(){}
 function startCCExtend() {this['org_extends'] = this['__extends']; this['__extends'] = function(){}}
 function endCCExtend() {this['__extends'] = this['org_extends']}
+function trace(str){cc.log(str);}
 var res = eval("res");
 var TweenLite = eval("TweenLite");
 var g_resources = eval("g_resources");
@@ -13,7 +14,7 @@ var CANVAS_HEIGHT = eval("CANVAS_HEIGHT");
 var PORTRAIT:number = 1;
 var LANDSCAPE:number = 2;
 var CppUtils = eval('CppUtils');
-var isShowBackGroundColorOpacity = true;
+var isShowBackGroundColorOpacity = false;
 
 namespace sys
 {

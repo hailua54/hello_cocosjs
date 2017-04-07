@@ -6,30 +6,30 @@
       <ObjectData Name="Scene" Tag="15" ctype="GameNodeObjectData">
         <Size X="960.0000" Y="640.0000" />
         <Children>
-          <AbstractNodeData Name="view" ActionTag="-793420587" UserData="MyCustomUIClass" Tag="9" IconVisible="False" RightMargin="320.0000" TopMargin="-320.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+          <AbstractNodeData Name="view" ActionTag="-793420587" UserData="MyCustomUIClass" Tag="9" IconVisible="False" RightMargin="320.0000" TopMargin="-320.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="112" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
             <Size X="640.0000" Y="960.0000" />
             <Children>
               <AbstractNodeData Name="bg" ActionTag="-324153660" Tag="8" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftEage="211" RightEage="211" TopEage="316" BottomEage="316" Scale9OriginX="211" Scale9OriginY="316" Scale9Width="218" Scale9Height="328" ctype="ImageViewObjectData">
                 <Size X="640.0000" Y="960.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="320.0000" Y="480.0000" />
+                <AnchorPoint />
+                <Position />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5000" Y="0.5000" />
+                <PrePosition />
                 <PreSize X="1.0000" Y="1.0000" />
                 <FileData Type="Normal" Path="Login/LI07.jpg" Plist="" />
               </AbstractNodeData>
               <AbstractNodeData Name="savePassChb" ActionTag="530263364" Tag="93" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="34.2720" RightMargin="565.7280" TopMargin="748.0000" BottomMargin="172.0000" TouchEnable="True" CheckedState="True" ctype="CheckBoxObjectData">
                 <Size X="40.0000" Y="40.0000" />
                 <Children>
-                  <AbstractNodeData Name="BitmapFontLabel_1" ActionTag="1116681915" Tag="94" IconVisible="False" HorizontalEdge="RightEdge" LeftMargin="66.3772" RightMargin="-110.3772" TopMargin="11.5021" BottomMargin="13.4979" LabelText="save password" ctype="TextBMFontObjectData">
-                    <Size X="84.0000" Y="15.0000" />
+                  <AbstractNodeData Name="BitmapFontLabel_1" ActionTag="1116681915" Tag="94" IconVisible="False" HorizontalEdge="RightEdge" LeftMargin="68.3772" RightMargin="-110.3772" TopMargin="11.5021" BottomMargin="13.4979" LabelText="save password" ctype="TextBMFontObjectData">
+                    <Size X="82.0000" Y="15.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="108.3772" Y="20.9979" />
+                    <Position X="109.3772" Y="20.9979" />
                     <Scale ScaleX="1.2000" ScaleY="1.2000" />
                     <CColor A="255" R="12" G="7" B="7" />
-                    <PrePosition X="2.7094" Y="0.5249" />
-                    <PreSize X="2.1000" Y="0.3750" />
+                    <PrePosition X="2.7344" Y="0.5249" />
+                    <PreSize X="2.0500" Y="0.3750" />
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

@@ -16,7 +16,7 @@
         "Children": [
           {
             "ClipAble": false,
-            "BackColorAlpha": 102,
+            "BackColorAlpha": 106,
             "ComboBoxIndex": 1,
             "SingleColor": {
               "R": 150,
@@ -48,10 +48,6 @@
               "X": 0.0,
               "Y": 0.0
             },
-            "PercentWidthEnable": true,
-            "PercentHeightEnable": true,
-            "PercentWidthEnabled": true,
-            "PercentHeightEnabled": true,
             "PreSize": {
               "X": 1.0,
               "Y": 1.0
@@ -67,15 +63,12 @@
                 },
                 "Scale9OriginX": 211,
                 "Scale9OriginY": 103,
-                "Scale9Width": 170,
-                "Scale9Height": 107,
-                "AnchorPoint": {
-                  "ScaleX": 0.5,
-                  "ScaleY": 0.5
-                },
+                "Scale9Width": 272,
+                "Scale9Height": 182,
+                "AnchorPoint": {},
                 "Position": {
-                  "X": 480.0,
-                  "Y": 320.0
+                  "X": 0.0,
+                  "Y": 0.0
                 },
                 "Scale": {
                   "ScaleX": 1.0,
@@ -86,8 +79,8 @@
                 "PositionPercentXEnabled": true,
                 "PositionPercentYEnabled": true,
                 "PrePosition": {
-                  "X": 0.5,
-                  "Y": 0.5
+                  "X": 0.0,
+                  "Y": 0.0
                 },
                 "PercentWidthEnable": true,
                 "PercentHeightEnable": true,
@@ -139,7 +132,7 @@
                   "ScaleY": 0.6566
                 },
                 "Position": {
-                  "X": 79.3118,
+                  "X": 79.296,
                   "Y": 192.0
                 },
                 "Scale": {
@@ -158,10 +151,10 @@
                   "X": 0.0417,
                   "Y": 0.0625
                 },
-                "LeftMargin": 63.5042,
-                "RightMargin": 856.4958,
-                "TopMargin": 434.2646,
-                "BottomMargin": 165.7354,
+                "LeftMargin": 63.488,
+                "RightMargin": 856.512,
+                "TopMargin": 434.264,
+                "BottomMargin": 165.736,
                 "Tag": 18,
                 "Children": [
                   {
@@ -171,7 +164,7 @@
                       "ScaleY": 0.5
                     },
                     "Position": {
-                      "X": 108.3772,
+                      "X": 109.3772,
                       "Y": 20.9979
                     },
                     "Scale": {
@@ -185,22 +178,22 @@
                     },
                     "IconVisible": false,
                     "PrePosition": {
-                      "X": 2.7094,
+                      "X": 2.7344,
                       "Y": 0.5249
                     },
                     "PreSize": {
-                      "X": 2.1,
+                      "X": 2.05,
                       "Y": 0.375
                     },
                     "HorizontalEdge": "RightEdge",
-                    "LeftMargin": 66.3772,
+                    "LeftMargin": 68.3772,
                     "RightMargin": -110.3772,
                     "TopMargin": 11.5021,
                     "BottomMargin": 13.4979,
                     "Tag": 19,
                     "ActionTag": 776204382,
                     "Size": {
-                      "X": 84.0,
+                      "X": 82.0,
                       "Y": 15.0
                     },
                     "Name": "BitmapFontLabel_1",

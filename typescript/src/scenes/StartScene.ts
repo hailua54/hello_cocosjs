@@ -4,11 +4,12 @@ class StartScene extends game.BaseScene
 	menuListener:cc.EventListener;
 
 	isInited:boolean;
-	uiView:any;
-	video:any;
+	uiView:cc.Node;
+	video:cc.Node;
+	cl:cc.Node;
 
   constructor(){}
-	
+
 	// destructor
 	public destructor()
 	{
@@ -48,10 +49,17 @@ class StartScene extends game.BaseScene
 		var screen = GameUtils.getScreenSize();
 		if (this.uiView)
 		{
+			this.cl.setContentSize(screen);
 			this.uiView.setContentSize(screen);
 			cc.log("StartScene sizeHandler screen " + screen.width + " " + screen.height);
 			ccui['helper'].doLayout(this.uiView);
+			if (this.video)
+			{
+				this.video.setContentSize(screen.width, screen.width*240/432);
+				this.uiView.getChildByName('bg').setPosition(0, this.video.getContentSize().height);
+			}
 		}
+
 	}
 
 	public orientationHandler()
@@ -83,41 +91,16 @@ class StartScene extends game.BaseScene
 		this.sizeHandler();
 	}
 
-	protected initVod():void
-	{
-		if (this.video) return;
-		if (cc.sys.os == cc.sys.OS_WINDOWS) return;
-		var vurl:string = "res/cocosvideo.mp4";
-		if (cc.sys.platform == cc.sys.ANDROID)
-		{
-			var screen:cc.Size = GameUtils.getScreenSize();
-			var layer:cc.LayerColor = cc.LayerColor.create(cc.color(0,0,0,0), 232, 240);
-			layer.setBlendFunc(cc.BlendFunc.DISABLE);
-			this.addChild(layer);
-			var video:ccui.VideoPlayer = new ccui.VideoPlayer();
-			//Fuk: MUST set content size here to trigger surfaceCreated(SurfaceHolder holder) on Cocos2dxVideoView
-			video.setContentSize(432, 240);
-			video.setKeepAspectRatioEnabled(true);
-			this.addChild(video);
-			video.setFileName(vurl);
-			video.anchorX = 0;
-			video.anchorY = 0;
-			video.x = 0;
-			video.y = 0;
-			this.video = video;
-			video.setEventListener(ccui.VideoPlayer.EventType.PLAYING, function(){
-				// get real video width/height
-				cc.log("ccui.VideoPlayer.EventType.PLAYING ==== ");
-			}.bind(this))
-			video.play();
-		}
-	}
-
 	public loadUI()
 	{
 		var screen:cc.Size = GameUtils.getScreenSize();
 
 		//get the screen size of your game canvas
+
+		var layer:cc.LayerColor = cc.LayerColor.create(cc.color(0,0,0,0), 232, 240);
+		layer.setBlendFunc(cc.BlendFunc.DISABLE);
+		this.addChild(layer);
+		this.cl = layer;
 
 		var jsonFile:string = GameUtils.getOrientation() == PORTRAIT ? "res/Login_portrait.json" : "res/Login_landscape.json";
 		// init UI
@@ -139,6 +122,35 @@ class StartScene extends game.BaseScene
 		this.addChild(uiView);
 
 		this.initVod();
+	}
+
+	protected initVod():void
+	{
+		if (this.video) return;
+		if (cc.sys.os == cc.sys.OS_WINDOWS) return;
+
+		if (cc.sys.platform == cc.sys.ANDROID || cc.sys.platform == cc.sys.IPHONE || cc.sys.platform == cc.sys.IPAD)
+		{
+			var screen:cc.Size = GameUtils.getScreenSize();
+			var video:ccui.VideoPlayer = new ccui.VideoPlayer();
+			//Fuk: MUST set content size here to trigger surfaceCreated(SurfaceHolder holder) on Cocos2dxVideoView
+			video.setContentSize(432, 240);
+			video.setKeepAspectRatioEnabled(true);
+			this.addChild(video);
+
+			video.setFileName("res/cocosvideo.mp4");
+			video.anchorX = 0;
+			video.anchorY = 0;
+			video.x = 0;
+			video.y = 0;
+			video.setFullScreenEnabled(false);
+			this.video = video;
+			video.setEventListener(ccui.VideoPlayer.EventType.PLAYING, function(){
+				// get real video width/height
+				cc.log("ccui.VideoPlayer.EventType.PLAYING ==== ");
+			}.bind(this))
+			video.play();
+		}
 	}
 }
 endCCExtend();

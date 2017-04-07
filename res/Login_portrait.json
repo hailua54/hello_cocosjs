@@ -16,7 +16,7 @@
         "Children": [
           {
             "ClipAble": false,
-            "BackColorAlpha": 102,
+            "BackColorAlpha": 112,
             "ComboBoxIndex": 1,
             "SingleColor": {
               "R": 150,
@@ -67,13 +67,10 @@
                 "Scale9OriginY": 316,
                 "Scale9Width": 218,
                 "Scale9Height": 328,
-                "AnchorPoint": {
-                  "ScaleX": 0.5,
-                  "ScaleY": 0.5
-                },
+                "AnchorPoint": {},
                 "Position": {
-                  "X": 320.0,
-                  "Y": 480.0
+                  "X": 0.0,
+                  "Y": 0.0
                 },
                 "Scale": {
                   "ScaleX": 1.0,
@@ -84,8 +81,8 @@
                 "PositionPercentXEnabled": true,
                 "PositionPercentYEnabled": true,
                 "PrePosition": {
-                  "X": 0.5,
-                  "Y": 0.5
+                  "X": 0.0,
+                  "Y": 0.0
                 },
                 "PercentWidthEnable": true,
                 "PercentHeightEnable": true,
@@ -169,7 +166,7 @@
                       "ScaleY": 0.5
                     },
                     "Position": {
-                      "X": 108.3772,
+                      "X": 109.3772,
                       "Y": 20.9979
                     },
                     "Scale": {
@@ -183,22 +180,22 @@
                     },
                     "IconVisible": false,
                     "PrePosition": {
-                      "X": 2.7094,
+                      "X": 2.7344,
                       "Y": 0.5249
                     },
                     "PreSize": {
-                      "X": 2.1,
+                      "X": 2.05,
                       "Y": 0.375
                     },
                     "HorizontalEdge": "RightEdge",
-                    "LeftMargin": 66.3772,
+                    "LeftMargin": 68.3772,
                     "RightMargin": -110.3772,
                     "TopMargin": 11.5021,
                     "BottomMargin": 13.4979,
                     "Tag": 94,
                     "ActionTag": 1116681915,
                     "Size": {
-                      "X": 84.0,
+                      "X": 82.0,
                       "Y": 15.0
                     },
                     "Name": "BitmapFontLabel_1",
