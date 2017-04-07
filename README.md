@@ -284,6 +284,27 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 	
 	```
 	
+- webgl:
+	```js
+	//RendererWebGL.js 
+	_clearColor: cc.color(0,0,0,0),                            //background color,default BLACK
+	
+	// CCBoot.js
+	cc.create3DContext = function (canvas, opt_attribs) {
+		var names = ["webgl", "experimental-webgl", "webkit-3d", "moz-webgl"];
+		var context = null;
+		for (var ii = 0; ii < names.length; ++ii) {
+			try {
+				context = canvas.getContext(names[ii], { premultipliedAlpha: false });
+			} catch (e) {
+			}
+			if (context) {
+				break;
+			}
+		}
+		return context;
+	};
+	```
 - JS call C++ sample:
 
 	### custom_binding.h:
