@@ -121,6 +121,10 @@ class StartScene extends game.BaseScene
 		this.uiView = uiView;
 		this.addChild(uiView);
 
+		var poly:cc.DrawNode = new cc.DrawNode();
+		this.addChild(poly);
+		poly.drawRect(cc.p(200,200), cc.p(400,400), cc.color(0,0,255), 0, cc.color(0,0,0,0));
+
 		this.initVod();
 	}
 

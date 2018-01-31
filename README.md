@@ -629,6 +629,8 @@ Ex: https://github.com/hailua54/hello_cocosjs/blob/master/typescript/src/scenes/
 		}
 		```
 		
+- AssetManager http://www.cocos2d-x.org/docs/creator/en/advanced-topics/assets-manager.html
+		
 		
 	
 		
